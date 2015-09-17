@@ -1,0 +1,4 @@
+Thruster.js HTML5 Canvas Game Framework
+---------------------------------------
+ 
+Copyright 2015 David Prior  |  http://davidprior.media  |  http://davecheesefish.com

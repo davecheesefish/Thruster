@@ -1,0 +1,30 @@
+{
+  "name": "thrusterjs",
+  "version": "1.0.0",
+  "description": "A game development library for HTML5 canvas-based games.",
+  "main": "dist/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davecheesefish/Thruster.js.git"
+  },
+  "keywords": [
+    "game-engine",
+    "game",
+    "html5",
+    "canvas"
+  ],
+  "author": "David Prior <http://davidprior.media>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/davecheesefish/Thruster.js/issues"
+  },
+  "homepage": "https://github.com/davecheesefish/Thruster.js#readme",
+  "devDependencies": {
+    "amdclean": "^2.7.0",
+    "requirejs": "^2.1.20",
+    "uglify-js": "^2.4.24"
+  }
+}
