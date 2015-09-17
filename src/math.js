@@ -1,9 +1,10 @@
-define(['core', 'math/vector2d'], function(Thruster, Vector2d){
+define(['math/vector2d'], function(Vector2d){
 	
-	Thruster.Math = {
+	// 
+	var Math = {
 		Vector2d: Vector2d
 	};
 	
-	return Thruster.Math;
+	return Math;
 	
 });
