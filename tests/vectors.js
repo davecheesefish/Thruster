@@ -12,6 +12,12 @@ test('Vector2d creation', function(assert){
 	vector = Thruster.Math.Vector2d.fromComponents(Math.PI / 6, 4);
 	assert.equal(vector.x, 3.464101615137755, 'fromComponents() - x value is set correctly.');
 	assert.equal(vector.y, 1.9999999999999998, 'fromComponents() - y value is set correctly.');
+	
+	// Clone from existing Vector2d
+	var clonedVector = vector.clone();
+	assert.notEqual(clonedVector, vector, 'clone() - returns a new separate object from the original.');
+	assert.equal(clonedVector.x, vector.x, 'clone() - x value is the same as the original.');
+	assert.equal(clonedVector.y, vector.y, 'clone() - y value is the same as the original.');
 });
 
 test('Vector2d information', function(assert){
