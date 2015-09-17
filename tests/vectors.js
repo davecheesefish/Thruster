@@ -1,10 +1,21 @@
 module('Vectors');
 
-test('Vector2d', function(assert){
-	var vector = new Thruster.Math.Vector2d(3, 4);
+test('Vector2d creation', function(assert){
+	var vector;
 	
-	assert.equal(vector.x, 3, 'Constructed x value is set correctly.');
-	assert.equal(vector.y, 4, 'Constructed y value is set correctly.');
+	// Constructor
+	vector = new Thruster.Math.Vector2d(3, 4);
+	assert.equal(vector.x, 3, 'Constructor - x value is set correctly.');
+	assert.equal(vector.y, 4, 'Constructor - y value is set correctly.');
+	
+	// From angle and length
+	vector = Thruster.Math.Vector2d.fromComponents(Math.PI / 6, 4);
+	assert.equal(vector.x, 3.464101615137755, 'fromComponents() - x value is set correctly.');
+	assert.equal(vector.y, 1.9999999999999998, 'fromComponents() - y value is set correctly.');
+});
+
+test('Vector2d information', function(assert){
+	var vector = new Thruster.Math.Vector2d(3, 4);
 	
 	assert.equal(vector.length(), 5, 'Vector length is correctly calculated.');
 	assert.equal(vector.angle(), 0.9272952180016122, 'Vector angle is correctly calculated.')
