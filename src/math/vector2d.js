@@ -32,8 +32,21 @@ define(function(){
 		return Math.atan2(this.y, this.x);
 	};
 	
+	/**
+	 * Modifies this vector to have length of 1, while preserving direction.
+	 * @returns {Thruster.Math.Vector2d} This vector, to allow chaining.
+	 */
+	Vector2d.prototype.normalize = function(){
+		var len = this.length();
+		this.x /= len;
+		this.y /= len;
+		
+		return this;
+	};
+	
 	
 	// Static functions
+	
 	/**
 	 * Create a new Vector2d from an angle (from the positive x axis) and length.
 	 * @returns {Thruster.Math.Vector2d}
@@ -41,7 +54,6 @@ define(function(){
 	Vector2d.fromComponents = function(angle, length){
 		return new Vector2d(length * Math.cos(angle), length * Math.sin(angle));
 	};
-	
 	
 	return Vector2d;
 	
