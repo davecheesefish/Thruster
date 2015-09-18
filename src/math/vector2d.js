@@ -19,7 +19,7 @@ define(function(){
 	/**
 	 * Add another vector to this one.
 	 * @param {Thruster.Math.Vector2d} vector The vector to add.
-	 * @returns {Vector2} This vector, to allow chaining.
+	 * @returns {Thruster.Math.Vector2d} This vector, to allow chaining.
 	 */
 	Vector2d.prototype.add = function(vector){
 		this.x += vector.x;
@@ -28,7 +28,7 @@ define(function(){
 	};
 	
 	/**
-	 * Calculates the angle of this vector from the positive x axis.
+	 * Returns the angle of this vector from the positive x axis.
 	 * @returns {Number}
 	 */
 	Vector2d.prototype.angle = function(){
@@ -36,7 +36,7 @@ define(function(){
 	};
 	
 	/**
-	 * Calculate the dot product of this vector with the other vector provided.
+	 * Returns the dot product of this vector with the other vector provided.
 	 * @param {Thruster.Math.Vector2d} vector The other vector.
 	 * @returns {Number}
 	 */
@@ -45,7 +45,7 @@ define(function(){
 	};
 	
 	/**
-	 * Calculates the length of this vector.
+	 * Returns the length of this vector.
 	 * @returns {Number}
 	 */
 	Vector2d.prototype.length = function(){

@@ -1,13 +1,13 @@
-module('Thruster/Math/Vector2d');
+QUnit.module('Thruster/Math/Vector2d');
 
-test('Constructor', function(assert){
+QUnit.test('Constructor', function(assert){
 	// New from constructor.
 	var vector = new Thruster.Math.Vector2d(3, 4);
 	assert.equal(vector.x, 3, 'Constructor - x value is set correctly.');
 	assert.equal(vector.y, 4, 'Constructor - y value is set correctly.');
 });
 
-test('clone()', function(assert){
+QUnit.test('clone()', function(assert){
 	// Clone from existing Vector2d.
 	var vector = new Thruster.Math.Vector2d(3, 4);
 	var clonedVector = vector.clone();
@@ -16,14 +16,14 @@ test('clone()', function(assert){
 	assert.equal(clonedVector.y, vector.y, 'clone() - y value is the same as the original.');
 });
 
-test('fromComponents()', function(assert){
+QUnit.test('fromComponents()', function(assert){
 	// New Vector2d from angle and length.
 	var vector = Thruster.Math.Vector2d.fromComponents(Math.PI / 6, 4);
 	assert.equal(vector.x, 3.464101615137755, 'fromComponents() - x value is set correctly.');
 	assert.equal(vector.y, 1.9999999999999998, 'fromComponents() - y value is set correctly.');
 });
 
-test('add()', function(assert){
+QUnit.test('add()', function(assert){
 	var vector1 = new Thruster.Math.Vector2d(1, 2),
 		vector2 = new Thruster.Math.Vector2d(3, 4);
 	
@@ -31,13 +31,13 @@ test('add()', function(assert){
 	assert.deepEqual(vector1, new Thruster.Math.Vector2d(4, 6), 'add() - Result from adding two vectors is correct.');
 });
 
-test('angle()', function(assert){
+QUnit.test('angle()', function(assert){
 	// Get the angle of a vector.
 	var vector = new Thruster.Math.Vector2d(3, 4);
 	assert.equal(vector.angle(), 0.9272952180016122, 'angle() - Vector angle is correctly calculated.')
 });
 	
-test('dot()', function(assert){
+QUnit.test('dot()', function(assert){
 	// Calculate a dot product.
 	var vector1 = new Thruster.Math.Vector2d(2, 3),
 		vector2 = new Thruster.Math.Vector2d(4, 5);
@@ -45,13 +45,13 @@ test('dot()', function(assert){
 	assert.equal(vector1.dot(vector2), 23, 'dot() - Dot product is correctly calculated.');
 });
 
-test('length()', function(assert){
+QUnit.test('length()', function(assert){
 	// Get the length of a vector.
 	var vector = new Thruster.Math.Vector2d(3, 4);
 	assert.equal(vector.length(), 5, 'length() - Vector length is correctly calculated.');
 });
 
-test('normalize()', function(assert){
+QUnit.test('normalize()', function(assert){
 	// Normalize a vector to length 1.
 	var vector = new Thruster.Math.Vector2d(5, 12);
 	var normalizedVector = vector.clone().normalize();
