@@ -17,6 +17,17 @@ define(function(){
 	};
 	
 	/**
+	 * Add another vector to this one.
+	 * @param {Thruster.Math.Vector2d} vector The vector to add.
+	 * @returns {Vector2} This vector, to allow chaining.
+	 */
+	Vector2d.prototype.add = function(vector){
+		this.x += vector.x;
+		this.y += vector.y;
+		return this;
+	};
+	
+	/**
 	 * Calculates the angle of this vector from the positive x axis.
 	 * @returns {Number}
 	 */

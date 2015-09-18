@@ -23,6 +23,14 @@ test('fromComponents()', function(assert){
 	assert.equal(vector.y, 1.9999999999999998, 'fromComponents() - y value is set correctly.');
 });
 
+test('add()', function(assert){
+	var vector1 = new Thruster.Math.Vector2d(1, 2),
+		vector2 = new Thruster.Math.Vector2d(3, 4);
+	
+	vector1.add(vector2);
+	assert.deepEqual(vector1, new Thruster.Math.Vector2d(4, 6), 'add() - Result from adding two vectors is correct.');
+});
+
 test('angle()', function(assert){
 	// Get the angle of a vector.
 	var vector = new Thruster.Math.Vector2d(3, 4);
