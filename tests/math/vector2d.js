@@ -7,6 +7,15 @@ test('Constructor', function(assert){
 	assert.equal(vector.y, 4, 'Constructor - y value is set correctly.');
 });
 
+test('clone()', function(assert){
+	// Clone from existing Vector2d.
+	var vector = new Thruster.Math.Vector2d(3, 4);
+	var clonedVector = vector.clone();
+	assert.notEqual(clonedVector, vector, 'clone() - returns a new separate object from the original.');
+	assert.equal(clonedVector.x, vector.x, 'clone() - x value is the same as the original.');
+	assert.equal(clonedVector.y, vector.y, 'clone() - y value is the same as the original.');
+});
+
 test('fromComponents()', function(assert){
 	// New Vector2d from angle and length.
 	var vector = Thruster.Math.Vector2d.fromComponents(Math.PI / 6, 4);
@@ -20,13 +29,12 @@ test('angle()', function(assert){
 	assert.equal(vector.angle(), 0.9272952180016122, 'angle() - Vector angle is correctly calculated.')
 });
 	
-test('clone()', function(assert){
-	// Clone from existing Vector2d.
-	var vector = new Thruster.Math.Vector2d(3, 4);
-	var clonedVector = vector.clone();
-	assert.notEqual(clonedVector, vector, 'clone() - returns a new separate object from the original.');
-	assert.equal(clonedVector.x, vector.x, 'clone() - x value is the same as the original.');
-	assert.equal(clonedVector.y, vector.y, 'clone() - y value is the same as the original.');
+test('dot()', function(assert){
+	// Calculate a dot product.
+	var vector1 = new Thruster.Math.Vector2d(2, 3),
+		vector2 = new Thruster.Math.Vector2d(4, 5);
+	
+	assert.equal(vector1.dot(vector2), 23, 'dot() - Dot product is correctly calculated.');
 });
 
 test('length()', function(assert){

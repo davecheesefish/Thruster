@@ -17,19 +17,28 @@ define(function(){
 	};
 	
 	/**
-	 * Calculates the length of this vector.
-	 * @returns {Number}
-	 */
-	Vector2d.prototype.length = function(){
-		return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
-	};
-	
-	/**
 	 * Calculates the angle of this vector from the positive x axis.
 	 * @returns {Number}
 	 */
 	Vector2d.prototype.angle = function(){
 		return Math.atan2(this.y, this.x);
+	};
+	
+	/**
+	 * Calculate the dot product of this vector with the other vector provided.
+	 * @param {Thruster.Math.Vector2d} vector The other vector.
+	 * @returns {Number}
+	 */
+	Vector2d.prototype.dot = function(vector){
+		return (this.x * vector.x) + (this.y * vector.y);
+	};
+	
+	/**
+	 * Calculates the length of this vector.
+	 * @returns {Number}
+	 */
+	Vector2d.prototype.length = function(){
+		return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
 	};
 	
 	/**
