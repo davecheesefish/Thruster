@@ -24,11 +24,12 @@ QUnit.test('fromComponents()', function(assert){
 });
 
 QUnit.test('add()', function(assert){
+	// Add vector2 to vector1.
 	var vector1 = new Thruster.Math.Vector2d(1, 2),
 		vector2 = new Thruster.Math.Vector2d(3, 4);
 	
 	vector1.add(vector2);
-	assert.deepEqual(vector1, new Thruster.Math.Vector2d(4, 6), 'Returned value is correct.');
+	assert.propEqual(vector1, new Thruster.Math.Vector2d(4, 6), 'Returned value is correct.');
 });
 
 QUnit.test('angle()', function(assert){
@@ -55,7 +56,7 @@ QUnit.test('multiply()', function(assert){
 	// Multiply a vector by a scalar value.
 	var vector = new Thruster.Math.Vector2d(3, 4);
 	vector.multiply(5);
-	assert.deepEqual(vector, new Thruster.Math.Vector2d(15, 20), 'Returned value is correct.');
+	assert.propEqual(vector, new Thruster.Math.Vector2d(15, 20), 'Returned value is correct.');
 });
 
 QUnit.test('normalize()', function(assert){
@@ -65,6 +66,22 @@ QUnit.test('normalize()', function(assert){
 	
 	assert.equal(normalizedVector.angle(), vector.angle(), 'Direction is preserved.');
 	assert.equal(normalizedVector.length(), 1, 'Length of resulting vector is 1.');
+});
+
+QUnit.test('projection()', function(assert){
+	// Find the vector projection of vector1 onto vector2
+	var vector1 = new Thruster.Math.Vector2d(3, 4),
+		vector2 = new Thruster.Math.Vector2d(1, 1);
+	
+	assert.propEqual(vector1.projection(vector2), new Thruster.Math.Vector2d(3.5, 3.5), 'Returned value is correct.');
+});
+
+QUnit.test('rejection()', function(assert){
+	// Find the vector rejection of vector1 onto vector2
+	var vector1 = new Thruster.Math.Vector2d(3, 4),
+		vector2 = new Thruster.Math.Vector2d(1, 1);
+	
+	assert.propEqual(vector1.rejection(vector2), new Thruster.Math.Vector2d(-0.5, 0.5), 'Returned value is correct.');
 });
 
 QUnit.test('scalarProjection(), angle between vectors less than 90 degrees', function(assert){
@@ -89,4 +106,13 @@ QUnit.test('scalarProjection(), angle between vectors more than 90 degrees', fun
 		vector2 = new Thruster.Math.Vector2d(-4, -5);
 	
 	assert.equal(vector1.scalarProjection(vector2), -3.5919965234379396, 'Returned value is correct.');
+});
+
+QUnit.test('subtract()', function(assert){
+	// Subtract vector2 from vector1.
+	var vector1 = new Thruster.Math.Vector2d(5, 5),
+		vector2 = new Thruster.Math.Vector2d(1, 2);
+	
+	vector1.subtract(vector2);
+	assert.propEqual(vector1, new Thruster.Math.Vector2d(4, 3), 'Returned value is correct.');
 });

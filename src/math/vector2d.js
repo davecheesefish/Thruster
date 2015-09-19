@@ -79,12 +79,49 @@ define(function(){
 	};
 	
 	/**
+	 * Returns the projection of this vector onto a target vector.
+	 * @param {Thruster.Math.Vector2d} target The vector to project onto.
+	 * @returns {Thruster.Math.Vector2d} The vector projection.
+	 */
+	Vector2d.prototype.projection = function(target){
+		var x = target.x * (this.dot(target) / target.dot(target));
+		var y = target.y * (this.dot(target) / target.dot(target));
+		return new Vector2d(x, y);
+	};
+	
+	/**
+	 * Returns the vector rejection of this vector onto a target vector.
+	 * @param {Thruster.Math.Vector2d} target The vector to reject onto.
+	 * @returns {Thruster.Math.Vector2d} The vector rejection.
+	 */
+	Vector2d.prototype.rejection = function(target){
+		var projection = this.projection(target),
+			rejection = this.clone();
+		
+		// Vector rejection = original vector - projection
+		rejection.subtract(projection);
+		
+		return rejection;
+	};
+	
+	/**
 	 * Returns the scalar projection of this vector onto projectionTarget.
-	 * @param {Thruster.Math.Vector2d} projectionTarget The vector to project onto.
+	 * @param {Thruster.Math.Vector2d} target The vector to project onto.
 	 * @returns {Number}
 	 */
-	Vector2d.prototype.scalarProjection = function(projectionTarget){
-		return this.dot(projectionTarget) / projectionTarget.length();
+	Vector2d.prototype.scalarProjection = function(target){
+		return this.dot(target) / target.length();
+	};
+	
+	/**
+	 * Subtract another vector from this one.
+	 * @param {Thruster.Math.Vector2d} vector The vector to subtract.
+	 * @returns {Thruster.Math.Vector2d} This vector, to allow chaining.
+	 */
+	Vector2d.prototype.subtract = function(vector){
+		this.x -= vector.x;
+		this.y -= vector.y;
+		return this;
 	};
 	
 	
