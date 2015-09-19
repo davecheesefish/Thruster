@@ -1,5 +1,8 @@
 define(function(){
 	
+	/**
+	 * Class representing a 2-dimensional vector.
+	 */
 	var Vector2d = function(x, y){
 		this.x = x;
 		this.y = y;
@@ -53,6 +56,17 @@ define(function(){
 	};
 	
 	/**
+	 * Multiplies this vector by a scalar value.
+	 * @param {Number} scalar The scalar value to multiply by.
+	 * @returns {Thruster.Math.Vector2d} This vector, to allow chaining.
+	 */
+	Vector2d.prototype.multiply = function(scalar){
+		this.x *= scalar;
+		this.y *= scalar;
+		return this;
+	};
+	
+	/**
 	 * Modifies this vector to have length of 1, while preserving direction.
 	 * @returns {Thruster.Math.Vector2d} This vector, to allow chaining.
 	 */
@@ -64,11 +78,21 @@ define(function(){
 		return this;
 	};
 	
+	/**
+	 * Returns the scalar projection of this vector onto projectionTarget.
+	 * @param {Thruster.Math.Vector2d} projectionTarget The vector to project onto.
+	 * @returns {Number}
+	 */
+	Vector2d.prototype.scalarProjection = function(projectionTarget){
+		return this.dot(projectionTarget) / projectionTarget.length();
+	};
+	
 	
 	// Static functions
 	
 	/**
 	 * Create a new Vector2d from an angle (from the positive x axis) and length.
+	 * @static
 	 * @returns {Thruster.Math.Vector2d}
 	 */
 	Vector2d.fromComponents = function(angle, length){
