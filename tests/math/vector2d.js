@@ -1,4 +1,4 @@
-QUnit.module('Thruster/Math/Vector2d');
+QUnit.module('Thruster.Math.Vector2d');
 
 QUnit.test('Constructor', function(assert){
 	// New from constructor.

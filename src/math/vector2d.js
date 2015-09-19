@@ -2,6 +2,9 @@ define(function(){
 	
 	/**
 	 * Class representing a 2-dimensional vector.
+	 * @constructor
+	 * @param {Number} x
+	 * @param {Number} y
 	 */
 	var Vector2d = function(x, y){
 		this.x = x;

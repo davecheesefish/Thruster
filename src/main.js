@@ -1,7 +1,9 @@
 require([
-    'math'
+    'math',
+    'shapes'
 ], function(
-	ThrusterMath // Avoid conflict with the JS Math object
+	ThrusterMath, // Avoid conflict with the JS Math object
+	Shapes
 ){
 	"use strict";
 	
@@ -10,7 +12,8 @@ require([
 		version: '@VERSION@',
 		build_date: '@DATE@',
 		
-		Math: ThrusterMath
+		Math: ThrusterMath,
+		Shapes: Shapes
 	};
 	
 	// Export
