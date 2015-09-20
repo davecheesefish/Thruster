@@ -29,7 +29,7 @@ QUnit.test('add()', function(assert){
 		vector2 = new Thruster.Math.Vector2d(3, 4);
 	
 	vector1.add(vector2);
-	assert.propEqual(vector1, new Thruster.Math.Vector2d(4, 6), 'Returned value is correct.');
+	assert.propEqual(vector1, new Thruster.Math.Vector2d(4, 6), 'Vector has correct values after manipulation.');
 });
 
 QUnit.test('angle()', function(assert){
@@ -56,7 +56,7 @@ QUnit.test('multiply()', function(assert){
 	// Multiply a vector by a scalar value.
 	var vector = new Thruster.Math.Vector2d(3, 4);
 	vector.multiply(5);
-	assert.propEqual(vector, new Thruster.Math.Vector2d(15, 20), 'Returned value is correct.');
+	assert.propEqual(vector, new Thruster.Math.Vector2d(15, 20), 'Vector has correct values after manipulation.');
 });
 
 QUnit.test('normalize()', function(assert){
@@ -82,6 +82,14 @@ QUnit.test('rejection()', function(assert){
 		vector2 = new Thruster.Math.Vector2d(1, 1);
 	
 	assert.propEqual(vector1.rejection(vector2), new Thruster.Math.Vector2d(-0.5, 0.5), 'Returned value is correct.');
+});
+
+QUnit.test('rotate()', function(assert){
+	// Rotate a vector through 90 degrees (pi/2 radians).
+	var vector = new Thruster.Math.Vector2d(3, 4);
+	vector.rotate(Math.PI / 2);
+	
+	assert.propEqual(vector, new Thruster.Math.Vector2d(-4, 3), 'Vector has correct values after manipulation.');
 });
 
 QUnit.test('scalarProjection(), angle between vectors less than 90 degrees', function(assert){
@@ -114,5 +122,5 @@ QUnit.test('subtract()', function(assert){
 		vector2 = new Thruster.Math.Vector2d(1, 2);
 	
 	vector1.subtract(vector2);
-	assert.propEqual(vector1, new Thruster.Math.Vector2d(4, 3), 'Returned value is correct.');
+	assert.propEqual(vector1, new Thruster.Math.Vector2d(4, 3), 'Vector has correct values after manipulation.');
 });

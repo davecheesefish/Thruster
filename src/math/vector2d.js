@@ -108,6 +108,21 @@ define(function(){
 	};
 	
 	/**
+	 * Rotates this vector by the given angle.
+	 * @param {Number} angle The angle to rotate through in radians.
+	 * @returns {Thruster.Math.Vector2d}
+	 */
+	Vector2d.prototype.rotate = function(angle){
+		var length = this.length(),
+			angle = this.angle() + angle;
+		
+		this.x = length * Math.cos(angle);
+		this.y = length * Math.sin(angle);
+		
+		return this;
+	};
+	
+	/**
 	 * Returns the scalar projection of this vector onto projectionTarget.
 	 * @param {Thruster.Math.Vector2d} target The vector to project onto.
 	 * @returns {Number}
