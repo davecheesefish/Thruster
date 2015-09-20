@@ -7,6 +7,14 @@ QUnit.test('Constructor', function(assert){
 	assert.equal(point.y, 2, 'y property set correctly.');
 });
 
+QUnit.test('clone()', function(assert){
+	var point = new Thruster.Shapes.Point2d(1, 2),
+		clonedPoint = point.clone();
+	
+	assert.propEqual(point, clonedPoint, 'Cloned object has the same property values as the original.');
+	assert.notEqual(point, clonedPoint, 'Cloned object is not just a reference to the original.');
+});
+
 QUnit.test('translate()', function(assert){
 	// Translate a point by separate x and y values.
 	var point = new Thruster.Shapes.Point2d(1, 2);

@@ -12,6 +12,14 @@ define(['math/vector2d'], function(Vector2d){
 	};
 	
 	/**
+	 * Returns a new Point2d with the same x and y values.
+	 * @returns {Thruster.Math.Vector2d}
+	 */
+	Point2d.prototype.clone = function(){
+		return new Point2d(this.x, this.y);
+	};
+	
+	/**
 	 * Get the vector from this point to the other point provided.
 	 * @param {Thruster.Shapes.Point} point The target point.
 	 * @returns {Thruster.Math.Vector2d}
