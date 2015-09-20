@@ -7,6 +7,24 @@ QUnit.test('Constructor', function(assert){
 	assert.equal(point.y, 2, 'y property set correctly.');
 });
 
+QUnit.test('translate()', function(assert){
+	// Translate a point by separate x and y values.
+	var point = new Thruster.Shapes.Point2d(1, 2);
+	point.translate(3, 4);
+	
+	assert.propEqual(point, new Thruster.Shapes.Point2d(4, 6), 'Point has correct values after manipulation.');
+});
+
+QUnit.test('translateByVector()', function(assert){
+	// Translate a point by a vector.
+	var point = new Thruster.Shapes.Point2d(1, 2),
+		vector = new Thruster.Math.Vector2d(3, 4);
+	
+	point.translateByVector(vector);
+	
+	assert.propEqual(point, new Thruster.Shapes.Point2d(4, 6), 'Point has correct values after manipulation.');
+});
+
 QUnit.test('vectorTo()', function(assert){
 	// Find the vector from point1 to point2.
 	var point1 = new Thruster.Shapes.Point2d(1, 2),

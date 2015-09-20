@@ -20,6 +20,31 @@ define(['math/vector2d'], function(Vector2d){
 		return new Vector2d(point.x - this.x, point.y - this.y);
 	};
 	
+	/**
+	 * Translates this point by the given values.
+	 * @param {Number} x Translation along the x axis.
+	 * @param {Number} y Translation along the y axis.
+	 * @returns {Thruster.Shapes.Point2d} This point, to allow chaining.
+	 */
+	Point2d.prototype.translate = function(x, y){
+		this.x += x;
+		this.y += y;
+		
+		return this;
+	};
+	
+	/**
+	 * Translates this point by the given vector.
+	 * @param {Thruster.Math.Vector2d} vector
+	 * @returns {Thruster.Shapes.Point2d} This point, to allow chaining.
+	 */
+	Point2d.prototype.translateByVector = function(vector){
+		this.x += vector.x;
+		this.y += vector.y;
+		
+		return this;
+	};
+	
 	return Point2d;
 	
 });
