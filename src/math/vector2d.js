@@ -110,7 +110,7 @@ define(function(){
 	/**
 	 * Rotates this vector by the given angle.
 	 * @param {Number} angle The angle to rotate through in radians.
-	 * @returns {Thruster.Math.Vector2d}
+	 * @returns {Thruster.Math.Vector2d} This vector, to allow chaining.
 	 */
 	Vector2d.prototype.rotate = function(angle){
 		var length = this.length(),
