@@ -15,6 +15,13 @@ QUnit.test('clone()', function(assert){
 	assert.notEqual(point, clonedPoint, 'Cloned object is not just a reference to the original.');
 });
 
+QUnit.test('toVector()', function(assert){
+	var point = new Thruster.Shapes.Point2d(1, 2),
+		vector = point.toVector();
+	
+	assert.deepEqual(vector, new Thruster.Math.Vector2d(1, 2), 'Returns a vector with the same component values as the original point.');
+});
+
 QUnit.test('translate()', function(assert){
 	// Translate a point by separate x and y values.
 	var point = new Thruster.Shapes.Point2d(1, 2);

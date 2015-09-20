@@ -20,12 +20,11 @@ define(['math/vector2d'], function(Vector2d){
 	};
 	
 	/**
-	 * Get the vector from this point to the other point provided.
-	 * @param {Thruster.Shapes.Point} point The target point.
+	 * Returns a new vector using the component values of this point.
 	 * @returns {Thruster.Math.Vector2d}
 	 */
-	Point2d.prototype.vectorTo = function(point){
-		return new Vector2d(point.x - this.x, point.y - this.y);
+	Point2d.prototype.toVector = function(){
+		return new Vector2d(this.x, this.y);
 	};
 	
 	/**
@@ -51,6 +50,15 @@ define(['math/vector2d'], function(Vector2d){
 		this.y += vector.y;
 		
 		return this;
+	};
+	
+	/**
+	 * Get the vector from this point to the other point provided.
+	 * @param {Thruster.Shapes.Point} point The target point.
+	 * @returns {Thruster.Math.Vector2d}
+	 */
+	Point2d.prototype.vectorTo = function(point){
+		return new Vector2d(point.x - this.x, point.y - this.y);
 	};
 	
 	return Point2d;
