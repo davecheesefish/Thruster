@@ -1,7 +1,7 @@
 define(['math/vector2d'], function(Vector2d){
 	
 	/**
-	 * Class representing a point in 2-dimensional Euclidean space.
+	 * A point in 2-dimensional Euclidean space.
 	 * @constructor
 	 * @param {Number} x
 	 * @param {Number} y
@@ -17,6 +17,24 @@ define(['math/vector2d'], function(Vector2d){
 	 */
 	Point2d.prototype.clone = function(){
 		return new Point2d(this.x, this.y);
+	};
+	
+	/**
+	 * Returns the angle from this point to the other point provided.
+	 * @param {Thruster.Shapes.Point2d} point
+	 * @returns {Number}
+	 */
+	Point2d.prototype.angleTo = function(point){
+		return Math.atan2(point.y - this.y, point.x - this.x);
+	};
+	
+	/**
+	 * Returns the distance from this point to the other point provided.
+	 * @param {Thruster.Shapes.Point2d} point The other point.
+	 * @returns {Number}
+	 */
+	Point2d.prototype.distanceTo = function(point){
+		return Math.sqrt(Math.pow(point.x - this.x, 2) + Math.pow(point.y - this.y, 2));
 	};
 	
 	/**

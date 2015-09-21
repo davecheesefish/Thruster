@@ -15,6 +15,25 @@ QUnit.test('clone()', function(assert){
 	assert.notEqual(point, clonedPoint, 'Cloned object is not just a reference to the original.');
 });
 
+QUnit.test('angleTo()', function(assert){
+	var point1 = new Thruster.Shapes.Point2d(1, 1),
+		point2 = new Thruster.Shapes.Point2d(2, 2);
+	
+	assert.equal(point1.angleTo(point2), 0.25 * Math.PI, 'Returned value is correct.');
+	assert.equal(point2.angleTo(point1), -0.75 * Math.PI, 'Returned value is correct in the opposite direction.');
+});
+
+QUnit.test('distanceTo()', function(assert){
+	// Find the distance from point1 to point2.
+	var point1 = new Thruster.Shapes.Point2d(1, 1),
+		point2 = new Thruster.Shapes.Point2d(4, 5),
+		dist1to2 = point1.distanceTo(point2),
+		dist2to1 = point2.distanceTo(point1);
+	
+	assert.equal(dist1to2, 5, 'Returned value is correct.');
+	assert.equal(dist1to2, dist2to1, 'Returned values are the same in both directions between the same points.');
+});
+
 QUnit.test('toVector()', function(assert){
 	var point = new Thruster.Shapes.Point2d(1, 2),
 		vector = point.toVector();
