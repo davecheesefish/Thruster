@@ -38,6 +38,23 @@ define(['math/vector2d'], function(Vector2d){
 	};
 	
 	/**
+	 * Rotates this point about the origin by the given angle.
+	 * @param {Number} angle The angle to rotate through in radians from the positive x axis.
+	 * @returns {Thruster.Shapes.Point2d} This point, to allow chaining.
+	 */
+	Point2d.prototype.rotateAboutOrigin = function(angle){
+		var c = Math.cos(angle),
+			s = Math.sin(angle),
+			newX = this.x * c - this.y * s,
+			newY = this.x * s + this.y * c;
+	
+		this.x = newX;
+		this.y = newY;
+	
+		return this;
+	};
+	
+	/**
 	 * Returns a new vector using the component values of this point.
 	 * @returns {Thruster.Math.Vector2d}
 	 */

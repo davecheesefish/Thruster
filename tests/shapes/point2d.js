@@ -34,6 +34,14 @@ QUnit.test('distanceTo()', function(assert){
 	assert.equal(dist1to2, dist2to1, 'Returned values are the same in both directions between the same points.');
 });
 
+QUnit.test('rotateAboutOrigin()', function(assert){
+	// Rotate a point 90 degrees about the origin.
+	var vector = new Thruster.Math.Vector2d(8, 9);
+	vector.rotate(Math.PI / 2);
+	
+	assert.propEqual(vector, new Thruster.Math.Vector2d(-9, 8), 'Point has correct values after manipulation.');
+});
+
 QUnit.test('toVector()', function(assert){
 	var point = new Thruster.Shapes.Point2d(1, 2),
 		vector = point.toVector();
