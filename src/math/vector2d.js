@@ -1,7 +1,7 @@
 define(function(){
 	
 	/**
-	 * Class representing a 2-dimensional vector.
+	 * A 2-dimensional vector.
 	 * @constructor
 	 * @param {Number} x
 	 * @param {Number} y
@@ -113,11 +113,13 @@ define(function(){
 	 * @returns {Thruster.Math.Vector2d} This vector, to allow chaining.
 	 */
 	Vector2d.prototype.rotate = function(angle){
-		var length = this.length(),
-			angle = this.angle() + angle;
+		var c = Math.cos(angle),
+			s = Math.sin(angle),
+			newX = this.x * c - this.y * s,
+			newY = this.x * s + this.y * c;
 		
-		this.x = length * Math.cos(angle);
-		this.y = length * Math.sin(angle);
+		this.x = newX;
+		this.y = newY;
 		
 		return this;
 	};

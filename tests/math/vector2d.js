@@ -86,10 +86,10 @@ QUnit.test('rejection()', function(assert){
 
 QUnit.test('rotate()', function(assert){
 	// Rotate a vector through 90 degrees (pi/2 radians).
-	var vector = new Thruster.Math.Vector2d(3, 4);
+	var vector = new Thruster.Math.Vector2d(8, 9);
 	vector.rotate(Math.PI / 2);
 	
-	assert.propEqual(vector, new Thruster.Math.Vector2d(-4, 3), 'Vector has correct values after manipulation.');
+	assert.propEqual(vector, new Thruster.Math.Vector2d(-9, 8), 'Vector has correct values after manipulation.');
 });
 
 QUnit.test('scalarProjection(), angle between vectors less than 90 degrees', function(assert){
