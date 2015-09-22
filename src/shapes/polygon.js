@@ -23,11 +23,34 @@ define(['math/vector2d'], function(Vector2d){
 		// Privileged functions
 		
 		/**
-		 * Returns the vertices of this polygon, after any rotation and offsets have been applied.
-		 * @returns {Array} An array of points representing the vertices of this polygon.
+		 * Returns the vertices of this polygon, after any optional positioning transformations have been applied.
+		 * @param {Thruster.Shapes.Point2d} [position] The position of the shape.
+		 * @param {Number} [rotation] Rotation angle to apply to the shape, in radians from the positive x axis.
+		 * @returns {Thruster.Shapes.Point2d} An array of points representing the vertices of this polygon.
 		 */
-		this.getVertices = function(){
-			return _vertices;
+		this.getVertices = function(position, rotation){
+			var vertices = [];
+			rotation = rotation || 0;
+			position = position ? position.toVector() : null;
+			
+			var v;
+			for (var i in _vertices){
+				v = _vertices[i].clone();
+				
+				// Rotate points around the local origin.
+				if (rotation !== 0){
+					v.rotateAboutOrigin(rotation);
+				}
+				
+				// Translate points to position in world space.
+				if (position !== null){
+					v.translateByVector(position);
+				}
+				
+				vertices.push(v);
+			}
+			
+			return vertices;
 		};
 		
 		/**
@@ -50,10 +73,24 @@ define(['math/vector2d'], function(Vector2d){
 		
 		/**
 		 * Returns the normal vectors for each side of this Polygon.
+		 * @param {Number} [rotation] Rotation angle to apply to the shape, in radians from the positive x axis. 
 		 * @returns {Thruster.Shapes.Point2d[]}
 		 */
-		this.getNormals = function(){
-			return _normals;
+		this.getNormals = function(rotation){
+			var normals = [];
+			rotation = rotation || 0;
+			
+			var n;
+			for (var i in _normals){
+				n = _normals[i].clone();
+				
+				if (rotation !== 0){
+					n.rotate(rotation);
+				}
+				normals.push(n);
+			}
+			
+			return normals;
 		};
 
 		
