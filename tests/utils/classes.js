@@ -42,4 +42,7 @@ QUnit.test('extend()', function(assert){
 	assert.ok(childInstance.childProp, 'Child class properties are preserved.');
 	assert.ok(childInstance.childFunc(), 'Child class functions are preserved.');
 	assert.equal(childInstance.overridenFunction(), 'Child', 'Child functions override parent functions of the same name.');
+	
+	assert.ok(childInstance instanceof Child, 'Child instance is an instanceof the child class.');
+	assert.ok(childInstance instanceof Parent, 'Child instance is an instanceof the parent class.');
 });
