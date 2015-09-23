@@ -2,7 +2,7 @@ define(['shapes/polygon'], function(Polygon){
 	
 	var Collision = {
 		/**
-		 * Check for collision between two polygons.
+		 * Check for collision between two convex polygons.
 		 * @param {Thruster.Shapes.Polygon} polygon1 The first shape.
 		 * @param {Thruster.Shapes.Point2d} p1Position Position of the first shape.
 		 * @param {Number} p1Angle Angle of the first shape, in radians from the positive x axis.
@@ -30,18 +30,55 @@ define(['shapes/polygon'], function(Polygon){
 				for (var vIndex in p1v){
 					projection = p1v[vIndex].toVector().scalarProjection(normal);
 					
-					if (p1Low === null || projection < p1Low){p1Low = projection;}
-					if (p1High === null || projection > p1High){p1High = projection;}
+					if (p1Low === null || projection < p1Low){ p1Low = projection; }
+					if (p1High === null || projection > p1High){ p1High = projection; }
 				}
 				
 				for (var vIndex in p2v){
 					projection = p2v[vIndex].toVector().scalarProjection(normal);
 					
-					if (p2Low === null || projection < p2Low){p2Low = projection;}
-					if (p2High === null || projection > p2High){p2High = projection;}
+					if (p2Low === null || projection < p2Low){ p2Low = projection; }
+					if (p2High === null || projection > p2High){ p2High = projection; }
 				}
 				
 				if (p1High < p2Low || p1Low > p2High){
+					collision = false;
+					break;
+				}
+			}
+			
+			return collision;
+		},
+		
+		/**
+		 * Check for collision between a point and a convex polygon.
+		 * @param {Thruster.Shapes.Point2d} point
+		 * @param {Thruster.Shapes.Polygon} polygon
+		 * @param {Thruster.Shapes.Point2d} polyPosition The position of the polygon.
+		 * @param {Number} polyAngle The rotation angle of the polygon.
+		 * @returns {Boolean} True if the point and polygon collide, false if not.
+		 */
+		checkPointOnPolygonCollision: function(point, polygon, polyPosition, polyAngle){
+			var vertices = polygon.getVertices(polyPosition, polyAngle),
+				normals = polygon.getNormals(polyAngle),
+				collision = true,
+				polyLow = null,
+				polyHigh = null,
+				projectedPoint, projectedVertex;
+			
+			// Project all points onto the polygon's normals. If the projected point lies outside
+			// the projected vertices on any normal, the two aren't in collision.
+			for (var nIndex in normals){
+				projectedPoint = point.toVector().scalarProjection(normals[nIndex]);
+				
+				for (var vIndex in vertices){
+					projectedVertex = vertices[vIndex].toVector().scalarProjection(normals[nIndex]);
+					
+					if (polyLow === null || projectedVertex < polyLow){ polyLow = projectedVertex; }
+					if (polyHigh === null || projectedVertex > polyHigh){ polyHigh = projectedVertex; }
+				}
+				
+				if (polyLow > projectedPoint || polyHigh < projectedPoint){
 					collision = false;
 					break;
 				}
