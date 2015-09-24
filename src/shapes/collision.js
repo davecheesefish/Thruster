@@ -13,6 +13,14 @@ define(['shapes/polygon'], function(Polygon){
 			return circle1Pos.distanceTo(circle2Pos) <= circle1.radius + circle2.radius;
 		},
 		
+		/**
+		 * Check for collision between a circle and a polygon.
+		 * @param {Thruster.Shapes.Circle} circle
+		 * @param {Thruster.Shapes.Point2d} circlePosition Center position of the circle.
+		 * @param {Thruster.Shapes.Polygon} polygon
+		 * @param {Thruster.Shapes.Point2d} circlePosition Position of the polygon.
+		 * @param {Number} polygonAngle The rotation angle of the polygon.
+		 */
 		circleOnPolygon: function(circle, circlePosition, polygon, polygonPosition, polygonAngle){
 			var vertices = polygon.getVertices(polygonPosition, polygonAngle),
 				projectionAxes = polygon.getNormals(polygonAngle);
