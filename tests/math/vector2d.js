@@ -94,28 +94,21 @@
 		assert.propEqual(vector, new Thruster.Math.Vector2d(-9, 8), 'Vector has correct values after manipulation.');
 	});
 	
-	QUnit.test('scalarProjection(), angle between vectors less than 90 degrees', function(assert){
+	QUnit.test('scalarProjection()', function(assert){
 		// Project vector1 onto vector2
-		var vector1 = new Thruster.Math.Vector2d(2, 3),
-			vector2 = new Thruster.Math.Vector2d(4, 5);
+		var vector1, vector2;
 		
-		assert.equal(vector1.scalarProjection(vector2), 3.5919965234379396, 'Returned value is correct.');
-	});
+		vector1 = new Thruster.Math.Vector2d(2, 3),
+		vector2 = new Thruster.Math.Vector2d(4, 5);
+		assert.equal(vector1.scalarProjection(vector2), 3.5919965234379396, 'Correct result when angle between vectors is less than 90 degrees.');
+		
+		vector1 = new Thruster.Math.Vector2d(1, 1),
+		vector2 = new Thruster.Math.Vector2d(-1, 1);
+		assert.equal(vector1.scalarProjection(vector2), 0, 'Correct result when angle between vectors is exactly 90 degrees.');
 	
-	QUnit.test('scalarProjection(), angle between vectors is 90 degrees', function(assert){
-		// Project vector1 onto vector2
-		var vector1 = new Thruster.Math.Vector2d(1, 1),
-			vector2 = new Thruster.Math.Vector2d(-1, 1);
-		
-		assert.equal(vector1.scalarProjection(vector2), 0, 'Returned value is correct.');
-	});
-	
-	QUnit.test('scalarProjection(), angle between vectors more than 90 degrees', function(assert){
-		// Project vector1 onto vector2
-		var vector1 = new Thruster.Math.Vector2d(2, 3),
-			vector2 = new Thruster.Math.Vector2d(-4, -5);
-		
-		assert.equal(vector1.scalarProjection(vector2), -3.5919965234379396, 'Returned value is correct.');
+		vector1 = new Thruster.Math.Vector2d(2, 3),
+		vector2 = new Thruster.Math.Vector2d(-4, -5);
+		assert.equal(vector1.scalarProjection(vector2), -3.5919965234379396, 'Correct result when angle between vectors is more than 90 degrees.');
 	});
 	
 	QUnit.test('subtract()', function(assert){
