@@ -2,6 +2,117 @@ define(['shapes/polygon'], function(Polygon){
 	
 	var Collision = {
 		/**
+		 * Check for collision between two circles.
+		 * @param {Thruster.Shapes.Circle} circle1
+		 * @param {Thruster.Shapes.Point2d} circle1Pos Center position of the first circle.
+		 * @param {Thruster.Shapes.Circle} circle2
+		 * @param {Thruster.Shapes.Point2d} circle2Pos Center position of the second circle.
+		 * @returns {Boolean} True if the circles collide, false if not.
+		 */
+		circleOnCircle: function(circle1, circle1Pos, circle2, circle2Pos){
+			return circle1Pos.distanceTo(circle2Pos) <= circle1.radius + circle2.radius;
+		},
+		
+		circleOnPolygon: function(circle, circlePosition, polygon, polygonPosition, polygonAngle){
+			var vertices = polygon.getVertices(polygonPosition, polygonAngle),
+				projectionAxes = polygon.getNormals(polygonAngle);
+			
+			// Find closest vertex to circle's center point
+			var closestDist = null,
+				closestVertex,
+				dist;
+			for (var i in vertices){
+				dist = circlePosition.distanceTo(vertices[i]);
+				if (closestDist === null || dist < closestDist){
+					closestVertex = vertices[i];
+					closestDist = dist;
+				}
+			}
+			
+			// Add vector (from circle centerpoint to closest vertex) to list of projection axes.
+			projectionAxes.push(circlePosition.vectorTo(closestVertex));
+			
+			// Use modified separating axis theory to detect collisions.
+			var collision = true,
+				polyLow = null,
+				polyHigh = null,
+				circleLow = null,
+				circleHigh = null,
+				projectedVertex,
+				projectedCircleCenter,
+				axis;
+			for (var axisIndex in projectionAxes){
+				axis = projectionAxes[axisIndex];
+				
+				projectedCircleCenter = circlePosition.toVector().scalarProjection(axis);
+				circleLow = projectedCircleCenter - circle.radius;
+				circleHigh = projectedCircleCenter + circle.radius;
+				
+				for (var vertexIndex in vertices){
+					projectedVertex = vertices[vertexIndex].toVector().scalarProjection(axis);
+					
+					if (polyLow === null || projectedVertex < polyLow){ polyLow = projectedVertex; }
+					if (polyHigh === null || projectedVertex > polyHigh){ polyHigh = projectedVertex; }
+				}
+				
+				if (circleHigh < polyLow || circleLow > polyHigh){
+					collision = false;
+					break;
+				}
+			}
+			
+			return collision;
+		},
+		
+		/**
+		 * Check for collision between a point and a circle.
+		 * @param {Thruster.Shapes.Point2d} point
+		 * @param {Thruster.Shapes.Circle} circle
+		 * @param {Thruster.Shapes.Point2d} circlePos Position of the center of the circle.
+		 * @returns {Boolean} True if the point and circle collide, false if not.
+		 */
+		pointOnCircle: function(point, circle, circlePos){
+			return point.distanceTo(circlePos) <= circle.radius;
+		},
+		
+		/**
+		 * Check for collision between a point and a convex polygon.
+		 * @param {Thruster.Shapes.Point2d} point
+		 * @param {Thruster.Shapes.Polygon} polygon
+		 * @param {Thruster.Shapes.Point2d} polygonPosition The position of the polygon.
+		 * @param {Number} polygonAngle The rotation angle of the polygon.
+		 * @returns {Boolean} True if the point and polygon collide, false if not.
+		 */
+		pointOnPolygon: function(point, polygon, polygonPosition, polygonAngle){
+			var vertices = polygon.getVertices(polygonPosition, polygonAngle),
+				normals = polygon.getNormals(polygonAngle),
+				collision = true,
+				polyLow = null,
+				polyHigh = null,
+				projectedPoint, projectedVertex;
+			
+			// Project all points onto the polygon's normals. If the projected point lies outside
+			// the projected vertices on any normal, the two aren't in collision.
+			for (var nIndex in normals){
+				projectedPoint = point.toVector().scalarProjection(normals[nIndex]);
+				
+				for (var vIndex in vertices){
+					projectedVertex = vertices[vIndex].toVector().scalarProjection(normals[nIndex]);
+					
+					if (polyLow === null || projectedVertex < polyLow){ polyLow = projectedVertex; }
+					if (polyHigh === null || projectedVertex > polyHigh){ polyHigh = projectedVertex; }
+				}
+				
+				if (polyLow > projectedPoint || polyHigh < projectedPoint){
+					collision = false;
+					break;
+				}
+			}
+			
+			return collision;
+		},
+	
+		/**
 		 * Check for collision between two convex polygons.
 		 * @param {Thruster.Shapes.Polygon} polygon1 The first shape.
 		 * @param {Thruster.Shapes.Point2d} p1Position Position of the first shape.
@@ -11,7 +122,7 @@ define(['shapes/polygon'], function(Polygon){
 		 * @param {Number} p2Angle Angle of the second shape, in radians from the positive x axis.
 		 * @returns {Boolean} True if the shapes collide, false if not.
 		 */
-		checkPolygonOnPolygonCollision: function(polygon1, p1Position, p1Angle, polygon2, p2Position, p2Angle){
+		polygonOnPolygon: function(polygon1, p1Position, p1Angle, polygon2, p2Position, p2Angle){
 			// Use the separating axis theorem to detect any gaps between the shapes.
 			var p1v = polygon1.getVertices(p1Position, p1Angle),
 				p1n = polygon1.getNormals(p1Angle),
@@ -42,43 +153,6 @@ define(['shapes/polygon'], function(Polygon){
 				}
 				
 				if (p1High < p2Low || p1Low > p2High){
-					collision = false;
-					break;
-				}
-			}
-			
-			return collision;
-		},
-		
-		/**
-		 * Check for collision between a point and a convex polygon.
-		 * @param {Thruster.Shapes.Point2d} point
-		 * @param {Thruster.Shapes.Polygon} polygon
-		 * @param {Thruster.Shapes.Point2d} polyPosition The position of the polygon.
-		 * @param {Number} polyAngle The rotation angle of the polygon.
-		 * @returns {Boolean} True if the point and polygon collide, false if not.
-		 */
-		checkPointOnPolygonCollision: function(point, polygon, polyPosition, polyAngle){
-			var vertices = polygon.getVertices(polyPosition, polyAngle),
-				normals = polygon.getNormals(polyAngle),
-				collision = true,
-				polyLow = null,
-				polyHigh = null,
-				projectedPoint, projectedVertex;
-			
-			// Project all points onto the polygon's normals. If the projected point lies outside
-			// the projected vertices on any normal, the two aren't in collision.
-			for (var nIndex in normals){
-				projectedPoint = point.toVector().scalarProjection(normals[nIndex]);
-				
-				for (var vIndex in vertices){
-					projectedVertex = vertices[vIndex].toVector().scalarProjection(normals[nIndex]);
-					
-					if (polyLow === null || projectedVertex < polyLow){ polyLow = projectedVertex; }
-					if (polyHigh === null || projectedVertex > polyHigh){ polyHigh = projectedVertex; }
-				}
-				
-				if (polyLow > projectedPoint || polyHigh < projectedPoint){
 					collision = false;
 					break;
 				}
