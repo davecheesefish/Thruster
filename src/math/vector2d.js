@@ -125,7 +125,7 @@ define(function(){
 	};
 	
 	/**
-	 * Returns the scalar projection of this vector onto projectionTarget.
+	 * Returns the length of this vector in the direction of a target vector.
 	 * @param {Thruster.Math.Vector2d} target The vector to project onto.
 	 * @returns {Number}
 	 */
