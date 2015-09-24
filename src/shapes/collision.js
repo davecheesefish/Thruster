@@ -9,7 +9,7 @@ define(['shapes/polygon'], function(Polygon){
 		 * @param {Thruster.Shapes.Point2d} circle2Pos Center position of the second circle.
 		 * @returns {Boolean} True if the circles collide, false if not.
 		 */
-		circleOnCircle: function(circle1, circle1Pos, circle2, circle2Pos){
+		circleWithCircle: function(circle1, circle1Pos, circle2, circle2Pos){
 			return circle1Pos.distanceTo(circle2Pos) <= circle1.radius + circle2.radius;
 		},
 		
@@ -21,7 +21,7 @@ define(['shapes/polygon'], function(Polygon){
 		 * @param {Thruster.Shapes.Point2d} circlePosition Position of the polygon.
 		 * @param {Number} polygonAngle The rotation angle of the polygon.
 		 */
-		circleOnPolygon: function(circle, circlePosition, polygon, polygonPosition, polygonAngle){
+		circleWithPolygon: function(circle, circlePosition, polygon, polygonPosition, polygonAngle){
 			var vertices = polygon.getVertices(polygonPosition, polygonAngle),
 				projectionAxes = polygon.getNormals(polygonAngle);
 			
@@ -79,7 +79,7 @@ define(['shapes/polygon'], function(Polygon){
 		 * @param {Thruster.Shapes.Point2d} circlePos Position of the center of the circle.
 		 * @returns {Boolean} True if the point and circle collide, false if not.
 		 */
-		pointOnCircle: function(point, circle, circlePos){
+		pointWithCircle: function(point, circle, circlePos){
 			return point.distanceTo(circlePos) <= circle.radius;
 		},
 		
@@ -91,7 +91,7 @@ define(['shapes/polygon'], function(Polygon){
 		 * @param {Number} polygonAngle The rotation angle of the polygon.
 		 * @returns {Boolean} True if the point and polygon collide, false if not.
 		 */
-		pointOnPolygon: function(point, polygon, polygonPosition, polygonAngle){
+		pointWithPolygon: function(point, polygon, polygonPosition, polygonAngle){
 			var vertices = polygon.getVertices(polygonPosition, polygonAngle),
 				normals = polygon.getNormals(polygonAngle),
 				collision = true,
@@ -130,7 +130,7 @@ define(['shapes/polygon'], function(Polygon){
 		 * @param {Number} p2Angle Angle of the second shape, in radians from the positive x axis.
 		 * @returns {Boolean} True if the shapes collide, false if not.
 		 */
-		polygonOnPolygon: function(polygon1, p1Position, p1Angle, polygon2, p2Position, p2Angle){
+		polygonWithPolygon: function(polygon1, p1Position, p1Angle, polygon2, p2Position, p2Angle){
 			// Use the separating axis theorem to detect any gaps between the shapes.
 			var p1v = polygon1.getVertices(p1Position, p1Angle),
 				p1n = polygon1.getNormals(p1Angle),
