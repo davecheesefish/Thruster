@@ -2,6 +2,77 @@
 	'use strict';
 	QUnit.module('Thruster.Shapes.Collision');
 	
+	QUnit.test('aabbWithAabb()', function(assert){
+		var aabb1 = new Thruster.Shapes.Aabb(2, 2),
+			aabb2 = new Thruster.Shapes.Aabb(3, 3),
+			pos1, pos2, collides;
+		
+		// Not colliding
+		pos1 = new Thruster.Shapes.Point2d(0, 0);
+		pos2 = new Thruster.Shapes.Point2d(6, 6);
+		collides = Thruster.Shapes.Collision.aabbWithAabb(aabb1, pos1, aabb2, pos2);
+		assert.equal(collides, false, 'Detect correctly: No collision');
+		
+		// Boxes overlapping
+		pos1 = new Thruster.Shapes.Point2d(0, 0);
+		pos2 = new Thruster.Shapes.Point2d(1, 1);
+		collides = Thruster.Shapes.Collision.aabbWithAabb(aabb1, pos1, aabb2, pos2);
+		assert.equal(collides, true, 'Detect correctly: Overlapping shapes');
+		
+		// Edges touching
+		pos1 = new Thruster.Shapes.Point2d(0, 0);
+		pos2 = new Thruster.Shapes.Point2d(2, 0);
+		collides = Thruster.Shapes.Collision.aabbWithAabb(aabb1, pos1, aabb2, pos2);
+		assert.equal(collides, true, 'Detect correctly: Edges touching');
+		
+		// Boxes overlapping
+		pos1 = new Thruster.Shapes.Point2d(0, 0);
+		pos2 = new Thruster.Shapes.Point2d(2, 2);
+		collides = Thruster.Shapes.Collision.aabbWithAabb(aabb1, pos1, aabb2, pos2);
+		assert.equal(collides, true, 'Detect correctly: Corners touching');
+		
+		// Box 1 inside box 2
+		pos1 = new Thruster.Shapes.Point2d(0, 0);
+		pos2 = new Thruster.Shapes.Point2d(0.5, 0.5);
+		collides = Thruster.Shapes.Collision.aabbWithAabb(aabb1, pos1, aabb2, pos2);
+		assert.equal(collides, true, 'Detect correctly: Box 1 inside box 2');
+		
+		// Box 2 inside box 1
+		pos1 = new Thruster.Shapes.Point2d(0, 0);
+		pos2 = new Thruster.Shapes.Point2d(0.5, 0.5);
+		collides = Thruster.Shapes.Collision.aabbWithAabb(aabb2, pos2, aabb1, pos1);
+		assert.equal(collides, true, 'Detect correctly: Box 2 inside box 1');
+	});
+	
+	QUnit.test('aabbWithPoint()', function(assert){
+		var aabb = new Thruster.Shapes.Aabb(2, 2),
+			aabbPos, point, collides;
+		
+		// Not colliding
+		aabbPos = new Thruster.Shapes.Point2d(1, 1);
+		point = new Thruster.Shapes.Point2d(5, 5);
+		collides = Thruster.Shapes.Collision.aabbWithPoint(aabb, aabbPos, point);
+		assert.equal(collides, false, 'Detect correctly: No collision');
+		
+		// Point within box
+		aabbPos = new Thruster.Shapes.Point2d(1, 1);
+		point = new Thruster.Shapes.Point2d(2, 2);
+		collides = Thruster.Shapes.Collision.aabbWithPoint(aabb, aabbPos, point);
+		assert.equal(collides, true, 'Detect correctly: Point within box');
+		
+		// Point on edge of box
+		aabbPos = new Thruster.Shapes.Point2d(1, 1);
+		point = new Thruster.Shapes.Point2d(3, 2);
+		collides = Thruster.Shapes.Collision.aabbWithPoint(aabb, aabbPos, point);
+		assert.equal(collides, true, 'Detect correctly: Point on edge of box');
+		
+		// Point on corner of box
+		aabbPos = new Thruster.Shapes.Point2d(1, 1);
+		point = new Thruster.Shapes.Point2d(3, 3);
+		collides = Thruster.Shapes.Collision.aabbWithPoint(aabb, aabbPos, point);
+		assert.equal(collides, true, 'Detect correctly: Point on corner of box');
+	});
+	
 	QUnit.test('circleWithCircle()', function(assert){
 		var circle1 = new Thruster.Shapes.Circle(2),
 			circle2 = new Thruster.Shapes.Circle(3),
