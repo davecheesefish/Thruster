@@ -10,11 +10,13 @@ define(['math/vector2d'], /** @lends Vector2d */ function(Vector2d){
 	var Point2d = function(x, y){
 		/**
 		 * X position of this point.
+		 * @type Number
 		 */
 		this.x = x;
 		
 		/**
 		 * Y position of this point.
+		 * @type Number
 		 */
 		this.y = y;
 	};
