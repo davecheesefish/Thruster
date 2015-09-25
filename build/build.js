@@ -8,6 +8,7 @@
 	var UglifyJs2 = require('uglify-js'),
 		Rjs       = require('requirejs'),
 		AmdClean  = require('amdclean'),
+		exec      = require('child_process').exec,
 		fs        = require('fs');
 	
 	var licenseText = fs.readFileSync('LICENSE.txt', 'utf8'),
@@ -82,7 +83,11 @@
 	
 	console.log('Starting build...');
 	
-	// Kick it off with r.js
+	console.log('Generating documentation...');
+	exec('jsdoc src -r -d docs');
+	console.log('Finished generating documentation.');
+	
+	// Run r.js optimizer
 	console.log('Running r.js optimisations...')
 	Rjs.optimize(config.rjs);
 })();

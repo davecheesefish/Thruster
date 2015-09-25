@@ -1,6 +1,33 @@
-define(['shapes/polygon'], function(Polygon){
+define(['shapes/polygon'], /** @lends Collision */ function(Polygon){
 	
+	/**
+	 * @namespace
+	 * @memberof Thruster.Shapes
+	 */
 	var Collision = {
+		/**
+		 * Check for collision between two axis-aligned bounding boxes.
+		 * @param {Thruster.Shapes.Aabb} aabb1 The first bounding box.
+		 * @param {Thruster.Shapes.Point2d} position1 The position of the first bounding box.
+		 * @param {Thruster.Shapes.Aabb} aabb2 The second bounding box.
+		 * @param {Thruster.Shapes.Point2d} position2 The position of the second bounding box.
+		 * @returns {Boolean} True if the bounding boxes collide, false if not.
+		 */
+		aabbWithAabb: function(aabb1, position1, aabb2, position2){
+			return aabb1.collidesWithAabb(position1, aabb2, position2);
+		},
+		
+		/**
+		 * Check for collision between an axis-aligned bounding box and a point.
+		 * @param {Thruster.Shapes.Aabb} aabb
+		 * @param {Thruster.Shapes.Point2d} aabbPosition Position of the bounding box.
+		 * @param {Thruster.Shapes.Point2d} point
+		 * @returns {Boolean} True if the bounding box and point collide, false if not.
+		 */
+		aabbWithPoint: function(aabb, aabbPosition, point){
+			return aabb.collidesWithPoint(aabbPosition, point);
+		},
+		
 		/**
 		 * Check for collision between two circles.
 		 * @param {Thruster.Shapes.Circle} circle1

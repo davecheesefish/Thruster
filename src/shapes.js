@@ -5,7 +5,7 @@ define([
     'shapes/point2d',
     'shapes/polygon',
     'shapes/rectangle'
-], function(
+], /** @lends Shapes */ function(
 	Collision,
 	Aabb,
 	Circle,

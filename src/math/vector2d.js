@@ -1,13 +1,23 @@
-define(function(){
+define(/** @lends Vector2d */ function(){
 	
 	/**
-	 * A 2-dimensional vector.
-	 * @constructor
-	 * @param {Number} x
-	 * @param {Number} y
+	 * A 2-dimensional vector in Euclidean space.
+	 * @class
+	 * @memberof Thruster.Math
+	 * @param {Number} x The x component of the vector.
+	 * @param {Number} y The y component of the vector.
 	 */
 	var Vector2d = function(x, y){
+		/**
+		 * The x component of this vector.
+		 * @type Number
+		 */
 		this.x = x;
+		
+		/**
+		 * The y component of this vector.
+		 * @type Number
+		 */
 		this.y = y;
 	};
 	
@@ -148,8 +158,10 @@ define(function(){
 	// Static functions
 	
 	/**
-	 * Create a new Vector2d from an angle (from the positive x axis) and length.
+	 * Create a new Vector2d from a provided angle and length.
 	 * @static
+	 * @param {Number} angle The angle of the vector in radians from the positive x axis.
+	 * @param {Number} length The length of the vector.
 	 * @returns {Thruster.Math.Vector2d}
 	 */
 	Vector2d.fromComponents = function(angle, length){

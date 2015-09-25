@@ -1,6 +1,13 @@
-define(['shapes/point2d'], function(Point2d){
+define(['shapes/point2d'], /** @lends Circle */ function(Point2d){
 	
+	/**
+	 * @class
+	 * @memberof Thruster.Shapes
+	 */
 	var Circle = function(radius){
+		/**
+		 * Radius of the circle.
+		 */
 		this.radius = radius;
 	};
 	

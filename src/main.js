@@ -10,9 +10,23 @@ require([
 	"use strict";
 	
 	// The core object all other functionality is bolted onto
+	/**
+	 * The top-level namespace for Thruster.js.
+	 * @global
+	 * @namespace
+	 */
 	var Thruster = {
+		/**
+		 * The full version number of this build.
+		 * @const
+		 */
 		version: '@VERSION@',
-		build_date: '@DATE@',
+		
+		/**
+		 * The date this version of Thruster.js was built as the number of seconds since 0000h on 1st January 1970.
+		 * @const
+		 */
+		buildDate: '@DATE@',
 		
 		Math: ThrusterMath,
 		Shapes: Shapes,

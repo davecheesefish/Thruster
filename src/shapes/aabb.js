@@ -1,7 +1,9 @@
-define(function(){
+define(/** @lends Aabb */ function(){
+	
 	/**
-	 * @class
 	 * Axis-aligned bounding box. Collision checking is more efficient than on a Rectangle, but AABBs cannot be rotated.
+	 * @class
+	 * @memberof Thruster.Shapes
 	 * @param {Number} width
 	 * @param {Number} height
 	 */
@@ -12,9 +14,9 @@ define(function(){
 	
 	/**
 	 * Checks for collision with another AABB.
-	 * @param position The position of this AABB.
-	 * @param aabb The other AABB to check collision with.
-	 * @param aabbPosition The position of the other AABB.
+	 * @param {Thruster.Shapes.Point2d} position The position of this AABB.
+	 * @param {Thruster.Shapes.Aabb} aabb The other AABB to check collision with.
+	 * @param {Thruster.Shapes.Point2d} aabbPosition The position of the other AABB.
 	 * @returns {Boolean} True if the bounding boxes are in collision, false if not.
 	 */
 	Aabb.prototype.collidesWithAabb = function(position, aabb, aabbPosition){
