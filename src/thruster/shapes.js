@@ -1,10 +1,10 @@
 define([
-    'shapes/collision',
-    'shapes/aabb',
-    'shapes/circle',
-    'shapes/point2d',
-    'shapes/polygon',
-    'shapes/rectangle'
+    'thruster/shapes/collision',
+    'thruster/shapes/aabb',
+    'thruster/shapes/circle',
+    'thruster/shapes/point2d',
+    'thruster/shapes/polygon',
+    'thruster/shapes/rectangle'
 ], /** @lends Shapes */ function(
 	Collision,
 	Aabb,

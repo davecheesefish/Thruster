@@ -1,4 +1,4 @@
-define(['shapes/polygon'], /** @lends Collision */ function(Polygon){
+define(/** @lends Collision */ function(){
 	
 	/**
 	 * @namespace

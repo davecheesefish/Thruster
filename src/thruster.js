@@ -1,8 +1,10 @@
 require([
-    'math',
-    'shapes',
-    'utils'
+    'thruster/input',
+    'thruster/math',
+    'thruster/shapes',
+    'thruster/utils'
 ], function(
+	Input,
 	ThrusterMath, // Avoid conflict with the JS Math object
 	Shapes,
 	Utils
@@ -28,6 +30,7 @@ require([
 		 */
 		buildDate: '@DATE@',
 		
+		Input: Input,
 		Math: ThrusterMath,
 		Shapes: Shapes,
 		Utils: Utils

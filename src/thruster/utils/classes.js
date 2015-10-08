@@ -1,7 +1,5 @@
 define(/** @lends Classes */ function(){
 	
-	// Using plural name to avoid clash with reserved keyword "class".
-	
 	/**
 	 * @namespace
 	 * @memberof Thruster.Utils

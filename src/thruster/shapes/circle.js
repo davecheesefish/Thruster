@@ -1,4 +1,4 @@
-define(['shapes/point2d'], /** @lends Circle */ function(Point2d){
+define(['thruster/shapes/point2d'], /** @lends Circle */ function(Point2d){
 	
 	/**
 	 * @class

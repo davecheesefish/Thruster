@@ -1,8 +1,8 @@
 define([
-    'shapes/polygon',
-    'shapes/point2d',
-    'math/vector2d',
-    'utils/classes'
+    'thruster/shapes/polygon',
+    'thruster/shapes/point2d',
+    'thruster/math/vector2d',
+    'thruster/utils/classes'
 ], /** @lends Rectangle */ function(
 	Polygon,
 	Point2d,

@@ -20,7 +20,7 @@
 	var config = {
 		rjs: {
 			baseUrl: 'src',
-			name: 'main',
+			name: 'thruster',
 			out: 'dist/thruster.js',
 			
 			optimize: 'none', // AMDclean won't work on minified files

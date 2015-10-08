@@ -1,4 +1,4 @@
-define(['math/vector2d'], /** @lends Polygon */ function(Vector2d){
+define(['thruster/math/vector2d'], /** @lends Polygon */ function(Vector2d){
 	
 	/**
 	 * A polygon defined by a list of vertices.

@@ -1,4 +1,4 @@
-define(['math/vector2d'], /** @lends Math */ function(Vector2d){
+define(['thruster/math/vector2d'], /** @lends Math */ function(Vector2d){
 	
 	/**
 	 * @namespace
