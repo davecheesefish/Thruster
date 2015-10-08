@@ -1,9 +1,9 @@
 define(/** @lends Key */ function(undefined){
 	
 	/**
-	 * Represents a key on the keyboard. An enum of common keys can be found at {@link Thruster.Input.Keys}.
+	 * Represents a key on the keyboard. An enum of common keys can be found at {@link thruster.input.Keys}.
 	 * @class
-	 * @memberof Thruster.Input
+	 * @memberof thruster.input
 	 * @param {String} key The W3C key value for this key. See {@link http://www.w3.org/TR/DOM-Level-3-Events-key/}.
 	 * @param {Number} keyCode The keyCode returned by a keydown event when this key is pressed. Where keyCodes differ between browsers, this should be set to the most common of them. See {@link https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode}.
 	 * @param {String} [name] A human-readable name for this key. For printable character keys, this should be the upper case version of the character. If omitted, the key value will be used.
@@ -18,7 +18,7 @@ define(/** @lends Key */ function(undefined){
 	
 	/**
 	 * Checks if the given key is the same as this one.
-	 * @param {Thruster.Input.Ley} other The other key to check against.
+	 * @param {thruster.input.Key} other The other key to check against.
 	 * @returns {Boolean} True if the keys match, false if not (or if at least one key was unidentified).
 	 */
 	Key.prototype.equals = function(other){
@@ -99,7 +99,7 @@ define(/** @lends Key */ function(undefined){
 	 * Constructs a Key instance from a keydown or keyup event object.
 	 * @static
 	 * @param e The event object passed to the keyup or keydown event handler. In older browsers that don't pass an object to event handlers, window.event should be passed in instead.
-	 * @returns {(Key|Boolean)} A Key instance, or boolean false if the key could not be determined.
+	 * @returns {(thruster.input.Key|Boolean)} A Key instance, or boolean false if the key could not be determined.
 	 */
 	Key.fromEventObject = function(e){
 		var key = e.key || String.fromCharCode(e.charCode).toLowerCase() || undefined,

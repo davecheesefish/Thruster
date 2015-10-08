@@ -1,13 +1,13 @@
 (function(){
 	'use strict';
-	QUnit.module('Thruster.Input.Keyboard');
+	QUnit.module('thruster.input.Keyboard');
 
 	QUnit.test('detach()', function(assert){
 		var canvasEl = document.getElementById('game-canvas'),
-			keyboard = new Thruster.Input.Keyboard(canvasEl);
+			keyboard = new thruster.input.Keyboard(canvasEl);
 		
-		var testKey1 = Thruster.Input.Keys.W,
-			testKey2 = Thruster.Input.Keys.SPACE;
+		var testKey1 = thruster.input.Keys.W,
+			testKey2 = thruster.input.Keys.SPACE;
 		
 		// KeyboardEvent has long-standing issues in Webkit, so we use a generic Event.
 		// See https://bugs.webkit.org/show_bug.cgi?id=16735.

@@ -3,7 +3,7 @@ define(['thruster/math/vector2d'], /** @lends Vector2d */ function(Vector2d){
 	/**
 	 * A point in 2-dimensional Euclidean space.
 	 * @class
-	 * @memberof Thruster.Shapes
+	 * @memberof thruster.shapes
 	 * @param {Number} x
 	 * @param {Number} y
 	 */
@@ -23,7 +23,7 @@ define(['thruster/math/vector2d'], /** @lends Vector2d */ function(Vector2d){
 	
 	/**
 	 * Returns a new Point2d with the same x and y values.
-	 * @returns {Thruster.Math.Vector2d}
+	 * @returns {thruster.math.Vector2d}
 	 */
 	Point2d.prototype.clone = function(){
 		return new Point2d(this.x, this.y);
@@ -31,7 +31,7 @@ define(['thruster/math/vector2d'], /** @lends Vector2d */ function(Vector2d){
 	
 	/**
 	 * Returns the angle from this point to the other point provided.
-	 * @param {Thruster.Shapes.Point2d} point
+	 * @param {thruster.shapes.Point2d} point
 	 * @returns {Number}
 	 */
 	Point2d.prototype.angleTo = function(point){
@@ -40,7 +40,7 @@ define(['thruster/math/vector2d'], /** @lends Vector2d */ function(Vector2d){
 	
 	/**
 	 * Returns the distance from this point to the other point provided.
-	 * @param {Thruster.Shapes.Point2d} point The other point.
+	 * @param {thruster.shapes.Point2d} point The other point.
 	 * @returns {Number}
 	 */
 	Point2d.prototype.distanceTo = function(point){
@@ -50,7 +50,7 @@ define(['thruster/math/vector2d'], /** @lends Vector2d */ function(Vector2d){
 	/**
 	 * Rotates this point about the origin by the given angle.
 	 * @param {Number} angle The angle to rotate through in radians from the positive x axis.
-	 * @returns {Thruster.Shapes.Point2d} This point, to allow chaining.
+	 * @returns {thruster.shapes.Point2d} This point, to allow chaining.
 	 */
 	Point2d.prototype.rotateAboutOrigin = function(angle){
 		var c = Math.cos(angle),
@@ -66,7 +66,7 @@ define(['thruster/math/vector2d'], /** @lends Vector2d */ function(Vector2d){
 	
 	/**
 	 * Returns a new vector using the component values of this point.
-	 * @returns {Thruster.Math.Vector2d}
+	 * @returns {thruster.math.Vector2d}
 	 */
 	Point2d.prototype.toVector = function(){
 		return new Vector2d(this.x, this.y);
@@ -76,7 +76,7 @@ define(['thruster/math/vector2d'], /** @lends Vector2d */ function(Vector2d){
 	 * Translates this point by the given values.
 	 * @param {Number} x Translation along the x axis.
 	 * @param {Number} y Translation along the y axis.
-	 * @returns {Thruster.Shapes.Point2d} This point, to allow chaining.
+	 * @returns {thruster.shapes.Point2d} This point, to allow chaining.
 	 */
 	Point2d.prototype.translate = function(x, y){
 		this.x += x;
@@ -87,8 +87,8 @@ define(['thruster/math/vector2d'], /** @lends Vector2d */ function(Vector2d){
 	
 	/**
 	 * Translates this point by the given vector.
-	 * @param {Thruster.Math.Vector2d} vector
-	 * @returns {Thruster.Shapes.Point2d} This point, to allow chaining.
+	 * @param {thruster.math.Vector2d} vector
+	 * @returns {thruster.shapes.Point2d} This point, to allow chaining.
 	 */
 	Point2d.prototype.translateByVector = function(vector){
 		this.x += vector.x;
@@ -99,8 +99,8 @@ define(['thruster/math/vector2d'], /** @lends Vector2d */ function(Vector2d){
 	
 	/**
 	 * Get the vector from this point to the other point provided.
-	 * @param {Thruster.Shapes.Point} point The target point.
-	 * @returns {Thruster.Math.Vector2d}
+	 * @param {thruster.shapes.Point} point The target point.
+	 * @returns {thruster.math.Vector2d}
 	 */
 	Point2d.prototype.vectorTo = function(point){
 		return new Vector2d(point.x - this.x, point.y - this.y);

@@ -1,13 +1,13 @@
 (function(){
 	'use strict';
-	QUnit.module('Thruster.Input.KeyboardState');
+	QUnit.module('thruster.input.KeyboardState');
 	
 	QUnit.test('keyIsDown()', function(assert){
 		var canvasEl = document.getElementById('game-canvas'),
-			keyboard = new Thruster.Input.Keyboard(canvasEl);
+			keyboard = new thruster.input.Keyboard(canvasEl);
 		
-		var testKey1 = Thruster.Input.Keys.G,
-			testKey2 = Thruster.Input.Keys.ARROW_UP;
+		var testKey1 = thruster.input.Keys.G,
+			testKey2 = thruster.input.Keys.ARROW_UP;
 		
 		assert.equal(keyboard.getState().keyIsDown(testKey1), false, 'Returns false before any keys are pressed.');
 		
@@ -49,9 +49,9 @@
 	
 	QUnit.test('keyWasPressed()', function(assert){
 		var canvasEl = document.getElementById('game-canvas'),
-			keyboard = new Thruster.Input.Keyboard(canvasEl);
+			keyboard = new thruster.input.Keyboard(canvasEl);
 		
-		var testKey = Thruster.Input.Keys.G;
+		var testKey = thruster.input.Keys.G;
 		
 		assert.equal(keyboard.getState().keyWasPressed(testKey), false, 'Returns false before any keys are pressed.');
 		
@@ -77,9 +77,9 @@
 	
 	QUnit.test('keyWasReleased()', function(assert){
 		var canvasEl = document.getElementById('game-canvas'),
-			keyboard = new Thruster.Input.Keyboard(canvasEl);
+			keyboard = new thruster.input.Keyboard(canvasEl);
 		
-		var testKey = Thruster.Input.Keys.G;
+		var testKey = thruster.input.Keys.G;
 		
 		assert.equal(keyboard.getState().keyWasReleased(testKey), false, 'Returns false before any keys are pressed.');
 		

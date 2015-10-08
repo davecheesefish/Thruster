@@ -2,7 +2,7 @@ define(['thruster/shapes/point2d'], /** @lends Circle */ function(Point2d){
 	
 	/**
 	 * @class
-	 * @memberof Thruster.Shapes
+	 * @memberof thruster.shapes
 	 */
 	var Circle = function(radius){
 		/**

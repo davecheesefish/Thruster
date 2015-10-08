@@ -1,14 +1,14 @@
-define(['thruster/utils/classes'], /** @lends Utils */ function(Classes){
+define(['thruster/utils/classes'], /** @lends Utils */ function(classes){
 	
 	/**
 	 * A collection of miscellaneous utilities and polyfills.
 	 * @namespace
-	 * @memberof Thruster
+	 * @memberof thruster
 	 */
-	var Utils = {
-		Classes: Classes
+	var utils = {
+		classes: classes
 	};
 	
-	return Utils;
+	return utils;
 	
 });

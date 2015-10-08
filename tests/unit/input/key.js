@@ -1,16 +1,16 @@
 (function(){
 	'use strict';
-	QUnit.module('Thruster.Input.Key');
+	QUnit.module('thruster.input.Key');
 	
 	QUnit.test('equals()', function(assert){
-		var full = new Thruster.Input.Key(' ', 32, 'Space', ['Spacebar']),
-			keyOnly = new Thruster.Input.Key(' ', 0),
-			keyCodeOnly = new Thruster.Input.Key(undefined, 32),
-			unofficialKey = new Thruster.Input.Key('Spacebar', 0),
-			wrongCode = new Thruster.Input.Key(' ', 13), // "Wrong" keyCodes could occur on international keyboard layouts
-			wrongCodeUnofficialKey = new Thruster.Input.Key('Spacebar', 13),
-			unknownKey = new Thruster.Input.Key('Unidentified', 0),
-			notMatched = new Thruster.Input.Key('Enter', 13);
+		var full = new thruster.input.Key(' ', 32, 'Space', ['Spacebar']),
+			keyOnly = new thruster.input.Key(' ', 0),
+			keyCodeOnly = new thruster.input.Key(undefined, 32),
+			unofficialKey = new thruster.input.Key('Spacebar', 0),
+			wrongCode = new thruster.input.Key(' ', 13), // "Wrong" keyCodes could occur on international keyboard layouts
+			wrongCodeUnofficialKey = new thruster.input.Key('Spacebar', 13),
+			unknownKey = new thruster.input.Key('Unidentified', 0),
+			notMatched = new thruster.input.Key('Enter', 13);
 		
 		assert.equal(full.equals(full), true, 'Fully-defined key matches fully-defined key.');
 		assert.equal(full.equals(keyOnly), true, 'Fully-defined key matches key with "key" value only.');
@@ -25,10 +25,10 @@
 	});
 	
 	QUnit.test('isUnidentified()', function(assert){
-		var identifiedKey =  new Thruster.Input.Key(' ', 32, 'Space', ['Spacebar']),
-			unidentifiedWithKeyCode =  new Thruster.Input.Key('Unidentified', 32),
-			unidentifiedKey =  new Thruster.Input.Key('Unidentified', 0),
-			noKeyValue =  new Thruster.Input.Key(undefined, 0);
+		var identifiedKey =  new thruster.input.Key(' ', 32, 'Space', ['Spacebar']),
+			unidentifiedWithKeyCode =  new thruster.input.Key('Unidentified', 32),
+			unidentifiedKey =  new thruster.input.Key('Unidentified', 0),
+			noKeyValue =  new thruster.input.Key(undefined, 0);
 		
 		assert.equal(identifiedKey.isUnidentified(), false, 'Returns false for a fully-identified key.');
 		assert.equal(unidentifiedWithKeyCode.isUnidentified(), false, 'Returns false for "Unidentified" key value but valid key code.');

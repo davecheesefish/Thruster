@@ -1,6 +1,6 @@
 (function(){
 	'use strict';
-	QUnit.module('Thruster.Utils.Classes');
+	QUnit.module('thruster.utils.classes');
 	
 	QUnit.test('extend()', function(assert){
 		// Child should inherit all properties of Parent.
@@ -27,7 +27,7 @@
 			};
 		};
 		
-		Thruster.Utils.Classes.extend(Parent, Child);
+		thruster.utils.classes.extend(Parent, Child);
 		
 		Child.prototype.overridenFunction = function(){
 			return 'Child';

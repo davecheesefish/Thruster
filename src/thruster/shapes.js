@@ -1,12 +1,14 @@
 define([
     'thruster/shapes/collision',
+    
     'thruster/shapes/aabb',
     'thruster/shapes/circle',
     'thruster/shapes/point2d',
     'thruster/shapes/polygon',
     'thruster/shapes/rectangle'
-], /** @lends Shapes */ function(
-	Collision,
+], /** @lends shapes */ function(
+	collision,
+	
 	Aabb,
 	Circle,
 	Point2d,
@@ -16,10 +18,10 @@ define([
 	
 	/**
 	 * @namespace
-	 * @memberof Thruster
+	 * @memberof thruster
 	 */
-	var Shapes = {
-		Collision: Collision,
+	var shapes = {
+		collision: collision,
 		
 		Aabb: Aabb,
 		Circle: Circle,
@@ -28,6 +30,6 @@ define([
 		Rectangle: Rectangle
 	};
 	
-	return Shapes;
+	return shapes;
 	
 });

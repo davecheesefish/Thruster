@@ -3,9 +3,9 @@ define(/** @lends KeyboardState */ function(undefined){
 	/**
 	 * Class representing the current state of the keys on the keyboard.
 	 * @class
-	 * @memberof Thruster.Input
-	 * @param {Thruster.Input.Key[]} pressedKeys An array of currently pressed keys.
-	 * @param {Thruster.Input.Key[]} [previousPressedKeys] The value of pressedKeys from the previous update loop. Used to check if a key has just been pressed or released.
+	 * @memberof thruster.input
+	 * @param {thruster.input.Key[]} pressedKeys An array of currently pressed keys.
+	 * @param {thruster.input.Key[]} [previousPressedKeys] The value of pressedKeys from the previous update loop. Used to check if a key has just been pressed or released.
 	 */
 	var KeyboardState = function(pressedKeys, previousPressedKeys){
 		/**
@@ -23,7 +23,7 @@ define(/** @lends KeyboardState */ function(undefined){
 		/**
 		 * Check whether the given key is in _previousPressedKeys.
 		 * @private
-		 * @param {Thruster.Input.Key} key The key to check.
+		 * @param {thruster.input.Key} key The key to check.
 		 * @returns {Boolean} True if the key is pressed, false if not.
 		 */
 		function _keyWasDown(key){
@@ -39,7 +39,7 @@ define(/** @lends KeyboardState */ function(undefined){
 		/**
 		 * Check whether the given key is currently pressed down.
 		 * @public
-		 * @param {Thruster.Input.Key} key The key to check.
+		 * @param {thruster.input.Key} key The key to check.
 		 * @returns {Boolean} True if the key is pressed, false if not.
 		 */
 		this.keyIsDown = function(key){
@@ -56,7 +56,7 @@ define(/** @lends KeyboardState */ function(undefined){
 		/**
 		 * Check whether the given key was pressed down since the last update.
 		 * @public
-		 * @param {Thruster.Input.Key} key The key to check.
+		 * @param {thruster.input.Key} key The key to check.
 		 * @returns {Boolean} True if the key was pressed since the last update, false if not.
 		 */
 		this.keyWasPressed = function(key){
@@ -66,7 +66,7 @@ define(/** @lends KeyboardState */ function(undefined){
 		/**
 		 * Check whether the given key was released since the last update.
 		 * @public
-		 * @param {Thruster.Input.Key} key The key to check.
+		 * @param {thruster.input.Key} key The key to check.
 		 * @returns {Boolean} True if the key was released since the last update, false if not.
 		 */
 		this.keyWasReleased = function(key){

@@ -3,7 +3,7 @@ define(['thruster/input/keyboardstate', 'thruster/input/key'], /** @lends Keyboa
 	/**
 	 * Class responsible for tracking the state of the keyboard within a particular DOM element's context.
 	 * @class
-	 * @memberof Thruster.Input
+	 * @memberof thruster.input
 	 * @param {Element} element The DOM element to bind to.
 	 */
 	var Keyboard = function(element){
@@ -89,7 +89,7 @@ define(['thruster/input/keyboardstate', 'thruster/input/key'], /** @lends Keyboa
 		/**
 		 * Get the current state of the keyboard.
 		 * @public
-		 * @returns {Thruster.Input.KeyboardState}
+		 * @returns {thruster.input.KeyboardState}
 		 */
 		this.getState = function(){
 			return _currentState;

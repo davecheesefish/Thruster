@@ -2,7 +2,8 @@ define(/** @lends InputManager */ function(){
 	
 	/**
 	 * Updates and tracks input states for the given element.
-	 * @memberof Thruster.Input
+	 * @class
+	 * @memberof thruster.input
 	 * @param {Element} element The element to track input for.
 	 */
 	var InputManager = function(element){

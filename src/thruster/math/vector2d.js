@@ -3,7 +3,7 @@ define(/** @lends Vector2d */ function(){
 	/**
 	 * A 2-dimensional vector in Euclidean space.
 	 * @class
-	 * @memberof Thruster.Math
+	 * @memberof thruster.math
 	 * @param {Number} x The x component of the vector.
 	 * @param {Number} y The y component of the vector.
 	 */
@@ -26,7 +26,7 @@ define(/** @lends Vector2d */ function(){
 	
 	/**
 	 * Creates a new Vector2d with the same x and y values.
-	 * @returns {Thruster.Math.Vector2d}
+	 * @returns {thruster.math.Vector2d}
 	 */
 	Vector2d.prototype.clone = function(){
 		return new Vector2d(this.x, this.y);
@@ -34,8 +34,8 @@ define(/** @lends Vector2d */ function(){
 	
 	/**
 	 * Add another vector to this one.
-	 * @param {Thruster.Math.Vector2d} vector The vector to add.
-	 * @returns {Thruster.Math.Vector2d} This vector, to allow chaining.
+	 * @param {thruster.math.Vector2d} vector The vector to add.
+	 * @returns {thruster.math.Vector2d} This vector, to allow chaining.
 	 */
 	Vector2d.prototype.add = function(vector){
 		this.x += vector.x;
@@ -53,7 +53,7 @@ define(/** @lends Vector2d */ function(){
 	
 	/**
 	 * Returns the dot product of this vector with the other vector provided.
-	 * @param {Thruster.Math.Vector2d} vector The other vector.
+	 * @param {thruster.math.Vector2d} vector The other vector.
 	 * @returns {Number}
 	 */
 	Vector2d.prototype.dot = function(vector){
@@ -71,7 +71,7 @@ define(/** @lends Vector2d */ function(){
 	/**
 	 * Multiplies this vector by a scalar value.
 	 * @param {Number} scalar The scalar value to multiply by.
-	 * @returns {Thruster.Math.Vector2d} This vector, to allow chaining.
+	 * @returns {thruster.math.Vector2d} This vector, to allow chaining.
 	 */
 	Vector2d.prototype.multiply = function(scalar){
 		this.x *= scalar;
@@ -81,7 +81,7 @@ define(/** @lends Vector2d */ function(){
 	
 	/**
 	 * Modifies this vector to have length of 1, while preserving direction.
-	 * @returns {Thruster.Math.Vector2d} This vector, to allow chaining.
+	 * @returns {thruster.math.Vector2d} This vector, to allow chaining.
 	 */
 	Vector2d.prototype.normalize = function(){
 		var len = this.length();
@@ -93,8 +93,8 @@ define(/** @lends Vector2d */ function(){
 	
 	/**
 	 * Returns the projection of this vector onto a target vector.
-	 * @param {Thruster.Math.Vector2d} target The vector to project onto.
-	 * @returns {Thruster.Math.Vector2d} The vector projection.
+	 * @param {thruster.math.Vector2d} target The vector to project onto.
+	 * @returns {thruster.math.Vector2d} The vector projection.
 	 */
 	Vector2d.prototype.projection = function(target){
 		var x = target.x * (this.dot(target) / target.dot(target));
@@ -104,8 +104,8 @@ define(/** @lends Vector2d */ function(){
 	
 	/**
 	 * Returns the vector rejection of this vector onto a target vector.
-	 * @param {Thruster.Math.Vector2d} target The vector to reject onto.
-	 * @returns {Thruster.Math.Vector2d} The vector rejection.
+	 * @param {thruster.math.Vector2d} target The vector to reject onto.
+	 * @returns {thruster.math.Vector2d} The vector rejection.
 	 */
 	Vector2d.prototype.rejection = function(target){
 		var projection = this.projection(target),
@@ -120,7 +120,7 @@ define(/** @lends Vector2d */ function(){
 	/**
 	 * Rotates this vector by the given angle.
 	 * @param {Number} angle The angle to rotate through in radians.
-	 * @returns {Thruster.Math.Vector2d} This vector, to allow chaining.
+	 * @returns {thruster.math.Vector2d} This vector, to allow chaining.
 	 */
 	Vector2d.prototype.rotate = function(angle){
 		var c = Math.cos(angle),
@@ -136,7 +136,7 @@ define(/** @lends Vector2d */ function(){
 	
 	/**
 	 * Returns the length of this vector in the direction of a target vector.
-	 * @param {Thruster.Math.Vector2d} target The vector to project onto.
+	 * @param {thruster.math.Vector2d} target The vector to project onto.
 	 * @returns {Number}
 	 */
 	Vector2d.prototype.scalarProjection = function(target){
@@ -145,8 +145,8 @@ define(/** @lends Vector2d */ function(){
 	
 	/**
 	 * Subtract another vector from this one.
-	 * @param {Thruster.Math.Vector2d} vector The vector to subtract.
-	 * @returns {Thruster.Math.Vector2d} This vector, to allow chaining.
+	 * @param {thruster.math.Vector2d} vector The vector to subtract.
+	 * @returns {thruster.math.Vector2d} This vector, to allow chaining.
 	 */
 	Vector2d.prototype.subtract = function(vector){
 		this.x -= vector.x;
@@ -162,7 +162,7 @@ define(/** @lends Vector2d */ function(){
 	 * @static
 	 * @param {Number} angle The angle of the vector in radians from the positive x axis.
 	 * @param {Number} length The length of the vector.
-	 * @returns {Thruster.Math.Vector2d}
+	 * @returns {thruster.math.Vector2d}
 	 */
 	Vector2d.fromComponents = function(angle, length){
 		return new Vector2d(length * Math.cos(angle), length * Math.sin(angle));

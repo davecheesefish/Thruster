@@ -4,10 +4,10 @@ require([
     'thruster/shapes',
     'thruster/utils'
 ], function(
-	Input,
-	ThrusterMath, // Avoid conflict with the JS Math object
-	Shapes,
-	Utils
+	input,
+	thrusterMath, // Avoid conflict with the JS Math object
+	shapes,
+	utils
 ){
 	"use strict";
 	
@@ -17,27 +17,27 @@ require([
 	 * @global
 	 * @namespace
 	 */
-	var Thruster = {
+	var thruster = {
 		/**
 		 * The full version number of this build.
 		 * @const
 		 */
-		version: '@VERSION@',
+		VERSION: '@VERSION@',
 		
 		/**
 		 * The date this version of Thruster.js was built as the number of seconds since 0000h on 1st January 1970.
 		 * @const
 		 */
-		buildDate: '@DATE@',
+		BUILD_DATE: '@DATE@',
 		
-		Input: Input,
-		Math: ThrusterMath,
-		Shapes: Shapes,
-		Utils: Utils
+		input:  input,
+		math:   thrusterMath,
+		shapes: shapes,
+		utils:  utils
 	};
 	
 	// Export
-	window.Thruster = Thruster;
+	window.thruster = thruster;
 	
-	return Thruster;
+	return thruster;
 });

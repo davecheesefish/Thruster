@@ -1,13 +1,13 @@
-define(['thruster/math/vector2d'], /** @lends Math */ function(Vector2d){
+define(['thruster/math/vector2d'], /** @lends math */ function(Vector2d){
 	
 	/**
 	 * @namespace
-	 * @memberof Thruster
+	 * @memberof thruster
 	 */
-	var Math = {
+	var math = {
 		Vector2d: Vector2d
 	};
 	
-	return Math;
+	return math;
 	
 });

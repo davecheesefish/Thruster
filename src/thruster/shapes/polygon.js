@@ -3,8 +3,8 @@ define(['thruster/math/vector2d'], /** @lends Polygon */ function(Vector2d){
 	/**
 	 * A polygon defined by a list of vertices.
 	 * @class
-	 * @memberof Thruster.Shapes
-	 * @param {Thruster.Shapes.Point2d[]} vertices An array of points defining the vertices of this polygon.
+	 * @memberof thruster.shapes
+	 * @param {thruster.shapes.Point2d[]} vertices An array of points defining the vertices of this polygon.
 	 */
 	var Polygon = function(vertices){
 		// Private properties
@@ -30,9 +30,9 @@ define(['thruster/math/vector2d'], /** @lends Polygon */ function(Vector2d){
 		
 		/**
 		 * Returns the vertices of this polygon, after any optional positioning transformations have been applied.
-		 * @param {Thruster.Shapes.Point2d} [position=null] The position of the shape.
+		 * @param {thruster.shapes.Point2d} [position=null] The position of the shape.
 		 * @param {Number} [rotation=0] Rotation angle to apply to the shape, in radians from the positive x axis.
-		 * @returns {Thruster.Shapes.Point2d} An array of points representing the vertices of this polygon.
+		 * @returns {thruster.shapes.Point2d} An array of points representing the vertices of this polygon.
 		 */
 		this.getVertices = function(position, rotation){
 			var vertices = [];
@@ -61,8 +61,8 @@ define(['thruster/math/vector2d'], /** @lends Polygon */ function(Vector2d){
 		
 		/**
 		 * Redefine this polygon with a new set of vertices.
-		 * @param {Thruster.Shapes.Point2d[]} vertices An array of points representing the vertices of this polygon.
-		 * @returns {Thruster.Shapes.Polygon} This polygon, to allow chaining.
+		 * @param {thruster.shapes.Point2d[]} vertices An array of points representing the vertices of this polygon.
+		 * @returns {thruster.shapes.Polygon} This polygon, to allow chaining.
 		 */
 		this.setVertices = function(vertices){
 			_vertices = [];
@@ -80,7 +80,7 @@ define(['thruster/math/vector2d'], /** @lends Polygon */ function(Vector2d){
 		/**
 		 * Returns the normal vectors for each side of this Polygon.
 		 * @param {Number} [rotation=0] Rotation angle to apply to the shape, in radians from the positive x axis. 
-		 * @returns {Thruster.Math.Vector2d[]}
+		 * @returns {thruster.math.Vector2d[]}
 		 */
 		this.getNormals = function(rotation){
 			var normals = [];

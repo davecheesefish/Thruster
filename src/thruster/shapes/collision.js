@@ -1,16 +1,16 @@
-define(/** @lends Collision */ function(){
+define(/** @lends collision */ function(){
 	
 	/**
 	 * @namespace
-	 * @memberof Thruster.Shapes
+	 * @memberof thruster.shapes
 	 */
-	var Collision = {
+	var collision = {
 		/**
 		 * Check for collision between two axis-aligned bounding boxes.
-		 * @param {Thruster.Shapes.Aabb} aabb1 The first bounding box.
-		 * @param {Thruster.Shapes.Point2d} position1 The position of the first bounding box.
-		 * @param {Thruster.Shapes.Aabb} aabb2 The second bounding box.
-		 * @param {Thruster.Shapes.Point2d} position2 The position of the second bounding box.
+		 * @param {thruster.shapes.Aabb} aabb1 The first bounding box.
+		 * @param {thruster.shapes.Point2d} position1 The position of the first bounding box.
+		 * @param {thruster.shapes.Aabb} aabb2 The second bounding box.
+		 * @param {thruster.shapes.Point2d} position2 The position of the second bounding box.
 		 * @returns {Boolean} True if the bounding boxes collide, false if not.
 		 */
 		aabbWithAabb: function(aabb1, position1, aabb2, position2){
@@ -19,9 +19,9 @@ define(/** @lends Collision */ function(){
 		
 		/**
 		 * Check for collision between an axis-aligned bounding box and a point.
-		 * @param {Thruster.Shapes.Aabb} aabb
-		 * @param {Thruster.Shapes.Point2d} aabbPosition Position of the bounding box.
-		 * @param {Thruster.Shapes.Point2d} point
+		 * @param {thruster.shapes.Aabb} aabb
+		 * @param {thruster.shapes.Point2d} aabbPosition Position of the bounding box.
+		 * @param {thruster.shapes.Point2d} point
 		 * @returns {Boolean} True if the bounding box and point collide, false if not.
 		 */
 		aabbWithPoint: function(aabb, aabbPosition, point){
@@ -30,10 +30,10 @@ define(/** @lends Collision */ function(){
 		
 		/**
 		 * Check for collision between two circles.
-		 * @param {Thruster.Shapes.Circle} circle1
-		 * @param {Thruster.Shapes.Point2d} circle1Pos Center position of the first circle.
-		 * @param {Thruster.Shapes.Circle} circle2
-		 * @param {Thruster.Shapes.Point2d} circle2Pos Center position of the second circle.
+		 * @param {thruster.shapes.Circle} circle1
+		 * @param {thruster.shapes.Point2d} circle1Pos Center position of the first circle.
+		 * @param {thruster.shapes.Circle} circle2
+		 * @param {thruster.shapes.Point2d} circle2Pos Center position of the second circle.
 		 * @returns {Boolean} True if the circles collide, false if not.
 		 */
 		circleWithCircle: function(circle1, circle1Pos, circle2, circle2Pos){
@@ -42,10 +42,10 @@ define(/** @lends Collision */ function(){
 		
 		/**
 		 * Check for collision between a circle and a polygon.
-		 * @param {Thruster.Shapes.Circle} circle
-		 * @param {Thruster.Shapes.Point2d} circlePosition Center position of the circle.
-		 * @param {Thruster.Shapes.Polygon} polygon
-		 * @param {Thruster.Shapes.Point2d} circlePosition Position of the polygon.
+		 * @param {thruster.shapes.Circle} circle
+		 * @param {thruster.shapes.Point2d} circlePosition Center position of the circle.
+		 * @param {thruster.shapes.Polygon} polygon
+		 * @param {thruster.shapes.Point2d} circlePosition Position of the polygon.
 		 * @param {Number} polygonAngle The rotation angle of the polygon.
 		 */
 		circleWithPolygon: function(circle, circlePosition, polygon, polygonPosition, polygonAngle){
@@ -101,9 +101,9 @@ define(/** @lends Collision */ function(){
 		
 		/**
 		 * Check for collision between a point and a circle.
-		 * @param {Thruster.Shapes.Point2d} point
-		 * @param {Thruster.Shapes.Circle} circle
-		 * @param {Thruster.Shapes.Point2d} circlePos Position of the center of the circle.
+		 * @param {thruster.shapes.Point2d} point
+		 * @param {thruster.shapes.Circle} circle
+		 * @param {thruster.shapes.Point2d} circlePos Position of the center of the circle.
 		 * @returns {Boolean} True if the point and circle collide, false if not.
 		 */
 		pointWithCircle: function(point, circle, circlePos){
@@ -112,9 +112,9 @@ define(/** @lends Collision */ function(){
 		
 		/**
 		 * Check for collision between a point and a convex polygon.
-		 * @param {Thruster.Shapes.Point2d} point
-		 * @param {Thruster.Shapes.Polygon} polygon
-		 * @param {Thruster.Shapes.Point2d} polygonPosition The position of the polygon.
+		 * @param {thruster.shapes.Point2d} point
+		 * @param {thruster.shapes.Polygon} polygon
+		 * @param {thruster.shapes.Point2d} polygonPosition The position of the polygon.
 		 * @param {Number} polygonAngle The rotation angle of the polygon.
 		 * @returns {Boolean} True if the point and polygon collide, false if not.
 		 */
@@ -149,11 +149,11 @@ define(/** @lends Collision */ function(){
 	
 		/**
 		 * Check for collision between two convex polygons.
-		 * @param {Thruster.Shapes.Polygon} polygon1 The first shape.
-		 * @param {Thruster.Shapes.Point2d} p1Position Position of the first shape.
+		 * @param {thruster.shapes.Polygon} polygon1 The first shape.
+		 * @param {thruster.shapes.Point2d} p1Position Position of the first shape.
 		 * @param {Number} p1Angle Angle of the first shape, in radians from the positive x axis.
-		 * @param {Thruster.Shapes.Polygon} polygon2 The second shape.
-		 * @param {Thruster.Shapes.Point2d} p2Position Position of the second shape.
+		 * @param {thruster.shapes.Polygon} polygon2 The second shape.
+		 * @param {thruster.shapes.Point2d} p2Position Position of the second shape.
 		 * @param {Number} p2Angle Angle of the second shape, in radians from the positive x axis.
 		 * @returns {Boolean} True if the shapes collide, false if not.
 		 */
@@ -197,6 +197,6 @@ define(/** @lends Collision */ function(){
 		}
 	};
 	
-	return Collision;
+	return collision;
 	
 });

@@ -7,15 +7,15 @@ define([
 	Polygon,
 	Point2d,
 	Vector2d,
-	Classes
+	classes
 ){
 	
 	/**
 	 * A rectangle, usually used for bounding boxes. If this shape will be used as a collision object and rotation is not required,
-	 * an {@link Thruster.Shapes.Aabb axis-aligned bounding box} will be more efficient.
+	 * an {@link thruster.shapes.Aabb axis-aligned bounding box} will be more efficient.
 	 * @class
-	 * @memberof Thruster.Shapes
-	 * @extends Thruster.Shapes.Polygon
+	 * @memberof thruster.shapes
+	 * @extends thruster.shapes.polygon
 	 * @param {Number} width Width of the rectangle.
 	 * @param {Number} height Height of the rectangle.
 	 * @param {Number} [angle=0] Angle of the rectangle relative to the positive X-axis.
@@ -26,8 +26,8 @@ define([
 		this.constructVertices(width || 1, height || 1, originX || 0, originY || 0);
 	};
 	
-	// Extends Thruster.Shapes.Polygon
-	Classes.extend(Polygon, Rectangle);
+	// Extends thruster.shapes.Polygon
+	classes.extend(Polygon, Rectangle);
 	
 	Rectangle.prototype.constructVertices = function(width, height, originX, originY){
 		var offset = new Vector2d(-originX, -originY);

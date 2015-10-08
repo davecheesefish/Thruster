@@ -4,7 +4,7 @@ define([
 	'thruster/input/keyboardstate',
 	'thruster/input/key',
 	'thruster/input/keys'
-], /** @lends Input */ function(
+], /** @lends input */ function(
 	InputManager,
 	Keyboard,
 	KeyboardState,
@@ -14,9 +14,9 @@ define([
 	
 	/**
 	 * @namespace
-	 * @memberof Thruster
+	 * @memberof thruster
 	 */
-	var Input = {
+	var input = {
 		InputManager: InputManager,
 		
 		Keyboard: Keyboard,
@@ -25,5 +25,5 @@ define([
 		Keys: Keys
 	};
 	
-	return Input;
+	return input;
 });

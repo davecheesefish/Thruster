@@ -1,10 +1,10 @@
-define(/** @lends Classes */ function(){
+define(/** @lends classes */ function(){
 	
 	/**
 	 * @namespace
-	 * @memberof Thruster.Utils
+	 * @memberof thruster.utils
 	 */
-	var Classes = {
+	var classes = {
 		/**
 		 * Inherit the properties and methods of parent onto child.
 		 * @param {Function} parent
@@ -16,6 +16,6 @@ define(/** @lends Classes */ function(){
 		}
 	};
 	
-	return Classes;
+	return classes;
 	
 });

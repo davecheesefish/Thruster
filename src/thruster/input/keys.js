@@ -11,8 +11,8 @@ define(['thruster/input/key'], /** @lends Keys */ function(Key, undefined){
 	 * Note that names may not be accurate for browsers which don't yet support KeyboardEvent.key, due to inconsistencies with keyCode values.
 	 * @static
 	 * @readonly
-	 * @enum {Thruster.Input.Key}
-	 * @memberof Thruster.Input
+	 * @enum {thruster.input.Key}
+	 * @memberof thruster.input
 	 */
 	var Keys = {
 		'BACKSPACE':       key('Backspace', 8),
