@@ -93,14 +93,16 @@ define(['thruster/input/key'], /** @lends Keys */ function(Key, undefined){
 		'COMMA':           key(',', 188),
 		'DASH':            key('-', 189),
 		'PERIOD':          key('.', 190),
-		'FULL_STOP':       this.PERIOD, // Alternative
+		/** Synonym for PERIOD. */
+		'FULL_STOP':       this.PERIOD,
 		'FORWARD_SLASH':   key('/', 191),
 		'GRAVE_ACCENT':    key('`', 192),
 		'OPEN_BRACKET':    key('[', 219),
 		'BACK_SLASH':      key('\\', 220),
 		'CLOSE_BRACKET':   key(']', 221),
 		'SINGLE_QUOTE':    key("'", 222),
-		'APOSTROPHE':      this.SINGLE_QUOTE // Alternative
+		/** Synonym for SINGLE_QUOTE. */
+		'APOSTROPHE':      this.SINGLE_QUOTE
 	};
 	
 	return Keys;

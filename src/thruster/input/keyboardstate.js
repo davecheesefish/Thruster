@@ -39,7 +39,7 @@ define(/** @lends KeyboardState */ function(undefined){
 		/**
 		 * Check whether the given key is currently pressed down.
 		 * @public
-		 * @param {thruster.input.Key} key The key to check.
+		 * @param {(thruster.input.Keys|thruster.input.Key)} key The key to check.
 		 * @returns {Boolean} True if the key is pressed, false if not.
 		 */
 		this.keyIsDown = function(key){

@@ -98,23 +98,27 @@ define(['thruster/input/keyboardstate', 'thruster/input/key'], /** @lends Keyboa
 		
 		
 		/**
-		 * Attaches all event listeners required to receive keyboard events from the bound element.
+		 * Attaches the event listeners required to receive keyboard events from the bound element.
+		 * Called automatically during construction.
+		 * @public
 		 */
 		this.attach = function(){
 			// Prevent event listeners from being bound multiple times.
 			if ( ! _listenersBound){
-				_element.addEventListener('keydown', _onKeyDown, true, true);
-				_element.addEventListener('keyup', _onKeyUp, true, true);
+				_element.addEventListener('keydown', _onKeyDown, true);
+				_element.addEventListener('keyup',   _onKeyUp,   true);
 				_listenersBound = true;
 			}
 		};
 		
 		/**
-		 * Detaches all event listeners created by this instance so it can be discarded without causing a memory leak.
+		 * Detaches all event listeners created by this instance. This should be called before discarding
+		 * the instance to avoid memory leaks.
+		 * @public
 		 */
 		this.detach = function(){
 			_element.removeEventListener('keydown', _onKeyDown, true);
-			_element.removeEventListener('keyup', _onKeyUp, true);
+			_element.removeEventListener('keyup',   _onKeyUp,   true);
 			_listenersBound = false;
 		};
 		
