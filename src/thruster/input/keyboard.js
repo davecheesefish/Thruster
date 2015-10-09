@@ -10,18 +10,28 @@ define(['thruster/input/keyboardstate', 'thruster/input/key'], /** @lends Keyboa
 		/**
 		 * The element this keyboard is bound to.
 		 * @private
+		 * @type {Element}
 		 */
 		var _element = element;
 		
 		/**
+		 * Whether the event listeners have been bound yet or not.
+		 * @private
+		 * @type {Boolean}
+		 */
+		var _listenersBound = false;
+		
+		/**
 		 * Array of currently pressed keys.
 		 * @private
+		 * @type {thruster.input.Key[]}
 		 */
 		var _pressedKeys = [];
 		
 		/**
 		 * The state of _pressedKeys during the last update.
 		 * @private
+		 * @type {thruster.input.Key[]}
 		 */
 		var _previousPressedKeys = [];
 		
@@ -30,6 +40,7 @@ define(['thruster/input/keyboardstate', 'thruster/input/key'], /** @lends Keyboa
 		 * Not using this cache would result in some instances seeing a different keyboard state to others. For example,
 		 * if a key was released near the end of the update loop most instances wouldn't register it until the next loop.
 		 * @private
+		 * @type {thruster.input.KeyboardState}
 		 */
 		var _currentState;
 		
@@ -87,6 +98,27 @@ define(['thruster/input/keyboardstate', 'thruster/input/key'], /** @lends Keyboa
 		
 		
 		/**
+		 * Attaches all event listeners required to receive keyboard events from the bound element.
+		 */
+		this.attach = function(){
+			// Prevent event listeners from being bound multiple times.
+			if ( ! _listenersBound){
+				_element.addEventListener('keydown', _onKeyDown, true, true);
+				_element.addEventListener('keyup', _onKeyUp, true, true);
+				_listenersBound = true;
+			}
+		};
+		
+		/**
+		 * Detaches all event listeners created by this instance so it can be discarded without causing a memory leak.
+		 */
+		this.detach = function(){
+			_element.removeEventListener('keydown', _onKeyDown, true);
+			_element.removeEventListener('keyup', _onKeyUp, true);
+			_listenersBound = false;
+		};
+		
+		/**
 		 * Get the current state of the keyboard.
 		 * @public
 		 * @returns {thruster.input.KeyboardState}
@@ -107,20 +139,9 @@ define(['thruster/input/keyboardstate', 'thruster/input/key'], /** @lends Keyboa
 			_previousPressedKeys = _pressedKeys.slice(0);
 		};
 		
-		/**
-		 * Detaches all event listeners created by this instance so it can be discarded without causing a memory leak.
-		 */
-		this.detach = function(){
-			_element.removeEventListener('keydown', _onKeyDown, true);
-			_element.removeEventListener('keyup', _onKeyUp, true);
-		};
-		
 		
 		// Constructor
-		_element.addEventListener('keydown', _onKeyDown, true, true);
-		_element.addEventListener('keyup', _onKeyUp, true, true);
-		
-		// Set up state properties.
+		this.attach();
 		this.update();
 	};
 	
