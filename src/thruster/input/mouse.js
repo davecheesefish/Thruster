@@ -76,8 +76,7 @@ define(['thruster/input/mousestate', 'thruster/shapes/point2d'], /** @lends Mous
 				_buttonState = e.buttons;
 			} else {
 				// Get equivalent e.buttons value.
-				var buttons = [1, 4, 2],
-					button = buttons[e.button];
+				var button = _buttonValues[e.button];
 				
 				// Store button state as a bit field.
 				_buttonState = _buttonState | button;
@@ -95,8 +94,7 @@ define(['thruster/input/mousestate', 'thruster/shapes/point2d'], /** @lends Mous
 				_buttonState = e.buttons;
 			} else {
 				// Get equivalent e.buttons value.
-				var buttons = [1, 4, 2],
-					button = buttons[e.button];
+				var button = _buttonValues[e.button];
 				
 				// Store button state as a bit field.
 				_buttonState = _buttonState & ~button;
