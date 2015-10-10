@@ -3,13 +3,19 @@ define([
     'thruster/input/keyboard',
 	'thruster/input/keyboardstate',
 	'thruster/input/key',
-	'thruster/input/keys'
+	'thruster/input/keys',
+	'thruster/input/mouse',
+	'thruster/input/mousebuttons',
+	'thruster/input/mousestate'
 ], /** @lends input */ function(
 	InputManager,
 	Keyboard,
 	KeyboardState,
 	Key,
-	Keys
+	Keys,
+	Mouse,
+	MouseButtons,
+	MouseState
 ){
 	
 	/**
@@ -22,7 +28,10 @@ define([
 		Keyboard: Keyboard,
 		KeyboardState: KeyboardState,
 		Key: Key,
-		Keys: Keys
+		Keys: Keys,
+		Mouse: Mouse,
+		MouseButtons: MouseButtons,
+		MouseState: MouseState
 	};
 	
 	return input;
