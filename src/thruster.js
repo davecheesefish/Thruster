@@ -1,11 +1,13 @@
 require([
+    'thruster/graphics',
     'thruster/input',
     'thruster/math',
     'thruster/shapes',
     'thruster/utils'
 ], function(
+	graphics,
 	input,
-	thrusterMath, // Avoid conflict with the JS Math object
+	math,
 	shapes,
 	utils
 ){
@@ -30,10 +32,11 @@ require([
 		 */
 		BUILD_DATE: '@DATE@',
 		
-		input:  input,
-		math:   thrusterMath,
-		shapes: shapes,
-		utils:  utils
+		graphics: graphics,
+		input:    input,
+		math:     math,
+		shapes:   shapes,
+		utils:    utils
 	};
 	
 	// Export
