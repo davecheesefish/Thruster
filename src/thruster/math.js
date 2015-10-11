@@ -1,13 +1,23 @@
-define(['thruster/math/numbers', 'thruster/math/vector2d'], /** @lends math */ function(numbers, Vector2d){
+define([
+    'thruster/math/vector2d',
+    
+    'thruster/math/lerp'
+], /** @lends math */ function(
+	Vector2d,
+	
+	lerp
+){
 	
 	/**
 	 * @namespace
 	 * @memberof thruster
 	 */
 	var math = {
-		numbers: numbers,
-		
-		Vector2d: Vector2d
+		// Classes
+		Vector2d: Vector2d,
+			
+		// Functions
+		lerp: lerp
 	};
 	
 	return math;
