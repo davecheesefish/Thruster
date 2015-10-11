@@ -1,4 +1,4 @@
-define(['thruster/math/vector2d'], /** @lends Vector2d */ function(Vector2d){
+define(['thruster/math/vector2d'], function(Vector2d){
 	
 	/**
 	 * A point in 2-dimensional Euclidean space.

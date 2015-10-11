@@ -7,7 +7,7 @@ define([
 	'thruster/input/mouse',
 	'thruster/input/mousebuttons',
 	'thruster/input/mousestate'
-], /** @lends input */ function(
+], function(
 	InputManager,
 	Keyboard,
 	KeyboardState,

@@ -1,4 +1,4 @@
-define(/** @lends MouseState */ function(undefined){
+define(function(undefined){
 	
 	/**
 	 * The state of the mouse at a single point in time.

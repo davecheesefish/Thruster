@@ -1,4 +1,4 @@
-define(/** @lends KeyboardState */ function(undefined){
+define(function(undefined){
 	
 	/**
 	 * Class representing the current state of the keys on the keyboard.

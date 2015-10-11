@@ -1,4 +1,4 @@
-define(/** @lends Aabb */ function(){
+define(function(){
 	
 	/**
 	 * Axis-aligned bounding box. Collision checking is more efficient than on a Rectangle, but AABBs cannot be rotated.

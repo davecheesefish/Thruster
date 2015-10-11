@@ -1,4 +1,4 @@
-define(/** @lends Key */ function(undefined){
+define(function(undefined){
 	
 	/**
 	 * Represents a key on the keyboard. An enum of common keys can be found at {@link thruster.input.Keys}.

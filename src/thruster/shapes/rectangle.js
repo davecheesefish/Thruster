@@ -3,7 +3,7 @@ define([
     'thruster/shapes/point2d',
     'thruster/math/vector2d',
     'thruster/utils/classes'
-], /** @lends Rectangle */ function(
+], function(
 	Polygon,
 	Point2d,
 	Vector2d,

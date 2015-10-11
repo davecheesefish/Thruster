@@ -1,4 +1,4 @@
-define(/** @lends Color */ function(){
+define(function(){
 	
 	/**
 	 * @class

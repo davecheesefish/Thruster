@@ -1,4 +1,4 @@
-define(/** @lends MouseButtons */ function(){
+define(function(){
 	
 	/**
 	 * Mouse button values for use with button-checking functions. Multiple buttons can be combined with a binary OR.

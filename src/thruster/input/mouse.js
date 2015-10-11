@@ -1,4 +1,4 @@
-define(['thruster/input/mousestate', 'thruster/shapes/point2d'], /** @lends Mouse */ function(MouseState, Point2d, undefined){
+define(['thruster/input/mousestate', 'thruster/shapes/point2d'], function(MouseState, Point2d, undefined){
 	
 	/**
 	 * Class responsible for tracking the state of the mouse within a particular DOM element's context.

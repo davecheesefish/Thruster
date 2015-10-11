@@ -1,6 +1,6 @@
 define([
     'thruster/graphics/color'
-], /** @lends graphics */ function(
+], function(
 	Color
 ){
 	

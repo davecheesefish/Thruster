@@ -1,4 +1,4 @@
-define(['thruster/utils/classes'], /** @lends Utils */ function(classes){
+define(['thruster/utils/classes'], function(classes){
 	
 	/**
 	 * A collection of miscellaneous utilities and polyfills.

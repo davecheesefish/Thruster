@@ -1,4 +1,4 @@
-define(/** @lends Vector2d */ function(){
+define(function(){
 	
 	/**
 	 * A 2-dimensional vector in Euclidean space.

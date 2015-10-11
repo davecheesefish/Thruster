@@ -1,4 +1,4 @@
-define(['thruster/input/key'], /** @lends Keys */ function(Key, undefined){
+define(['thruster/input/key'], function(Key, undefined){
 	
 	// A utility function to create Key objects, which will compact down more than
 	// hundreds of separate "new Key()" calls would when minified.

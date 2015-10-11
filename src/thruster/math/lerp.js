@@ -1,4 +1,4 @@
-define(/** @lends lerp */ function(){
+define(function(){
 	
 	/**
 	 * Returns the linear interpolation of two numbers.

@@ -1,4 +1,4 @@
-define(/** @lends collision */ function(){
+define(function(){
 	
 	/**
 	 * @namespace

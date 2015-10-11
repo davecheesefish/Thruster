@@ -6,7 +6,7 @@ define([
     'thruster/shapes/point2d',
     'thruster/shapes/polygon',
     'thruster/shapes/rectangle'
-], /** @lends shapes */ function(
+], function(
 	collision,
 	
 	Aabb,

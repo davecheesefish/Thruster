@@ -1,4 +1,4 @@
-define(/** @lends classes */ function(){
+define( function(){
 	
 	/**
 	 * @namespace

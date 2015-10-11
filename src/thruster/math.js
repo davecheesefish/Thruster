@@ -2,7 +2,7 @@ define([
     'thruster/math/vector2d',
     
     'thruster/math/lerp'
-], /** @lends math */ function(
+], function(
 	Vector2d,
 	
 	lerp

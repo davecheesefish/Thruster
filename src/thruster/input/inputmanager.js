@@ -1,4 +1,4 @@
-define(/** @lends InputManager */ function(){
+define(function(){
 	
 	/**
 	 * Updates and tracks input states for the given element.

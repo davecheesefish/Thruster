@@ -1,4 +1,4 @@
-define(['thruster/input/keyboardstate', 'thruster/input/key'], /** @lends Keyboard */ function(KeyboardState, Key, undefined){
+define(['thruster/input/keyboardstate', 'thruster/input/key'], function(KeyboardState, Key, undefined){
 	
 	/**
 	 * Class responsible for tracking the state of the keyboard within a particular DOM element's context.
