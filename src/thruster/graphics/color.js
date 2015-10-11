@@ -6,13 +6,13 @@ define(/** @lends Color */ function(){
 	 * @param {Number} red   The red component of the color, an integer between 0 and 255 inclusive.
 	 * @param {Number} blue  The blue component of the color, an integer between 0 and 255 inclusive.
 	 * @param {Number} green The green component of the color, an integer between 0 and 255 inclusive.
-	 * @param {Number} [alpha] The alpha component of the color, a decimal between 0 and 1 inclusive.
+	 * @param {Number} [alpha=1] The alpha component of the color, a decimal between 0 and 1 inclusive.
 	 */
 	var Color = function(red, blue, green, alpha){
 		this.red = red;
 		this.blue = blue;
 		this.green = green;
-		this.alpha = alpha || 0;
+		this.alpha = alpha || 1;
 	};
 	
 	/**
