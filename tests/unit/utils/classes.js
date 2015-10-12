@@ -2,7 +2,7 @@
 	'use strict';
 	QUnit.module('thruster.utils.classes');
 	
-	QUnit.test('extend()', function(assert){
+	QUnit.test('extendClass()', function(assert){
 		// Child should inherit all properties of Parent.
 		var Parent = function(){
 			this.parentProp = true;
@@ -27,7 +27,7 @@
 			};
 		};
 		
-		thruster.utils.classes.extend(Parent, Child);
+		thruster.utils.classes.extendClass(Parent, Child);
 		
 		Child.prototype.overridenFunction = function(){
 			return 'Child';

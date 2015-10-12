@@ -2,12 +2,12 @@ define([
     'thruster/shapes/polygon',
     'thruster/shapes/point2d',
     'thruster/math/vector2d',
-    'thruster/utils/classes'
+    'thruster/utils/classes/extendclass'
 ], function(
 	Polygon,
 	Point2d,
 	Vector2d,
-	classes
+	extendClass
 ){
 	
 	/**
@@ -27,7 +27,7 @@ define([
 	};
 	
 	// Extends thruster.shapes.Polygon
-	classes.extend(Polygon, Rectangle);
+	extendClass(Polygon, Rectangle);
 	
 	Rectangle.prototype.constructVertices = function(width, height, originX, originY){
 		var offset = new Vector2d(-originX, -originY);

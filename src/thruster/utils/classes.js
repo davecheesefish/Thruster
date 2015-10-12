@@ -1,19 +1,12 @@
-define( function(){
+define(['thruster/utils/classes/extendclass'], function(extendClass){
 	
 	/**
 	 * @namespace
 	 * @memberof thruster.utils
 	 */
 	var classes = {
-		/**
-		 * Inherit the properties and methods of parent onto child.
-		 * @param {Function} parent
-		 * @param {Function} child
-		 */
-		extend: function(parent, child){
-			child.prototype = new parent();
-			child.prototype.constructor = child;
-		}
+		// Functions
+		extendClass: extendClass
 	};
 	
 	return classes;
