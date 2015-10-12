@@ -28,8 +28,37 @@ define(function(){
 		
 		
 		/**
+		 * Clears this surface, filling it with the specified color if specified.
+		 * @public
+		 * @param {thruster.graphics.color} [color]
+		 */
+		this.clear = function(color){
+			var w = _canvas.width,
+				h = _canvas.height;
+			
+			_context.save();
+			
+			// Reset transform so the clear affects the whole surface.
+			_context.setTransform(1, 0, 0, 1, 0, 0);
+			
+			if (( ! color) || color.alpha !== 1){
+				// If no color is specified or the color is semi-transparent, clear the surface first.
+				_context.clearRect(0, 0, w, h);
+			}
+			
+			if (color){
+				// If a color is specified, fill the surface with it.
+				_context.fillStyle = color.toRgba();
+				_context.fillRect(0, 0, w, h);
+			}
+			
+			_context.restore();
+		};
+		
+		/**
 		 * Returns the 2D drawing context for this surface. This should only be used for advanced
 		 * operations.
+		 * @public
 		 * @returns {CanvasRenderingContext2D}
 		 */
 		this.getContext = function(){
