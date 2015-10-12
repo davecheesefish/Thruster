@@ -61,11 +61,20 @@ define(function(){
 	};
 	
 	/**
-	 * Returns the length of this vector.
+	 * Returns the length of this vector. If comparing vector lengths in high-frequency code,
+	 * consider using {@link thruster.math.Vector2d#lengthSquared} for better performance.
 	 * @returns {Number}
 	 */
 	Vector2d.prototype.length = function(){
 		return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+	};
+	
+	/**
+	 * Returns the length of this vector squared.
+	 * @returns {Number}
+	 */
+	Vector2d.prototype.lengthSquared = function(){
+		return Math.pow(this.x, 2) + Math.pow(this.y, 2);
 	};
 	
 	/**

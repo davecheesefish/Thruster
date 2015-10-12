@@ -51,7 +51,19 @@
 	QUnit.test('length()', function(assert){
 		// Get the length of a vector.
 		var vector = new thruster.math.Vector2d(3, 4);
-		assert.equal(vector.length(), 5, 'Returned value is correct.');
+		assert.equal(vector.length(), 5, 'Returned value is correct for a vector in a positive direction.');
+		
+		vector = new thruster.math.Vector2d(-3, -4);
+		assert.equal(vector.length(), 5, 'Returned value is correct for a vector in a negative direction.');
+	});
+	
+	QUnit.test('lengthSquared()', function(assert){
+		// Get the length of a vector.
+		var vector = new thruster.math.Vector2d(3, 4);
+		assert.equal(vector.lengthSquared(), 25, 'Returned value is correct for a vector in a positive direction.');
+		
+		vector = new thruster.math.Vector2d(-3, -4);
+		assert.equal(vector.lengthSquared(), 25, 'Returned value is correct for a vector in a negative direction.');
 	});
 	
 	QUnit.test('multiply()', function(assert){
