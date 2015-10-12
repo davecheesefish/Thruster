@@ -2,6 +2,8 @@ define(function(){
 	
 	/**
 	 * Check for collision between two convex polygons.
+	 * @public
+	 * @memberof thruster.shapes.collision
 	 * @param {thruster.shapes.Polygon} polygon1 The first shape.
 	 * @param {thruster.shapes.Point2d} p1Position Position of the first shape.
 	 * @param {Number} p1Angle Angle of the first shape, in radians from the positive x axis.
