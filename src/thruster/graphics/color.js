@@ -1,4 +1,4 @@
-define(function(){
+define(['thruster/math/lerp'], function(lerp){
 	
 	/**
 	 * @class
@@ -26,6 +26,25 @@ define(function(){
 	
 	Color.prototype.toString = function(){
 		return this.toRgba();
+	};
+	
+	/**
+	 * Creates a new color which is a linear interpolation of the two colors provided.
+	 * @public
+	 * @static
+	 * @param {thruster.graphics.Color} color1
+	 * @param {thruster.graphics.Color} color2
+	 * @param {Number} amount A number between 0 and 1. If amount is 0, the returned color will be the same as color1. If amount is 1,
+	 * the returned color will be the same as color2. For other values, the result will be interpolated between color1 and color2.
+	 * @returns {thruster.graphics.Color}
+	 */
+	Color.lerp = function(color1, color2, amount){
+		var r = lerp(color1.red, color2.red, amount),
+			g = lerp(color1.green, color2.green, amount),
+			b = lerp(color1.blue, color2.blue, amount),
+			a = lerp(color1.alpha, color2.alpha, amount);
+		
+		return new Color(r, g, b, a);
 	};
 	
 	return Color;
