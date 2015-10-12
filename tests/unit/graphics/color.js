@@ -9,6 +9,12 @@
 		assert.equal(color.green, 20, 'green property set correctly.');
 		assert.equal(color.blue, 30, 'blue property set correctly.');
 		assert.equal(color.alpha, 0.4, 'alpha property set correctly.');
+		
+		color = new thruster.graphics.Color(10, 20, 30, 0);
+		assert.equal(color.alpha, 0, '100% transparent color alpha property set correctly.');
+		
+		color = new thruster.graphics.Color(10, 20, 30, 1);
+		assert.equal(color.alpha, 1, '100% opaque color alpha property set correctly.');
 	});
 	
 	QUnit.test('toRgba()', function(assert){

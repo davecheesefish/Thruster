@@ -1,4 +1,4 @@
-define(['thruster/math/lerp'], function(lerp){
+define(['thruster/math/lerp'], function(lerp, undefined){
 	
 	/**
 	 * @class
@@ -12,7 +12,7 @@ define(['thruster/math/lerp'], function(lerp){
 		this.red = red;
 		this.green = green;
 		this.blue = blue;
-		this.alpha = alpha || 1;
+		this.alpha = (alpha === undefined ? 1 : alpha);
 	};
 	
 	/**
