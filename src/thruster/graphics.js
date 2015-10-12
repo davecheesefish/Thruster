@@ -1,7 +1,9 @@
 define([
-    'thruster/graphics/color'
+    'thruster/graphics/color',
+    'thruster/graphics/surface'
 ], function(
-	Color
+	Color,
+	Surface
 ){
 	
 	/**
@@ -9,7 +11,8 @@ define([
 	 * @memberof thruster
 	 */
 	var graphics = {
-		Color: Color
+		Color: Color,
+		Surface: Surface
 	};
 	
 	return graphics;
