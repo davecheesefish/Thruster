@@ -92,6 +92,67 @@ define(function(){
 		return this.values.length;
 	};
 	
+	/**
+	 * Post-multiplies this matrix by another matrix. The column count of the provided matrix must
+	 * be equal to the row count of this matrix. To multiply by a scalar value, use
+	 * {@link thruster.math.Matrix#multiplyByScalar}.
+	 * @public
+	 * @param {thruster.math.Matrix} other The other matrix to multiply by.
+	 * @returns {thruster.math.Matrix} This matrix, to allow chaining.
+	 */
+	Matrix.prototype.multiply = function(other){
+		var rows, cols, row, col;
+		
+		// Resulting matrix will be other.columns wide by this.rows tall.
+		rows = this.getRowCount();
+		cols = other.getColumnCount();
+		
+		var result = [],
+			resultRow,
+			dot;
+		// For each row in the result matrix...
+		for (row = 0; row < rows; row++){
+			resultRow = [];
+			// For each column in the result matrix...
+			for (col = 0; col < cols; col++){
+				// Get the dot product of this matrix's matching row with the other matrix's matching column.
+				dot = 0;
+				for (var i = 0; i < this.getColumnCount(); i++){
+					dot += this.values[row][i] * other.values[i][col];
+				}
+				resultRow.push(dot);
+			}
+			// Copy the row array to avoid it being destroyed in the next loop around.
+			result.push(resultRow.slice(0));
+		}
+		
+		this.values = result;
+		
+		return this;
+	};
+	
+	/**
+	 * Multiplies this matrix by a scalar value.
+	 * @public
+	 * @param {Number} scalar The scalar value to multiply by.
+	 * @returns {thruster.math.Matrix} This matrix, to allow chaining.
+	 */
+	Matrix.prototype.multiplyByScalar = function(scalar){
+		var rows, cols, row, col;
+		
+		// Multiply each value in the matrix by the scalar.
+		rows = this.getRowCount();
+		cols = this.getColumnCount();
+		
+		for (row = 0; row < rows; row++){
+			for (col = 0; col < cols; col++){
+				this.values[row][col] *= scalar;
+			}
+		}
+		
+		return this;
+	};
+	
 	return Matrix;
 	
 });

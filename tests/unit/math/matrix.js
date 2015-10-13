@@ -157,4 +157,96 @@
    		]);
 		assert.equal(matrix.getRowCount(), 3, '2x3 matrix returns 3.');
 	});
+	
+	QUnit.test('multiply()', function(assert){
+		var matrix1, matrix2, result, expectedResult;
+		
+		matrix1 = new thruster.math.Matrix([
+		    [1, 2, 3],
+		    [4, 5, 6]
+		]);
+		
+		matrix2 = new thruster.math.Matrix([
+		    [ 7,  8],
+		    [ 9, 10],
+		    [11, 12]
+		]);
+		
+		result = matrix1.clone().multiply(matrix2);
+		expectedResult = [
+		    [ 58,  64],
+		    [139, 154]
+		];
+		assert.deepEqual(result.values, expectedResult, 'Non-square matrices multiplied correctly.');
+		
+		// Square matrices
+		matrix1 = new thruster.math.Matrix([
+		    [1, 2, 3],
+		    [4, 5, 6],
+		    [7, 8, 9]
+		]);
+		
+		matrix2 = new thruster.math.Matrix([
+		    [10, 11, 12],
+		    [13, 14, 15],
+		    [16, 17, 18]
+		]);
+		
+		result = matrix1.clone().multiply(matrix2);
+		expectedResult = [
+		    [ 84,  90,  96],
+		    [201, 216, 231],
+		    [318, 342, 366]
+		];
+		assert.deepEqual(result.values, expectedResult, 'Square matrices multiplied correctly.');
+		
+		// Multiplication with identity matrix
+		matrix1 = new thruster.math.Matrix([
+		    [1, 2, 3],
+		    [4, 5, 6],
+		    [7, 8, 9]
+		]);
+		
+		matrix2 = new thruster.math.Matrix([
+		    [1, 0, 0],
+		    [0, 1, 0],  // Identity matrix
+		    [0, 0, 1]
+		]);
+		
+		result = matrix1.clone().multiply(matrix2);
+		expectedResult = [
+		    [1, 2, 3],
+		    [4, 5, 6],
+		    [7, 8, 9]
+		];
+		assert.deepEqual(result.values, expectedResult, 'Multiplying by the identity matrix produces no change.');
+	});
+	
+	QUnit.test('multiplyByScalar()', function(assert){
+		var matrix, result, expectedResult;
+		
+		matrix = new thruster.math.Matrix([
+		    [1, 2],
+		    [3, 4],
+		    [5, 6]
+		]);
+		
+		// Integer
+		result = matrix.clone().multiplyByScalar(5);
+		expectedResult = [
+		    [ 5, 10],
+		    [15, 20],
+		    [25, 30]
+		];
+		assert.deepEqual(result.values, expectedResult, 'Matrix elements are correctly multiplied by an integer.');
+		
+		// Fractional value
+		result = matrix.clone().multiplyByScalar(0.5);
+		expectedResult = [
+  		    [0.5, 1],
+  		    [1.5, 2],
+  		    [2.5, 3]
+  		];
+		assert.deepEqual(result.values, expectedResult, 'Matrix elements are correctly multiplied by a fractional value.');
+	});
 })();
