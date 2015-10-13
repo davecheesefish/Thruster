@@ -31,7 +31,11 @@ define(function(){
 	var Matrix = function(columns, rows, values){
 		if (columns instanceof Array){
 			// Matrix(Number[][])
-			this.values = columns;
+			// Copy the array passed in to this.values.
+			this.values = [];
+			for (var i = 0; i < columns.length; i++){
+				this.values.push(columns[i].slice(0));
+			}
 		} else if (arguments.length == columns * rows + 2){
 			// Matrix(Number, Number, ...Number)
 			// Arguments are a list of values. Convert into the proper format.
