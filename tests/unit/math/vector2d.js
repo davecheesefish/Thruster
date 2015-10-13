@@ -9,6 +9,13 @@
 		assert.equal(vector.y, 4, 'y value is set correctly.');
 	});
 	
+	QUnit.test('static fromComponents()', function(assert){
+		// New Vector2d from angle and length.
+		var vector = thruster.math.Vector2d.fromComponents(Math.PI / 6, 4);
+		assert.equal(vector.x, 3.464101615137755, 'x value is set correctly.');
+		assert.equal(vector.y, 1.9999999999999998, 'y value is set correctly.');
+	});
+	
 	QUnit.test('clone()', function(assert){
 		// Clone from existing Vector2d.
 		var vector = new thruster.math.Vector2d(3, 4);
@@ -16,13 +23,6 @@
 		assert.notEqual(clonedVector, vector, 'Returns a new separate object from the original.');
 		assert.equal(clonedVector.x, vector.x, 'x value is the same as the original.');
 		assert.equal(clonedVector.y, vector.y, 'y value is the same as the original.');
-	});
-	
-	QUnit.test('fromComponents()', function(assert){
-		// New Vector2d from angle and length.
-		var vector = thruster.math.Vector2d.fromComponents(Math.PI / 6, 4);
-		assert.equal(vector.x, 3.464101615137755, 'x value is set correctly.');
-		assert.equal(vector.y, 1.9999999999999998, 'y value is set correctly.');
 	});
 	
 	QUnit.test('add()', function(assert){

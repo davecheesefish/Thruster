@@ -17,13 +17,7 @@
 		assert.equal(color.alpha, 1, '100% opaque color alpha property set correctly.');
 	});
 	
-	QUnit.test('toRgba()', function(assert){
-		var color = new thruster.graphics.Color(10, 20, 30, 0.4);
-		
-		assert.equal(color.toRgba(), 'rgba(10, 20, 30, 0.4)', 'Returns the correct CSS color string.');
-	});
-	
-	QUnit.test('lerp()', function(assert){
+	QUnit.test('static lerp()', function(assert){
 		var color1 = new thruster.graphics.Color(10, 20, 30, 0.4),
 			color2 = new thruster.graphics.Color(20, 30, 40, 0.5),
 			newColor, expectedColor;
@@ -41,5 +35,11 @@
 		newColor = thruster.graphics.Color.lerp(color2, color1, 0.7);
 		expectedColor = new thruster.graphics.Color(13, 23, 33, 0.43);
 		assert.propEqual(newColor, expectedColor, 'Returns correct value when second color values are less than the first.');
+	});
+	
+	QUnit.test('toRgba()', function(assert){
+		var color = new thruster.graphics.Color(10, 20, 30, 0.4);
+		
+		assert.equal(color.toRgba(), 'rgba(10, 20, 30, 0.4)', 'Returns the correct CSS color string.');
 	});
 })();

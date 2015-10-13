@@ -16,19 +16,6 @@ define(['thruster/math/lerp'], function(lerp, undefined){
 	};
 	
 	/**
-	 * Returns this Color as a CSS rgba(r,g,b,a) color string.
-	 * @public
-	 * @returns {String}
-	 */
-	Color.prototype.toRgba = function(){
-		return 'rgba(' + this.red + ', ' + this.green + ', ' + this.blue + ', ' + this.alpha + ')';
-	};
-	
-	Color.prototype.toString = function(){
-		return this.toRgba();
-	};
-	
-	/**
 	 * Creates a new color which is a linear interpolation of the two colors provided.
 	 * @public
 	 * @static
@@ -45,6 +32,19 @@ define(['thruster/math/lerp'], function(lerp, undefined){
 			a = lerp(color1.alpha, color2.alpha, amount);
 		
 		return new Color(r, g, b, a);
+	};
+	
+	/**
+	 * Returns this Color as a CSS rgba(r,g,b,a) color string.
+	 * @public
+	 * @returns {String}
+	 */
+	Color.prototype.toRgba = function(){
+		return 'rgba(' + this.red + ', ' + this.green + ', ' + this.blue + ', ' + this.alpha + ')';
+	};
+	
+	Color.prototype.toString = function(){
+		return this.toRgba();
 	};
 	
 	return Color;

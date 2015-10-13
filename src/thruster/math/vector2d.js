@@ -21,8 +21,16 @@ define(function(){
 		this.y = y;
 	};
 	
-	
-	// Public functions
+	/**
+	 * Create a new Vector2d from a provided angle and length.
+	 * @static
+	 * @param {Number} angle The angle of the vector in radians from the positive x axis.
+	 * @param {Number} length The length of the vector.
+	 * @returns {thruster.math.Vector2d}
+	 */
+	Vector2d.fromComponents = function(angle, length){
+		return new Vector2d(length * Math.cos(angle), length * Math.sin(angle));
+	};
 	
 	/**
 	 * Creates a new Vector2d with the same x and y values.
@@ -161,20 +169,6 @@ define(function(){
 		this.x -= vector.x;
 		this.y -= vector.y;
 		return this;
-	};
-	
-	
-	// Static functions
-	
-	/**
-	 * Create a new Vector2d from a provided angle and length.
-	 * @static
-	 * @param {Number} angle The angle of the vector in radians from the positive x axis.
-	 * @param {Number} length The length of the vector.
-	 * @returns {thruster.math.Vector2d}
-	 */
-	Vector2d.fromComponents = function(angle, length){
-		return new Vector2d(length * Math.cos(angle), length * Math.sin(angle));
 	};
 	
 	return Vector2d;

@@ -90,6 +90,43 @@
 		assert.deepEqual(matrix.values, expectedValues, '2x3 matrix constructed correctly.');
 	});
 	
+	QUnit.test('static identity()', function(assert){
+		var matrix, expectedResult;
+		
+		// 2x2 identity matrix
+		matrix = thruster.math.Matrix.identity(2);
+		expectedResult = [
+			[1, 0],
+			[0, 1]
+		];
+		assert.deepEqual(matrix.values, expectedResult, '2x2 identity matrix is produced correctly.');
+		
+		// 3x3 identity matrix
+		matrix = thruster.math.Matrix.identity(3);
+		expectedResult = [
+			[1, 0, 0],
+			[0, 1, 0],
+			[0, 0, 1]
+		];
+		assert.deepEqual(matrix.values, expectedResult, '3x3 identity matrix is produced correctly.');
+		
+		// 10x10 identity matrix, because why not?
+		matrix = thruster.math.Matrix.identity(10);
+		expectedResult = [
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+		];
+		assert.deepEqual(matrix.values, expectedResult, '10x10 identity matrix is produced correctly.');
+	});
+	
 	QUnit.test('clone()', function(assert){
 		var matrix, clonedMatrix;
 		

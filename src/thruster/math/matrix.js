@@ -63,6 +63,26 @@ define(function(){
 	};
 	
 	/**
+	 * Returns a new size x size identity matrix, I.
+	 * @public
+	 * @static
+	 * @param {Number} size The number of rows and columns in the matrix.
+	 * @returns {thruster.math.Matrix}
+	 */
+	Matrix.identity = function(size){
+		var values = [];
+		
+		for (var rowNo = 0; rowNo < size; rowNo++){
+			values[rowNo] = [];
+			for (var colNo = 0; colNo < size; colNo++){
+				values[rowNo][colNo] = (rowNo == colNo ? 1 : 0);
+			}
+		}
+		
+		return new Matrix(values);
+	};
+	
+	/**
 	 * Creates a copy of this matrix.
 	 * @public
 	 * @returns {thruster.math.Matrix}

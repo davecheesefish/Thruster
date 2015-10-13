@@ -2,7 +2,7 @@
 	'use strict';
 	QUnit.module('thruster.shapes.collision');
 	
-	QUnit.test('aabbsCollide()', function(assert){
+	QUnit.test('static aabbsCollide()', function(assert){
 		var aabb1 = new thruster.shapes.Aabb(2, 2),
 			aabb2 = new thruster.shapes.Aabb(3, 3),
 			pos1, pos2, collides;
@@ -44,7 +44,7 @@
 		assert.equal(collides, true, 'Detect correctly: Box 2 inside box 1');
 	});
 	
-	QUnit.test('circleCollidesPolygon()', function(assert){
+	QUnit.test('static circleCollidesPolygon()', function(assert){
 		var polyVerts = [
 	        new thruster.shapes.Point2d(-3, -3),
 	        new thruster.shapes.Point2d( 3, -3),
@@ -81,7 +81,7 @@
 		assert.equal(collides, true, 'Detect correctly: Polygon entirely within circle');
 	});
 	
-	QUnit.test('circlesCollide()', function(assert){
+	QUnit.test('static circlesCollide()', function(assert){
 		var circle1 = new thruster.shapes.Circle(2),
 			circle2 = new thruster.shapes.Circle(3),
 			pos1, pos2, collides;
@@ -123,7 +123,7 @@
 		assert.equal(collides, true, 'Detect correctly: Circle 2 within circle 1');
 	});
 	
-	QUnit.test('pointCollidesAabb()', function(assert){
+	QUnit.test('static pointCollidesAabb()', function(assert){
 		var aabb = new thruster.shapes.Aabb(2, 2),
 			aabbPos, point, collides;
 		
@@ -152,7 +152,7 @@
 		assert.equal(collides, true, 'Detect correctly: Point on corner of box');
 	});
 	
-	QUnit.test('pointCollidesCircle()', function(assert){
+	QUnit.test('static pointCollidesCircle()', function(assert){
 		var circle = new thruster.shapes.Circle(3),
 			point, circlePos, collides;
 		
@@ -181,7 +181,7 @@
 		assert.equal(collides, true, 'Detect correctly: Point on circle\'s edge');
 	});
 	
-	QUnit.test('pointCollidesPolygon()', function(assert){
+	QUnit.test('static pointCollidesPolygon()', function(assert){
 		var polyVerts = [
 		        new thruster.shapes.Point2d(-3, -3),
 		        new thruster.shapes.Point2d( 3, -3),
@@ -222,7 +222,7 @@
 		assert.equal(collides, false, 'Detect correctly: Point outside rotated polygon.');
 	});
 	
-	QUnit.test('polygonsCollide()', function(assert){
+	QUnit.test('static polygonsCollide()', function(assert){
 		var poly1Verts = [
 		        new thruster.shapes.Point2d(-3, -3),
 		        new thruster.shapes.Point2d( 3, -3),
