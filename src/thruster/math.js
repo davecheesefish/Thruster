@@ -1,8 +1,10 @@
 define([
+    'thruster/math/matrix',
     'thruster/math/vector2d',
     
     'thruster/math/lerp'
 ], function(
+	Matrix,
 	Vector2d,
 	
 	lerp
@@ -14,6 +16,7 @@ define([
 	 */
 	var math = {
 		// Classes
+		Matrix: Matrix,
 		Vector2d: Vector2d,
 			
 		// Functions
