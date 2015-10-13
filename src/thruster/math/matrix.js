@@ -4,6 +4,18 @@ define(function(){
 	 * A mathematical matrix of numerical values.
 	 * @class
 	 * @memberof thruster.math
+	 * @param {Number[][]} values An array of arrays of numbers, representing the rows of the matrix.
+	 * @example
+	 * // To create a 3x3 matrix:
+	 * var matrix = new thruster.math.Matrix([
+	 *     [1, 2, 3],
+	 *     [4, 5, 6],
+	 *     [7, 8, 9]
+	 * ]);
+	 *//**
+	 * A mathematical matrix of numerical values.
+	 * @class
+	 * @memberof thruster.math
 	 * @param {Number} columns   The number of columns in the matrix.
 	 * @param {Number} rows      The number of rows in the matrix.
 	 * @param {...Number} values The values to populate the matrix with, row by row.
@@ -15,18 +27,6 @@ define(function(){
 	 *     4, 5, 6,
 	 *     7, 8, 9
 	 * );
-	 *//**
-	 * A mathematical matrix of numerical values.
-	 * @class
-	 * @memberof thruster.math
-	 * @param {Number[][]} values An array of arrays of numbers, representing the rows of the matrix.
-	 * @example
-	 * // To create a 3x3 matrix:
-	 * var matrix = new thruster.math.Matrix([
-	 *     [1, 2, 3],
-	 *     [4, 5, 6],
-	 *     [7, 8, 9]
-	 * ]);
 	 */
 	var Matrix = function(columns, rows, values){
 		if (columns instanceof Array){
@@ -61,7 +61,7 @@ define(function(){
 	/**
 	 * Creates a copy of this matrix.
 	 * @public
-	 * @returns {thruster.math.Matrix3}
+	 * @returns {thruster.math.Matrix}
 	 */
 	Matrix.prototype.clone = function(){
 		var values = [];
@@ -71,6 +71,25 @@ define(function(){
 		}
 		
 		return new Matrix(values);
+	};
+	
+	/**
+	 * Returns the number of columns in this matrix.
+	 * @public
+	 * @returns {Number}
+	 */
+	Matrix.prototype.getColumnCount = function(){
+		// If we have at least 1 row return the length of it, otherwise zero.
+		return (this.values.length ? this.values[0].length : 0);
+	};
+	
+	/**
+	 * Returns the number of rows in this matrix.
+	 * @public
+	 * @returns {Number}
+	 */
+	Matrix.prototype.getRowCount = function(){
+		return this.values.length;
 	};
 	
 	return Matrix;

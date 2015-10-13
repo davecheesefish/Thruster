@@ -106,4 +106,55 @@
 		matrix.values[0][1] = 100;
 		assert.notDeepEqual(matrix.values, clonedMatrix.values, 'Cloned matrix is separate from the original matrix.');
 	});
+	
+	QUnit.test('getColumnCount()', function(assert){
+		var matrix;
+		
+		// 1x2 matrix
+		matrix = new thruster.math.Matrix([
+  		     [1],
+  		     [4]
+  		]);
+  		assert.equal(matrix.getColumnCount(), 1, '1x2 matrix returns 1.');
+		
+		// 2x3 matrix
+		matrix = new thruster.math.Matrix([
+   			[1, 2],
+   			[3, 4],
+   			[5, 6]
+   		]);
+		assert.equal(matrix.getColumnCount(), 2, '2x3 matrix returns 2.');
+		
+		// 3x2 matrix
+		matrix = new thruster.math.Matrix([
+		     [1, 2, 3],
+		     [4, 5, 6]
+		]);
+		assert.equal(matrix.getColumnCount(), 3, '3x2 matrix returns 3.');
+	});
+	
+	QUnit.test('getRowCount()', function(assert){
+		var matrix;
+		
+		// 2x1 matrix
+		matrix = new thruster.math.Matrix([
+  		     [1, 4]
+  		]);
+  		assert.equal(matrix.getRowCount(), 1, '2x1 matrix returns 1.');
+		
+  		// 3x2 matrix
+		matrix = new thruster.math.Matrix([
+		     [1, 2, 3],
+		     [4, 5, 6]
+		]);
+		assert.equal(matrix.getRowCount(), 2, '3x2 matrix returns 2.');
+  		
+		// 2x3 matrix
+		matrix = new thruster.math.Matrix([
+   			[1, 2],
+   			[3, 4],
+   			[5, 6]
+   		]);
+		assert.equal(matrix.getRowCount(), 3, '2x3 matrix returns 3.');
+	});
 })();
