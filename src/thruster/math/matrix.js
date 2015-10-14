@@ -241,6 +241,50 @@ define(function(){
 		return this;
 	};
 	
+	/**
+	 * Returns a copy of this matrix with the specified row and column omitted. Consequently, the
+	 * new matrix will be one row and one column smaller than the original.
+	 * @public
+	 * @param {Number} omitRow    The index of the row to remove.
+	 * @param {Number} omitColumn The index of the column to remove.
+	 * @returns {thruster.math.matrix}
+	 */
+	Matrix.prototype.principalSubmatrix = function(omitRow, omitColumn){
+		var rows, columns, rowNo, colNo, newRow, values;
+		
+		rows = this.getRowCount();
+		columns = this.getColumnCount();
+		
+		values = [];
+		// Loop through the rows of this matrix...
+		for (rowNo = 0; rowNo < rows; rowNo++){
+			// If we're on the row to omit, don't add it.
+			if (rowNo == omitRow){
+				continue;
+			}
+			
+			// Otherwise create a new empty matrix row.
+			newRow = [];
+			
+			// Loop through the columns in this row...
+			for (colNo = 0; colNo < columns; colNo++){
+				// If we're on the column to omit, don't add it.
+				if (colNo == omitColumn){
+					continue;
+				}
+				
+				// Otherwise push the value from this matrix onto the row for the new one.
+				newRow.push(this.values[rowNo][colNo]);
+			}
+			
+			// Add the new row to the new matrix's values.
+			values.push(newRow);
+		}
+		
+		// Finally create the new matrix and return it.
+		return new Matrix(values);
+	}
+	
 	return Matrix;
 	
 });

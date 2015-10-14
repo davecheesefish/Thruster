@@ -366,4 +366,49 @@
   		];
 		assert.deepEqual(result.values, expectedResult, 'Matrix elements are correctly multiplied by a fractional value.');
 	});
+	
+	QUnit.test('principalSubmatrix()', function(assert){
+		var matrix, submatrix, expectedResult;
+		
+		// 2x2 matrix
+		matrix = new thruster.math.Matrix([
+   		    [1, 2],
+		    [3, 4]
+		]);
+		submatrix = matrix.principalSubmatrix(0, 0);
+		expectedResult = [
+			[4]
+		];
+		assert.deepEqual(submatrix.values, expectedResult, '2x2 matrix produces the correct 1x1 submatrix.');
+		
+		// 3x3 matrix
+		matrix = new thruster.math.Matrix([
+   		    [1, 2, 3],
+		    [4, 5, 6],
+		    [7, 8, 9]
+		]);
+		submatrix = matrix.principalSubmatrix(1, 2);
+		expectedResult = [
+			[1, 2],
+			[7, 8]
+		];
+		assert.deepEqual(submatrix.values, expectedResult, '3x3 matrix produces the correct 2x2 submatrix.');
+		
+		// 5x5 matrix
+		matrix = new thruster.math.Matrix([
+   		    [ 1,  2,  3,  4,  5],
+		    [ 6,  7,  8,  9, 10],
+		    [11, 12, 13, 14, 15],
+		    [16, 17, 18, 19, 20],
+		    [21, 22, 23, 24, 25]
+		]);
+		submatrix = matrix.principalSubmatrix(3, 4);
+		expectedResult = [
+			[ 1,  2,  3,  4],
+			[ 6,  7,  8,  9],
+			[11, 12, 13, 14],
+			[21, 22, 23, 24]
+		];
+		assert.deepEqual(submatrix.values, expectedResult, '5x5 matrix produces the correct 4x4 submatrix.');
+	});
 })();
