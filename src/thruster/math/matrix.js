@@ -83,6 +83,22 @@ define(function(){
 	};
 	
 	/**
+	 * Creates a new rotation transformation matrix.
+	 * @param {Number} angle The angle of rotation, in radians from the positive x axis.
+	 * @returns {thruster.math.Matrix}
+	 */
+	Matrix.rotation = function(angle){
+		var c = Math.cos(angle),
+			s = Math.sin(angle);
+		
+		return new Matrix([
+   		    [ c, s, 0],
+   		    [-s, c, 0],
+   		    [ 0, 0, 1]
+   		]);
+	};
+	
+	/**
 	 * Creates a new translation transformation matrix.
 	 * @param {thruster.math.Vector2d} translationVector The vector to translate by.
 	 * @returns {thruster.math.Matrix}
