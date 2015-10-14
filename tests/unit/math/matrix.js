@@ -171,8 +171,20 @@
 		assert.deepEqual(matrix.values, expectedResult, 'Negative angle: Created matrix values are correct.');
 	});
 	
+	QUnit.test('static scale()', function(assert){
+		var matrix, expectedResult;
+		
+		matrix = thruster.math.Matrix.scale(6);
+		expectedResult = [
+            [6, 0, 0],
+            [0, 6, 0],
+            [0, 0, 1],
+        ];
+		assert.deepEqual(matrix.values, expectedResult, 'Created matrix values are correct.');
+	});
+	
 	QUnit.test('static translation()', function(assert){
-		var vector, matrix, expectedResult;
+		var matrix, expectedResult;
 		
 		matrix = thruster.math.Matrix.translation(new thruster.math.Vector2d(2, 3));
 		expectedResult = [

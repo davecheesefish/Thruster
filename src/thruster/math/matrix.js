@@ -84,6 +84,8 @@ define(function(){
 	
 	/**
 	 * Creates a new rotation transformation matrix.
+	 * @public
+	 * @static
 	 * @param {Number} angle The angle of rotation, in radians from the positive x axis towards the positive y axis.
 	 * @returns {thruster.math.Matrix}
 	 */
@@ -98,8 +100,18 @@ define(function(){
    		]);
 	};
 	
+	Matrix.scale = function(scaleFactor){
+		return new Matrix([
+		    [scaleFactor,           0, 0],
+		    [          0, scaleFactor, 0],
+		    [          0,           0, 1]
+		]);
+	};
+	
 	/**
 	 * Creates a new translation transformation matrix.
+	 * @public
+	 * @static
 	 * @param {thruster.math.Vector2d} translationVector The vector to translate by.
 	 * @returns {thruster.math.Matrix}
 	 */
