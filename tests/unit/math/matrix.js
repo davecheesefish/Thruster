@@ -31,7 +31,7 @@
 		];
 		assert.deepEqual(matrix.values, expectedValues, '3x3 matrix constructed correctly.');
 		
-		// 2x3 matrix
+		// 3x2 matrix
 		matrix = new thruster.math.Matrix([
 			[1, 2],
 			[3, 4],
@@ -43,7 +43,7 @@
 		    [3, 4],
 		    [5, 6]
 		];
-		assert.deepEqual(matrix.values, expectedValues, '2x3 matrix constructed correctly.');
+		assert.deepEqual(matrix.values, expectedValues, '3x2 matrix constructed correctly.');
 	});
 	
 	QUnit.test('Constructor(Number, Number, ...Number)', function(assert){
@@ -75,7 +75,7 @@
 		];
 		assert.deepEqual(matrix.values, expectedValues, '3x3 matrix constructed correctly.');
 		
-		// 2x3 matrix
+		// 3x2 matrix
 		matrix = new thruster.math.Matrix(2, 3,
 			1, 2,
 			3, 4,
@@ -87,7 +87,7 @@
 		    [3, 4],
 		    [5, 6]
 		];
-		assert.deepEqual(matrix.values, expectedValues, '2x3 matrix constructed correctly.');
+		assert.deepEqual(matrix.values, expectedValues, '3x2 matrix constructed correctly.');
 	});
 	
 	QUnit.test('static identity()', function(assert){
@@ -159,52 +159,52 @@
 	QUnit.test('getColumnCount()', function(assert){
 		var matrix;
 		
-		// 1x2 matrix
+		// 2x1 matrix
 		matrix = new thruster.math.Matrix([
   		     [1],
   		     [4]
   		]);
-  		assert.equal(matrix.getColumnCount(), 1, '1x2 matrix returns 1.');
+  		assert.equal(matrix.getColumnCount(), 1, '2x1 matrix returns 1.');
 		
-		// 2x3 matrix
+		// 3x2 matrix
 		matrix = new thruster.math.Matrix([
    			[1, 2],
    			[3, 4],
    			[5, 6]
    		]);
-		assert.equal(matrix.getColumnCount(), 2, '2x3 matrix returns 2.');
+		assert.equal(matrix.getColumnCount(), 2, '3x2 matrix returns 2.');
 		
-		// 3x2 matrix
+		// 2x3 matrix
 		matrix = new thruster.math.Matrix([
 		     [1, 2, 3],
 		     [4, 5, 6]
 		]);
-		assert.equal(matrix.getColumnCount(), 3, '3x2 matrix returns 3.');
+		assert.equal(matrix.getColumnCount(), 3, '2x3 matrix returns 3.');
 	});
 	
 	QUnit.test('getRowCount()', function(assert){
 		var matrix;
 		
-		// 2x1 matrix
+		// 1x2 matrix
 		matrix = new thruster.math.Matrix([
   		     [1, 4]
   		]);
-  		assert.equal(matrix.getRowCount(), 1, '2x1 matrix returns 1.');
+  		assert.equal(matrix.getRowCount(), 1, '1x2 matrix returns 1.');
 		
-  		// 3x2 matrix
+  		// 2x3 matrix
 		matrix = new thruster.math.Matrix([
 		     [1, 2, 3],
 		     [4, 5, 6]
 		]);
-		assert.equal(matrix.getRowCount(), 2, '3x2 matrix returns 2.');
+		assert.equal(matrix.getRowCount(), 2, '2x3 matrix returns 2.');
   		
-		// 2x3 matrix
+		// 3x2 matrix
 		matrix = new thruster.math.Matrix([
    			[1, 2],
    			[3, 4],
    			[5, 6]
    		]);
-		assert.equal(matrix.getRowCount(), 3, '2x3 matrix returns 3.');
+		assert.equal(matrix.getRowCount(), 3, '3x2 matrix returns 3.');
 	});
 	
 	QUnit.test('multiply()', function(assert){
