@@ -85,6 +85,20 @@ define(['thruster/math/matrix', 'thruster/math/vector2d'], function(Matrix, Vect
 	};
 	
 	/**
+	 * Transforms this point by the given transformation matrix.
+	 * @param {thruster.math.Matrix} transformationMatrix
+	 * @returns {thruster.shapes.Point2d} This point, to allow chaining.
+	 */
+	Point2d.prototype.transform = function(transformationMatrix){
+		var transformedMatrix = transformationMatrix;
+		transformedMatrix.multiply(this.toMatrix());
+		this.x = transformedMatrix.values[0][0];
+		this.y = transformedMatrix.values[1][0];
+		
+		return this;
+	};
+	
+	/**
 	 * Translates this point by the given values.
 	 * @param {Number} x Translation along the x axis.
 	 * @param {Number} y Translation along the y axis.

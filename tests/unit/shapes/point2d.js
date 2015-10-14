@@ -83,6 +83,33 @@
 		assert.propEqual(point, new thruster.shapes.Point2d(4, 6), 'Point has correct values after manipulation.');
 	});
 	
+	QUnit.test('transform()', function(assert){
+		var matrix, point, angle;
+		
+		// Rotation
+		point = new thruster.shapes.Point2d(2, 3);
+		angle = Math.PI / 4;
+		matrix = thruster.math.Matrix.rotation(angle);
+		point.transform(matrix);
+		assert.propEqual(
+			point,
+			new thruster.math.Vector2d(2 * Math.cos(angle) - 3 * Math.sin(angle), 2 * Math.sin(angle) + 3 * Math.cos(angle)),
+			'Rotation produces correct result.'
+		);
+		
+		// Scale
+		point = new thruster.shapes.Point2d(1, 2);
+		matrix = thruster.math.Matrix.scale(5);
+		point.transform(matrix);
+		assert.propEqual(point, new thruster.math.Vector2d(5, 10), 'Scale produces correct result.');
+		
+		// Translation
+		point = new thruster.shapes.Point2d(1, 2);
+		matrix = thruster.math.Matrix.translation(new thruster.math.Vector2d(3, 4));
+		point.transform(matrix);
+		assert.propEqual(point, new thruster.math.Vector2d(4, 6), 'Translation produces correct result.');
+	});
+	
 	QUnit.test('vectorTo()', function(assert){
 		// Find the vector from point1 to point2.
 		var point1 = new thruster.shapes.Point2d(1, 2),
