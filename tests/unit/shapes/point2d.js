@@ -44,6 +44,20 @@
 		assert.propEqual(vector, new thruster.math.Vector2d(-9, 8), 'Point has correct values after manipulation.');
 	});
 	
+	QUnit.test('toMatrix()', function(assert){
+		var point, matrix, expectedResult;
+		
+		point = new thruster.shapes.Point2d(2, 3);
+		matrix = point.toMatrix();
+		expectedResult = [
+		    [2],
+		    [3],
+		    [1]
+		];
+		
+		assert.deepEqual(matrix.values, expectedResult, 'Created matrix has the correct values.');
+	});
+	
 	QUnit.test('toVector()', function(assert){
 		var point = new thruster.shapes.Point2d(1, 2),
 			vector = point.toVector();

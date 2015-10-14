@@ -1,4 +1,4 @@
-define(['thruster/math/vector2d'], function(Vector2d){
+define(['thruster/math/matrix', 'thruster/math/vector2d'], function(Matrix, Vector2d){
 	
 	/**
 	 * A point in 2-dimensional Euclidean space.
@@ -62,6 +62,18 @@ define(['thruster/math/vector2d'], function(Vector2d){
 		this.y = newY;
 	
 		return this;
+	};
+	
+	/**
+	 * Returns a 3x1 matrix representing this point, for use in matrix transformations.
+	 * @returns {thruster.math.Matrix}
+	 */
+	Point2d.prototype.toMatrix = function(){
+		return new Matrix([
+   			[this.x],
+   			[this.y],
+   			[1]
+   		]);
 	};
 	
 	/**
