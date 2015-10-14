@@ -147,6 +147,55 @@ define(function(){
 	};
 	
 	/**
+	 * Uses Laplace expansion to calculate the determinant of this matrix.
+	 * @public
+	 * @returns {(Number|undefined)} The determinant of this matrix. If this is not a square matrix
+	 * (or if it is an empty matrix) this function returns undefined.
+	 */
+	Matrix.prototype.determinant = function(){
+		var matrixSize = this.getRowCount();
+		
+		// Check it's a square matrix
+		if (matrixSize != this.getColumnCount()){
+			return;
+		}
+		
+		switch (matrixSize){
+		case 0:
+			// Determinant of a 0x0 empty matrix varies by source.
+			return;
+			
+		case 1:
+			// Determinant of a 1x1 matrix is the element itself.
+			return this.values[0][0];
+			
+		case 2:
+			// Determinant of a 2x2 matrix is a * d - b * c.
+			return this.values[0][0] * this.values[1][1] - this.values[0][1] * this.values[1][0];
+			
+		default:
+			// Determinant of a larger matrix is based on the determinants of submatrices.
+			// See https://en.wikipedia.org/wiki/Laplace_expansion
+			var determinant, submatrix, a;
+		
+			determinant = 0;
+			a = 1; // a is a value that flips between 1 and -1.
+			// Loop through the elements of the first row...
+			for (var i = 0; i < matrixSize; i++){
+				// Get the submatrix excluding the first row and the column we are currently looking at.
+				submatrix = this.principalSubmatrix(0, i);
+				// Find the determinant of that submatrix, multiply by the i-th element in the first
+				// row and alternately add/subtract to/from the total.
+				determinant += a * this.values[0][i] * submatrix.determinant();
+				
+				a = (a == 1 ? -1 : 1);
+			}
+			
+			return determinant;
+		}
+	};
+	
+	/**
 	 * Creates a copy of this matrix.
 	 * @public
 	 * @returns {thruster.math.Matrix}

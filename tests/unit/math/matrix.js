@@ -1,4 +1,4 @@
-(function(){
+(function(undefined){
 	'use strict';
 	QUnit.module('thruster.math.Matrix');
 	
@@ -222,6 +222,50 @@
 		// Change value in original matrix. This should not change in the clone.
 		matrix.values[0][1] = 100;
 		assert.notDeepEqual(matrix.values, clonedMatrix.values, 'Cloned matrix is separate from the original matrix.');
+	});
+	
+	QUnit.test('determinant()', function(assert){
+		var matrix;
+		
+		// 0x0 matrix
+		matrix = new thruster.math.Matrix([]);
+		assert.equal(matrix.determinant(), undefined, 'Empty matrix returns undefined.');
+		
+		// Non-square matrix
+		matrix = new thruster.math.Matrix([
+		     [7, 2]
+		]);
+		assert.equal(matrix.determinant(), undefined, 'Non-square matrix returns undefined.');
+		
+		// 1x1 matrix
+		matrix = new thruster.math.Matrix([
+		     [7]
+		]);
+		assert.equal(matrix.determinant(), 7, '1x1 matrix returns the correct value.');
+		
+		// 2x2 matrix
+		matrix = new thruster.math.Matrix([
+  		     [1, 2],
+  		     [3, 4]
+  		]);
+  		assert.equal(matrix.determinant(), -2, '2x2 matrix returns the correct value.');
+  		
+  		// 3x3 matrix
+		matrix = new thruster.math.Matrix([
+  		     [1, 2, 3],
+  		     [4, 5, 6],
+  		     [7, 8, 9]
+  		]);
+  		assert.equal(matrix.determinant(), 0, '3x3 matrix returns the correct value.');
+  		
+  		// 4x4 matrix
+		matrix = new thruster.math.Matrix([
+  		     [ 8,  1,  8,  3],
+  		     [10, 11, 12, 13],
+  		     [20, 21,  8, 23],
+  		     [30, 31, 32, 33]
+  		]);
+  		assert.equal(matrix.determinant(), 4480, '4x4 matrix returns the correct value.');
 	});
 	
 	QUnit.test('getColumnCount()', function(assert){
