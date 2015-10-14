@@ -183,6 +183,18 @@
 		assert.deepEqual(matrix.values, expectedResult, 'Created matrix values are correct.');
 	});
 	
+	QUnit.test('static scaleXY()', function(assert){
+		var matrix, expectedResult;
+		
+		matrix = thruster.math.Matrix.scaleXY(2, 3);
+		expectedResult = [
+            [2, 0, 0],
+            [0, 3, 0],
+            [0, 0, 1],
+        ];
+		assert.deepEqual(matrix.values, expectedResult, 'Created matrix values are correct.');
+	});
+	
 	QUnit.test('static translation()', function(assert){
 		var matrix, expectedResult;
 		

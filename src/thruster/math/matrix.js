@@ -116,6 +116,22 @@ define(function(){
 	};
 	
 	/**
+	 * Creates a new non-uniform scale transformation matrix.
+	 * @public
+	 * @static
+	 * @param {Number} scaleFactorX The scale factor of the transformation in the x direction.
+	 * @param {Number} scaleFactorY The scale factor of the transformation in the y direction.
+	 * @returns {thruster.math.Matrix}
+	 */
+	Matrix.scaleXY = function(scaleFactorX, scaleFactorY){
+		return new Matrix([
+		    [scaleFactorX,            0, 0],
+		    [           0, scaleFactorY, 0],
+		    [           0,            0, 1]
+		]);
+	};
+	
+	/**
 	 * Creates a new translation transformation matrix.
 	 * @public
 	 * @static

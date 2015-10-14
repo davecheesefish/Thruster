@@ -103,6 +103,12 @@
 		point.transform(matrix);
 		assert.propEqual(point, new thruster.math.Vector2d(5, 10), 'Scale produces correct result.');
 		
+		// Non-uniform scale
+		point = new thruster.shapes.Point2d(1, 2);
+		matrix = thruster.math.Matrix.scaleXY(5, 6);
+		point.transform(matrix);
+		assert.propEqual(point, new thruster.math.Vector2d(5, 12), 'Non-uniform scale produces correct result.');
+		
 		// Translation
 		point = new thruster.shapes.Point2d(1, 2);
 		matrix = thruster.math.Matrix.translation(new thruster.math.Vector2d(3, 4));
