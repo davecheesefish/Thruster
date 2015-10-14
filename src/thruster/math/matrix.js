@@ -100,6 +100,13 @@ define(function(){
    		]);
 	};
 	
+	/**
+	 * Creates a new scale transformation matrix.
+	 * @public
+	 * @static
+	 * @param {Number} scaleFactor The scale factor of the transformation.
+	 * @returns {thruster.math.Matrix}
+	 */
 	Matrix.scale = function(scaleFactor){
 		return new Matrix([
 		    [scaleFactor,           0, 0],
