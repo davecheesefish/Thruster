@@ -134,8 +134,8 @@
 		angle = Math.PI / 6;
 		matrix = thruster.math.Matrix.rotation(angle);
 		expectedResult = [
-            [ Math.cos(angle), Math.sin(angle), 0],
-            [-Math.sin(angle), Math.cos(angle), 0],
+            [Math.cos(angle), -Math.sin(angle), 0],
+            [Math.sin(angle),  Math.cos(angle), 0],
             [               0,               0, 1],
         ];
 		assert.deepEqual(matrix.values, expectedResult, 'Acute angle: Created matrix values are correct.');
@@ -144,8 +144,8 @@
 		angle = Math.PI * 0.75;
 		matrix = thruster.math.Matrix.rotation(angle);
 		expectedResult = [
-            [ Math.cos(angle), Math.sin(angle), 0],
-            [-Math.sin(angle), Math.cos(angle), 0],
+            [Math.cos(angle), -Math.sin(angle), 0],
+            [Math.sin(angle),  Math.cos(angle), 0],
             [               0,               0, 1],
         ];
 		assert.deepEqual(matrix.values, expectedResult, 'Obtuse angle: Created matrix values are correct.');
@@ -154,8 +154,8 @@
 		angle = Math.PI * 1.5;
 		matrix = thruster.math.Matrix.rotation(angle);
 		expectedResult = [
-            [ Math.cos(angle), Math.sin(angle), 0],
-            [-Math.sin(angle), Math.cos(angle), 0],
+            [Math.cos(angle), -Math.sin(angle), 0],
+            [Math.sin(angle), Math.cos(angle), 0],
             [               0,               0, 1],
         ];
 		assert.deepEqual(matrix.values, expectedResult, 'Reflex angle: Created matrix values are correct.');
@@ -164,8 +164,8 @@
 		angle = -Math.PI;
 		matrix = thruster.math.Matrix.rotation(angle);
 		expectedResult = [
-            [ Math.cos(angle), Math.sin(angle), 0],
-            [-Math.sin(angle), Math.cos(angle), 0],
+            [Math.cos(angle), -Math.sin(angle), 0],
+            [Math.sin(angle),  Math.cos(angle), 0],
             [               0,               0, 1],
         ];
 		assert.deepEqual(matrix.values, expectedResult, 'Negative angle: Created matrix values are correct.');

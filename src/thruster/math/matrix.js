@@ -84,7 +84,7 @@ define(function(){
 	
 	/**
 	 * Creates a new rotation transformation matrix.
-	 * @param {Number} angle The angle of rotation, in radians from the positive x axis.
+	 * @param {Number} angle The angle of rotation, in radians from the positive x axis towards the positive y axis.
 	 * @returns {thruster.math.Matrix}
 	 */
 	Matrix.rotation = function(angle){
@@ -92,8 +92,8 @@ define(function(){
 			s = Math.sin(angle);
 		
 		return new Matrix([
-   		    [ c, s, 0],
-   		    [-s, c, 0],
+   		    [c, -s, 0],
+   		    [s,  c, 0],
    		    [ 0, 0, 1]
    		]);
 	};
