@@ -83,6 +83,19 @@ define(function(){
 	};
 	
 	/**
+	 * Creates a new translation transformation matrix.
+	 * @param {thruster.math.Vector2d} translationVector The vector to translate by.
+	 * @returns {thruster.math.Matrix}
+	 */
+	Matrix.translation = function(translationVector){
+		return new Matrix([
+		    [1, 0, translationVector.x],
+		    [0, 1, translationVector.y],
+		    [0, 0,                   1]
+		]);
+	};
+	
+	/**
 	 * Creates a copy of this matrix.
 	 * @public
 	 * @returns {thruster.math.Matrix}

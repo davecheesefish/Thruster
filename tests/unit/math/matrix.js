@@ -127,6 +127,18 @@
 		assert.deepEqual(matrix.values, expectedResult, '10x10 identity matrix is produced correctly.');
 	});
 	
+	QUnit.test('static translation()', function(assert){
+		var vector, matrix, expectedResult;
+		
+		matrix = thruster.math.Matrix.translation(new thruster.math.Vector2d(2, 3));
+		expectedResult = [
+            [1, 0, 2],
+            [0, 1, 3],
+            [0, 0, 1],
+        ];
+		assert.deepEqual(matrix.values, expectedResult, 'Created matrix values are correct.');
+	});
+	
 	QUnit.test('clone()', function(assert){
 		var matrix, clonedMatrix;
 		
