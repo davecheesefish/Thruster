@@ -385,6 +385,40 @@
   		    [  0,   0,   0, 1]
   	    ];
   		assert.deepEqual(inverseMatrix.values, expectedValues, '4x4 matrix returns the correct value.');
+  		
+  		
+  		// Transformation matrices
+  		var transform, inverseTransform, reverse;
+  		
+  		// Rotation
+  		transform = thruster.math.Matrix.rotation(Math.PI / 2);
+  		inverseTransform = transform.inverse();
+  		reverse = thruster.math.Matrix.rotation(-Math.PI / 2);
+  		assert.deepEqual(inverseTransform.values, reverse.values, 'Rotation: Inverse transformation matrix has the opposite effect.');
+  		
+  		// Scale
+  		transform = thruster.math.Matrix.scale(4);
+  		inverseTransform = transform.inverse();
+  		reverse = thruster.math.Matrix.scale(0.25);
+  		assert.deepEqual(inverseTransform.values, reverse.values, 'Scale: Inverse transformation matrix has the opposite effect.');
+  		
+  		// Scale with negative factor
+  		transform = thruster.math.Matrix.scale(-4);
+  		inverseTransform = transform.inverse();
+  		reverse = thruster.math.Matrix.scale(-0.25);
+  		assert.deepEqual(inverseTransform.values, reverse.values, 'Scale (with a negative factor): Inverse transformation matrix has the opposite effect.');
+  		
+  		//ScaleXY
+  		transform = thruster.math.Matrix.scaleXY(2, 4);
+  		inverseTransform = transform.inverse();
+  		reverse = thruster.math.Matrix.scaleXY(0.5, 0.25);
+  		assert.deepEqual(inverseTransform.values, reverse.values, 'ScaleXY: Inverse transformation matrix has the opposite effect.');
+  		
+  		// Translation
+  		transform = thruster.math.Matrix.translation(new thruster.math.Vector2d(-1, 2));
+  		inverseTransform = transform.inverse();
+  		reverse = thruster.math.Matrix.translation(new thruster.math.Vector2d(1, -2));
+  		assert.deepEqual(inverseTransform.values, reverse.values, 'Translation: Inverse transformation matrix has the opposite effect.');
 	});
 	
 	QUnit.test('multiply()', function(assert){

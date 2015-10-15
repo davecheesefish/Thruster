@@ -108,11 +108,7 @@ define(function(){
 	 * @returns {thruster.math.Matrix}
 	 */
 	Matrix.scale = function(scaleFactor){
-		return new Matrix([
-		    [scaleFactor,           0, 0],
-		    [          0, scaleFactor, 0],
-		    [          0,           0, 1]
-		]);
+		return Matrix.scaleXY(scaleFactor, scaleFactor);
 	};
 	
 	/**
@@ -231,7 +227,8 @@ define(function(){
 	
 	/**
 	 * Returns the inverse of this matrix. Applying the inverse of a transformation matrix will
-	 * undo the effects of the original matrix. 
+	 * undo the effects of the original matrix.
+	 * @public
 	 * @returns {(thruster.math.Matrix|undefined)} A new inverted matrix. This function returns
 	 * undefined if the matrix cannot be inverted.
 	 */
