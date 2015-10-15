@@ -16,27 +16,27 @@ define(function(){
 	 * A mathematical matrix of numerical values.
 	 * @class
 	 * @memberof thruster.math
-	 * @param {Number} columns   The number of columns in the matrix.
 	 * @param {Number} rows      The number of rows in the matrix.
+	 * @param {Number} columns   The number of columns in the matrix.
 	 * @param {...Number} values The values to populate the matrix with, row by row.
 	 * @example
 	 * // To create a 3x3 matrix:
 	 * var matrix = new thruster.math.Matrix(
-	 *     3, 3,     // Width and height
+	 *     3, 3,     // Row and column counts
 	 *     1, 2, 3,  // Matrix values
 	 *     4, 5, 6,
 	 *     7, 8, 9
 	 * );
 	 */
-	var Matrix = function(columns, rows, values){
-		if (columns instanceof Array){
+	var Matrix = function(rows, columns, values){
+		if (rows instanceof Array){
 			// Matrix(Number[][])
 			// Copy the array passed in to this.values.
 			this.values = [];
-			for (var i = 0; i < columns.length; i++){
-				this.values.push(columns[i].slice(0));
+			for (var i = 0; i < rows.length; i++){
+				this.values.push(rows[i].slice(0));
 			}
-		} else if (arguments.length == columns * rows + 2){
+		} else if (arguments.length == rows * columns + 2){
 			// Matrix(Number, Number, ...Number)
 			// Arguments are a list of values. Convert into the proper format.
 			this.values = [];

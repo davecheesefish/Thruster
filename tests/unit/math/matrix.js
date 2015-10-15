@@ -76,7 +76,7 @@
 		assert.deepEqual(matrix.values, expectedValues, '3x3 matrix constructed correctly.');
 		
 		// 3x2 matrix
-		matrix = new thruster.math.Matrix(2, 3,
+		matrix = new thruster.math.Matrix(3, 2,
 			1, 2,
 			3, 4,
 			5, 6
