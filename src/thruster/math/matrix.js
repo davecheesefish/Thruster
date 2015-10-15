@@ -146,7 +146,7 @@ define(function(){
 	 * Uses Laplace expansion to calculate the determinant of this matrix.
 	 * @public
 	 * @returns {(Number|undefined)} The determinant of this matrix. If this is not a square matrix
-	 * (or if it is an empty matrix) this function returns undefined.
+	 * this function returns undefined.
 	 */
 	Matrix.prototype.determinant = function(){
 		var matrixSize = this.getRowCount();
@@ -156,10 +156,14 @@ define(function(){
 			return;
 		}
 		
+		// The default case could be used on all matrices (excluding an ampty matrix, which
+		// returns 1), but 1x1, 2x2 and 3x3 matrices are specified separately for optimization.
 		switch (matrixSize){
 		case 0:
-			// Determinant of a 0x0 empty matrix varies by source.
-			return;
+			// Determinant of a 0x0 empty matrix varies by source, but is widely held to be 1.
+			// This makes sense, as following the default case on a 1x1 matrix would otherwise
+			// be undefined.
+			return 1;
 			
 		case 1:
 			// Determinant of a 1x1 matrix is the element itself.
@@ -168,6 +172,13 @@ define(function(){
 		case 2:
 			// Determinant of a 2x2 matrix is a * d - b * c.
 			return this.values[0][0] * this.values[1][1] - this.values[0][1] * this.values[1][0];
+			
+		case 3:
+			// Determinant of a 3x3 matrix is a(e * i - f * h) - b(d * i - f * g) + c(d * h - e * g).
+			var val = this.values;
+			return val[0][0] * (val[1][1] * val[2][2] - val[1][2] * val[2][1]) -
+				   val[0][1] * (val[1][0] * val[2][2] - val[1][2] * val[2][0]) +
+				   val[0][2] * (val[1][0] * val[2][1] - val[1][1] * val[2][0]);
 			
 		default:
 			// Determinant of a larger matrix is based on the determinants of submatrices.
@@ -243,6 +254,8 @@ define(function(){
 		var matrixSize = this.getRowCount();
 		
 		switch (matrixSize){
+		case 0:
+			return new Matrix([]);
 		case 1:
 			// Inverse is just a 1x1 matrix containing the reciprocal of its only element.
 			return new Matrix([

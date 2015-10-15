@@ -229,7 +229,7 @@
 		
 		// 0x0 matrix
 		matrix = new thruster.math.Matrix([]);
-		assert.equal(matrix.determinant(), undefined, 'Empty matrix returns undefined.');
+		assert.equal(matrix.determinant(), 1, 'Empty matrix returns 1.');
 		
 		// Non-square matrix
 		matrix = new thruster.math.Matrix([
@@ -325,7 +325,7 @@
 		// 0x0 matrix
 		matrix = new thruster.math.Matrix([]);
 		inverseMatrix = matrix.inverse();
-		assert.equal(inverseMatrix, undefined, 'Empty matrix returns undefined.');
+		assert.deepEqual(inverseMatrix.values, [], 'Empty matrix returns empty matrix.');
 		
 		// Non-square matrix
 		matrix = new thruster.math.Matrix([
