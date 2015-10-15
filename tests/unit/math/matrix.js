@@ -319,6 +319,74 @@
 		assert.equal(matrix.getRowCount(), 3, '3x2 matrix returns 3.');
 	});
 	
+	QUnit.test('inverse()', function(assert){
+		var matrix, inverseMatrix, expectedValues;
+		
+		// 0x0 matrix
+		matrix = new thruster.math.Matrix([]);
+		inverseMatrix = matrix.inverse();
+		assert.equal(inverseMatrix, undefined, 'Empty matrix returns undefined.');
+		
+		// Non-square matrix
+		matrix = new thruster.math.Matrix([
+		    [1, 2]
+		]);
+		inverseMatrix = matrix.inverse();
+		assert.equal(inverseMatrix, undefined, 'Non-square matrix returns undefined.');
+		
+		// 1x1 matrix
+		matrix = new thruster.math.Matrix([
+		    [2]
+		]);
+		inverseMatrix = matrix.inverse();
+		expectedValues = [
+            [0.5]
+        ];
+		assert.deepEqual(inverseMatrix.values, expectedValues, '1x1 matrix returns the correct value.');
+		
+		// 2x2 matrix
+		matrix = new thruster.math.Matrix([
+  		     [2, 4],
+  		     [3, 2]
+  		]);
+		inverseMatrix = matrix.inverse();
+		expectedValues = [
+		    [-0.25 ,  0.5 ],
+		    [ 0.375, -0.25]
+        ];
+  		assert.deepEqual(inverseMatrix.values, expectedValues, '2x2 matrix returns the correct value.');
+  		
+  		// 3x3 matrix
+		matrix = new thruster.math.Matrix([
+  		    [16, 3, 4],
+  		    [ 8, 2, 3],
+  		    [ 9, 1, 1]
+  		]);
+		inverseMatrix = matrix.inverse();
+		expectedValues = [
+		    [ -1,   1,   1],
+		    [ 19, -20, -16],
+		    [-10,  11,   8]
+	    ];
+  		assert.deepEqual(inverseMatrix.values, expectedValues, '3x3 matrix returns the correct value.');
+  		
+  		// 4x4 matrix
+		matrix = new thruster.math.Matrix([
+  		    [16, 3, 4, 0],
+  		    [ 8, 2, 3, 0],
+  		    [ 9, 1, 1, 0],
+  		    [ 0, 0, 0, 1]
+  		]);
+		inverseMatrix = matrix.inverse();
+		expectedValues = [
+  		    [ -1,   1,   1, 0],
+  		    [ 19, -20, -16, 0],
+  		    [-10,  11,   8, 0],
+  		    [  0,   0,   0, 1]
+  	    ];
+  		assert.deepEqual(inverseMatrix.values, expectedValues, '4x4 matrix returns the correct value.');
+	});
+	
 	QUnit.test('multiply()', function(assert){
 		var matrix1, matrix2, result, expectedResult;
 		

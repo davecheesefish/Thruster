@@ -230,6 +230,70 @@ define(function(){
 	};
 	
 	/**
+	 * Returns the inverse of this matrix. Applying the inverse of a transformation matrix will
+	 * undo the effects of the original matrix. 
+	 * @returns {(thruster.math.Matrix|undefined)} A new inverted matrix. This function returns
+	 * undefined if the matrix cannot be inverted.
+	 */
+	Matrix.prototype.inverse = function(){
+		var determinant = this.determinant();
+		
+		// If the determinant is 0 or undefined, there is no inverse matrix.
+		if (determinant === 0 || typeof determinant == 'undefined'){
+			return;
+		}
+		
+		var matrixSize = this.getRowCount();
+		
+		switch (matrixSize){
+		case 1:
+			// Inverse is just a 1x1 matrix containing the reciprocal of its only element.
+			return new Matrix([
+			    [1 / this.values[0][0]]
+			]);
+			
+		case 2:
+			// Inverse is a rearrangement of the elements, multiplied by the reciprocal of the
+			// determinant.
+			return new Matrix([
+   			    [ this.values[1][1], -this.values[0][1]],
+   			    [-this.values[1][0],  this.values[0][0]]
+   			]).multiplyByScalar(1 / determinant);
+			
+		default:
+			var rowNo, colNo, adjugate, adjugateValues;
+			
+			// Calculate the matrix of cofactors.
+			adjugateValues = [];
+			
+			// Create the rows of the matrix.
+			for (rowNo = 0; rowNo < matrixSize; rowNo++){
+				adjugateValues[rowNo] = [];
+			}
+			
+			// Loop through the rows and columns of this matrix...
+			for (rowNo = 0; rowNo < matrixSize; rowNo++){
+				for (colNo = 0; colNo < matrixSize; colNo++){
+					// Each element is the determinant of this matrix excluding the current row
+					// and column, transposed so the row and column numbers are switched.
+					adjugateValues[colNo][rowNo] = this.principalSubmatrix(rowNo, colNo).determinant();
+					
+					// We currently have a matrix of minors. To turn it into a matrix of cofactors,
+					// multiply each element by -1 ^ (rowNo + colNo)
+					adjugateValues[colNo][rowNo] *= Math.pow(-1, rowNo + colNo);
+				}
+			}
+			adjugate = new Matrix(adjugateValues);
+			
+			// Finally, to get the inverted matrix, multiply by the reciprocal of the determinant of
+			// the original matrix.
+			adjugate.multiplyByScalar(1 / determinant);
+			
+			return adjugate;
+		}
+	};
+	
+	/**
 	 * Post-multiplies this matrix by another matrix. The column count of the provided matrix must
 	 * be equal to the row count of this matrix. To multiply by a scalar value, use
 	 * {@link thruster.math.Matrix#multiplyByScalar}.
