@@ -1,10 +1,12 @@
 require([
+    'thruster/content',
     'thruster/graphics',
     'thruster/input',
     'thruster/math',
     'thruster/shapes',
     'thruster/utils'
 ], function(
+	content,
 	graphics,
 	input,
 	math,
@@ -32,6 +34,7 @@ require([
 		 */
 		BUILD_DATE: '@DATE@',
 		
+		content:  content,
 		graphics: graphics,
 		input:    input,
 		math:     math,
