@@ -70,8 +70,10 @@ define(function(){
 		 * @private
 		 */
 		var _disconnectEvents = function(){
-			_self.image.removeEventListener('load', _onLoad);
-			_self.image.removeEventListener('error', _onError);
+			if (_self.image != null){
+				_self.image.removeEventListener('load', _onLoad);
+				_self.image.removeEventListener('error', _onError);
+			}
 			_onLoadCallback = null;
 			_onErrorCallback = null;
 		};
@@ -95,6 +97,10 @@ define(function(){
 		 * argument.
 		 */
 		this.load = function(onLoad, onError){
+			if (this.image == null){
+				this.image = new Image();
+			}
+			
 			_onLoadCallback = onLoad;
 			_onErrorCallback = onError;
 			this.image.addEventListener('load', _onLoad);
