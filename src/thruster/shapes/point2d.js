@@ -90,7 +90,7 @@ define(['thruster/math/matrix', 'thruster/math/vector2d'], function(Matrix, Vect
 	 * @returns {thruster.shapes.Point2d} This point, to allow chaining.
 	 */
 	Point2d.prototype.transform = function(transformationMatrix){
-		var transformedMatrix = transformationMatrix;
+		var transformedMatrix = transformationMatrix.clone();
 		transformedMatrix.multiply(this.toMatrix());
 		this.x = transformedMatrix.values[0][0];
 		this.y = transformedMatrix.values[1][0];
