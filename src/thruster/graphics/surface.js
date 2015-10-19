@@ -14,7 +14,19 @@ define(function(){
 	 * @param {Number} height Height of the surface in texels.
 	 */
 	var Surface = function(width, height){
-		var _canvas, _context;
+		/**
+		 * The 2D rendering context of the internal canvas.
+		 * @private
+		 * @type {CanvasRenderingContext2D}
+		 */
+		var _canvas;
+		
+		/**
+		 * The canvas element where graphics on this surface are drawn to.
+		 * @private
+		 * @type {HTMLCanvasElement}
+		 */
+		var _context;
 		
 		if (width instanceof Element){
 			_canvas = width;
