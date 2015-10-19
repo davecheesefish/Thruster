@@ -42,7 +42,7 @@ define(function(){
 		/**
 		 * Clears this surface, filling it with the specified color if specified.
 		 * @public
-		 * @param {thruster.graphics.color} [color]
+		 * @param {thruster.graphics.Color} [color]
 		 */
 		this.clear = function(color){
 			var w = _canvas.width,
