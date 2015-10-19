@@ -64,6 +64,47 @@
 		assert.pixelEqual(canvas, 8, 8, color.red, color.green, color.blue, color.alpha * 255, 'Transparent bottom-right pixel cleared to correct color.');
 	});
 	
+	QUnit.test('saveConfig() and restoreConfig()', function(assert){
+		var surface, context,
+			strokeStyle, fillStyle, font, textAlign;
+		
+		surface = new thruster.graphics.Surface(9, 9);
+		context = surface.getContext();
+		
+		// Set properties to test values.
+		context.strokeStyle = strokeStyle = '#55aaee';
+		context.fillStyle   = fillStyle   = '#ee9955';
+		context.font        = font        = '12px "comic sans ms"'; // Absurd test value.
+		context.textAlign   = textAlign   = 'center';
+		
+		assert.equal(context.strokeStyle, strokeStyle, 'Stroke style set before save.');
+		assert.equal(context.fillStyle, fillStyle, 'Fill style set before save.');
+		assert.equal(context.font, font, 'Font set before save.');
+		assert.equal(context.textAlign, textAlign, 'Text align set before save.');
+		
+		// Save the context config.
+		surface.saveConfig();
+		
+		// Change values
+		context.strokeStyle = '#000000';
+		context.fillStyle   = '#000000';
+		context.font        = '5px sans-serif';
+		context.textAlign   = 'left';
+		
+		assert.notEqual(context.strokeStyle, strokeStyle, 'Stroke style changed after save.');
+		assert.notEqual(context.fillStyle, fillStyle, 'Fill style changed after save.');
+		assert.notEqual(context.font, font, 'Font changed after save.');
+		assert.notEqual(context.textAlign, textAlign, 'Text align changed after save.');
+		
+		// Restore the context config.
+		surface.restoreConfig();
+		
+		assert.equal(context.strokeStyle, strokeStyle, 'Stroke style back to original value after restore.');
+		assert.equal(context.fillStyle, fillStyle, 'Fill style back to original value after restore.');
+		assert.equal(context.font, font, 'Font set back to original value after restore.');
+		assert.equal(context.textAlign, textAlign, 'Text align back to original value after restore.');
+	});
+	
 	QUnit.skip('setTransform()', function(assert){
 		// No real way to test if a transform has been applied, since getting the current
 		// transform back from a CanvasRenderingContext2D isn't supported yet.

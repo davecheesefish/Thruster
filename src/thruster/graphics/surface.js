@@ -78,6 +78,24 @@ define(function(){
 		};
 		
 		/**
+		 * Restore the last surface config saved with [saveConfig()]{@link thruster.graphics.Surface#saveConfig}.
+		 * @public
+		 * @see thruster.graphics.Surface#saveConfig
+		 */
+		this.restoreConfig = function(){
+			_context.restore();
+		};
+		
+		/**
+		 * Saves the current config (transform, fill styles, stroke styles, etc.) so it can be restored later.
+		 * @public
+		 * @see thruster.graphics.Surface#restoreConfig
+		 */
+		this.saveConfig = function(){
+			_context.save();
+		};
+		
+		/**
 		 * Multiplies the current transformation matrix by the matrix provided.
 		 * @public
 		 * @param {thruster.math.Matrix} matrix
