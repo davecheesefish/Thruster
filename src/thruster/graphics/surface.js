@@ -64,6 +64,30 @@ define(function(){
 		this.getContext = function(){
 			return _context;
 		};
+		
+		/**
+		 * Multiplies the current transformation matrix by the matrix provided.
+		 * @public
+		 * @param {thruster.math.Matrix} matrix
+		 */
+		this.transform = function(matrix){
+			_context.transform(
+				matrix.values[0][0], matrix.values[0][1], matrix.values[0][2],
+				matrix.values[1][0], matrix.values[1][1], matrix.values[1][2]
+			);
+		};
+		
+		/**
+		 * Sets the transformation matrix to the matrix provided.
+		 * @public
+		 * @param {thruster.math.Matrix} matrix
+		 */
+		this.setTransform = function(matrix){
+			_context.setTransform(
+				matrix.values[0][0], matrix.values[0][1], matrix.values[0][2],
+				matrix.values[1][0], matrix.values[1][1], matrix.values[1][2]
+			);
+		};
 	};
 	
 	return Surface;

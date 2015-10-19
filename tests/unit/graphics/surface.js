@@ -63,4 +63,14 @@
 		assert.pixelEqual(canvas, 4, 4, color.red, color.green, color.blue, color.alpha * 255, 'Transparent center pixel cleared to correct color.');
 		assert.pixelEqual(canvas, 8, 8, color.red, color.green, color.blue, color.alpha * 255, 'Transparent bottom-right pixel cleared to correct color.');
 	});
+	
+	QUnit.skip('setTransform()', function(assert){
+		// No real way to test if a transform has been applied, since getting the current
+		// transform back from a CanvasRenderingContext2D isn't supported yet.
+	});
+	
+	QUnit.skip('transform()', function(assert){
+		// No real way to test if a transform has been applied, since getting the current
+		// transform back from a CanvasRenderingContext2D isn't supported yet.
+	});
 })();
