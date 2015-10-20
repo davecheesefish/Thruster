@@ -105,6 +105,44 @@
 		assert.equal(context.textAlign, textAlign, 'Text align back to original value after restore.');
 	});
 	
+	QUnit.test('setImageSmoothing()', function(assert){
+		var surface, context;
+		
+		surface = new thruster.graphics.Surface(10, 10);
+		context = surface.getContext();
+		
+		function getSmoothing(){
+			// Standard
+			if (typeof context.imageSmoothingEnabled != 'undefined'){
+				return context.imageSmoothingEnabled;
+			}
+			
+			// Gecko
+			if (typeof context.mozImageSmoothingEnabled != 'undefined'){
+				return context.mozImageSmoothingEnabled;
+			}
+			
+			// IE
+			if (typeof context.msImageSmoothingEnabled != 'undefined'){
+				return context.msImageSmoothingEnabled;
+			}
+			
+			// WebKit
+			if (typeof context.webkitImageSmoothingEnabled != 'undefined'){
+				return context.webkitImageSmoothingEnabled;
+			}
+		};
+		
+		surface.setImageSmoothing(false);
+		assert.equal(getSmoothing(), false, 'Image smoothing disabled.');
+		
+		surface.setImageSmoothing(true);
+		assert.equal(getSmoothing(), true, 'Image smoothing enabled.');
+		
+		surface.setImageSmoothing(false);
+		assert.equal(getSmoothing(), false, 'Image smoothing disabled again.');
+	});
+	
 	QUnit.skip('setTransform()', function(assert){
 		// No real way to test if a transform has been applied, since getting the current
 		// transform back from a CanvasRenderingContext2D isn't supported yet.

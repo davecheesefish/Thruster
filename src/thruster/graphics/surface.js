@@ -108,6 +108,16 @@ define(function(){
 		};
 		
 		/**
+		 * Enables or disables image smoothing on this surface.
+		 * @param {Boolean} enabled If true, image smoothing is enabled. If false, smoothing is disabled.
+		 */
+		this.setImageSmoothing = function(enabled){
+			_context.mozIMageSmoothingEnabled = enabled;
+			_context.msImageSmoothingEnabled = enabled;
+			_context.imageSmoothingEnabled = enabled;
+		};
+		
+		/**
 		 * Sets the transformation matrix to the matrix provided.
 		 * @public
 		 * @param {thruster.math.Matrix} matrix
