@@ -1,4 +1,4 @@
-define(function(){
+define(['thruster/math/matrix', 'thruster/math/vector2d'], function(Matrix, Vector2d){
 	
 	/**
 	 * A dynamic bitmap drawing surface which can be drawn to, blitted and manipulated.
@@ -65,6 +65,56 @@ define(function(){
 			}
 			
 			_context.restore();
+		};
+		
+		/**
+		 * Draw a texture to the surface.
+		 * @public
+		 * @param {thruster.content.Texture} texture    The texture to draw.
+		 * @param {thruster.shapes.Point2d}  position   The position on the canvas to draw the texture.
+		 * @param {Number}                   [angle=0]  The angle of rotation, clockwise in radians.
+		 * @param {thruster.shapes.Point2d}  [origin]   The point on the texture to use as the origin
+		 * for transformations. Defaults to the top-left corner of the texture, (0, 0).
+		 * @param {Number}                   [scaleX=1] Scale factor along the x axis.
+		 * @param {Number}                   [scaleY=1] Scale factor along the y axis.
+		 */
+		this.draw = function(texture, position, angle, origin, scaleX, scaleY){
+			angle = angle || 0;
+			scaleX = (typeof scaleX == 'undefined' ? 1 : scaleX);
+			scaleY = (typeof scaleY == 'undefined' ? 1 : scaleY);
+			
+			// Save the config so we can restore afterwards.
+			this.saveConfig();
+			
+			// Construct transformation matrix. Remember, transformations are applied in the
+			// opposite order to the way they are multiplied.
+			// Position
+			var transform = Matrix.translation(position.toVector());
+			
+			// Angle
+			if (angle !== 0){
+				transform.multiply(Matrix.rotation(angle));
+			}
+			
+			// Scale
+			if (scaleX != 1 || scaleY != 1){
+				transform.multiply(Matrix.scaleXY(scaleX, scaleY));
+			}
+			
+			// Origin
+			if (typeof origin != 'undefined'){
+				var originVector = origin.toVector().multiply(-1);
+				transform.multiply(Matrix.translation(originVector));
+			}
+			
+			// Apply the transformation.
+			this.transform(transform);
+			
+			// Draw the image.
+			_context.drawImage(texture.image, 0, 0);
+			
+			// Restore the config.
+			this.restoreConfig();
 		};
 		
 		/**

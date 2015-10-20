@@ -64,6 +64,36 @@
 		assert.pixelEqual(canvas, 8, 8, color.red, color.green, color.blue, color.alpha * 255, 'Transparent bottom-right pixel cleared to correct color.');
 	});
 	
+	QUnit.test('draw()', function(assert){
+		var tex, surface, onLoad, done;
+		
+		tex = new thruster.content.Texture('../../content/image.png');
+		surface = new thruster.graphics.Surface(32, 32);
+		done = assert.async();
+		
+		// Disable image smoothing to make sure it doesn't interfere with the pixel color detection later.
+		surface.setImageSmoothing(false);
+		
+		onLoad = function(){
+			surface.draw(
+				tex,
+				new thruster.shapes.Point2d(4, 4),
+				-Math.PI / 2,
+				new thruster.shapes.Point2d(7, 1),
+				4,
+				4
+			);
+			
+			// Image should be rotated, scaled and positioned so the cyan square is at (0, 0) and the green square at (31, 0).
+			assert.pixelEqual(surface.getContext().canvas, 0, 0, 0, 255, 255, 255, 'Cyan square positioned correctly.');
+			assert.pixelEqual(surface.getContext().canvas, 31, 0, 0, 255, 0, 255, 'Green square positioned correctly.');
+			
+			done();
+		};
+		
+		tex.load(onLoad);
+	});
+	
 	QUnit.test('saveConfig() and restoreConfig()', function(assert){
 		var surface, context,
 			strokeStyle, fillStyle, font, textAlign;
