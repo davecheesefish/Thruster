@@ -102,8 +102,8 @@ define(function(){
 		 */
 		this.transform = function(matrix){
 			_context.transform(
-				matrix.values[0][0], matrix.values[0][1], matrix.values[0][2],
-				matrix.values[1][0], matrix.values[1][1], matrix.values[1][2]
+				matrix.values[0][0], matrix.values[1][0], matrix.values[0][1],
+				matrix.values[1][1], matrix.values[0][2], matrix.values[1][2]
 			);
 		};
 		
@@ -114,8 +114,8 @@ define(function(){
 		 */
 		this.setTransform = function(matrix){
 			_context.setTransform(
-				matrix.values[0][0], matrix.values[0][1], matrix.values[0][2],
-				matrix.values[1][0], matrix.values[1][1], matrix.values[1][2]
+				matrix.values[0][0], matrix.values[1][0], matrix.values[0][1],
+				matrix.values[1][1], matrix.values[0][2], matrix.values[1][2]
 			);
 		};
 	};
