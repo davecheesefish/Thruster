@@ -1,4 +1,12 @@
-define(['thruster/utils/classes'], function(classes){
+define([
+    'thruster/utils/classes',
+    
+    'thruster/utils/noop'
+], function(
+	classes,
+	
+	noop
+){
 	
 	/**
 	 * A collection of miscellaneous utilities and polyfills.
@@ -6,7 +14,11 @@ define(['thruster/utils/classes'], function(classes){
 	 * @memberof thruster
 	 */
 	var utils = {
-		classes: classes
+		// Namespaces
+		classes: classes,
+		
+		// Functions
+		noop: noop
 	};
 	
 	return utils;
