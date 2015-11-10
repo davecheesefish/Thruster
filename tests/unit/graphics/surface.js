@@ -65,9 +65,10 @@
 	});
 	
 	QUnit.test('draw()', function(assert){
-		var tex, surface, onLoad, done;
+		var manager, texConfig, surface, onLoad, done;
 		
-		tex = new thruster.content.Texture('../../content/image.png');
+		manager = new thruster.content.TextureManager();
+		texConfig = new thruster.content.TextureConfig('image', '../../content/image.png');
 		surface = new thruster.graphics.Surface(32, 32);
 		done = assert.async();
 		
@@ -76,7 +77,7 @@
 		
 		onLoad = function(){
 			surface.draw(
-				tex,
+				manager.get('image'),
 				new thruster.shapes.Point2d(4, 4),
 				-Math.PI / 2,
 				new thruster.shapes.Point2d(7, 1),
@@ -91,7 +92,7 @@
 			done();
 		};
 		
-		tex.load(onLoad);
+		manager.preload(texConfig, onLoad);
 	});
 	
 	QUnit.test('saveConfig() and restoreConfig()', function(assert){
