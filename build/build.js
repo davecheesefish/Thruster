@@ -19,9 +19,12 @@
 	
 	var config = {
 		rjs: {
-			baseUrl: 'src',
+			baseUrl: 'src/lib',
 			name: 'thruster',
 			out: 'dist/thruster.js',
+			paths: {
+				'thruster': '../thruster'
+			},
 			
 			optimize: 'none', // AMDclean won't work on minified files
 			useStrict: true,

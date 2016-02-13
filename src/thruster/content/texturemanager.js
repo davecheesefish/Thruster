@@ -11,7 +11,8 @@ define(['thruster/content/texture', 'thruster/utils/noop'], function(Texture, no
 	
 	/**
 	 * Returns a texture which has previously been preloaded with
-	 * {@link thruster.content.TextureManager#preload}. 
+	 * {@link thruster.content.TextureManager#preload}.
+	 * @public
 	 * @param id {String} The ID string of the texture.
 	 * @returns {thruster.content.Texture}
 	 */
@@ -21,6 +22,7 @@ define(['thruster/content/texture', 'thruster/utils/noop'], function(Texture, no
 	
 	/**
 	 * Preloads a texture from the supplied URL.
+	 * @public
 	 * @param {(thruster.content.TextureConfig[]|thruster.content.TextureConfig)} config
 	 * Config for the texture(s) to preload.
 	 * @param {Function} onSuccess  A callback function to be called once when all content has
@@ -49,12 +51,13 @@ define(['thruster/content/texture', 'thruster/utils/noop'], function(Texture, no
 					boundImage.removeEventListener('load', boundLoaded);
 					boundImage.removeEventListener('error', boundErrored);
 					
+					// Add to content dictionary.
 					boundThis.content[boundConfiguration.id] = new Texture(boundImage);
 					
 					// Check if we have processed all of the textures.
 					processedCount++;
 					if (processedCount == config.length){
-						onSuccess(new Texture(image));
+						onSuccess();
 					}
 				};
 			}(this, image, loaded, errored, config[i]));
@@ -73,9 +76,6 @@ define(['thruster/content/texture', 'thruster/utils/noop'], function(Texture, no
 			image.addEventListener('load', loaded);
 			image.addEventListener('error', errored);
 			image.src = config[i].url;
-			
-			// Add to content dictionary
-			
 		}
 	};
 	
