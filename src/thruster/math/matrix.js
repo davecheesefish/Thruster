@@ -156,7 +156,7 @@ define(function(){
 			return;
 		}
 		
-		// The default case could be used on all matrices (excluding an ampty matrix, which
+		// The default case could be used on all matrices (excluding an empty matrix, which
 		// returns 1), but 1x1, 2x2 and 3x3 matrices are specified separately for optimization.
 		switch (matrixSize){
 		case 0:
