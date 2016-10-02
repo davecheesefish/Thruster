@@ -43,7 +43,17 @@ require([
 	};
 	
 	// Export
-	window.thruster = thruster;
-	
-	return thruster;
+	// If AMD is available, define a module, otherwise create a global object.
+	// AMDclean breaks this section, so the following comment forces it to ignore the next line:
+	// amdclean
+	if (typeof define == 'function' && define.amd){
+		// amdclean
+		define(function(){
+			return thruster;
+		});
+	} else if (typeof exports !== 'undefined' && module.exports){
+		exports = module.exports = thruster;
+	} else {
+		window.thruster = thruster;
+	}
 });
